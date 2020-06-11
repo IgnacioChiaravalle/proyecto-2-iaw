@@ -26,5 +26,6 @@ También tendrá la capacidad de dar de alta y de baja a los Empleados, así com
 ### Empleado
 El usuario empleado es aquél que está en contacto directo con los clientes de *TheWaterLevel*, por lo que se encarga de mantener permanentemente actualizados los datos de stock del administrador. Además, su interfaz de usuario debería facilitarle el acceso a *merchandising* de los juegos vendidos (y viceversa), a fin de que pueda ofrecerlos a los clientes más adecuados.
 
-Es probable que el usuario Administrador de Empresa pueda hacer las veces de Empleado de ser necesario, pero para mantener ordenada la carga de datos se prevé que acceda al sistema como Empleado cuando lo necesite (lo que tal vez implique que su interfaz le permita el rápido acceso a la de los Empleados).<br>
+Es probable que el usuario Administrador de Empresa pueda hacer las veces de Empleado de ser necesario, pero para mantener ordenada la carga de datos se prevé que acceda al sistema como Empleado cuando lo necesite (lo que tal vez implique que su interfaz le permita el rápido acceso a la de los Empleados).
+
 Es altamente factible que se agreguen otras capacidades al usuario Empleado para facilitar su trabajo, pero a esta altura del desarrollo aún no se las ha definido.
