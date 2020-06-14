@@ -1,11 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Register Style.css') }}"/>
-
 <div class="container">
-    <img src="Company Logo.png" alt="The Water Level Logo">
-
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">

@@ -16,10 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
 	return view('welcome');
 });
+Route::get('/inicio', function () {
+	return view('welcome');
+});
 
 Auth::routes();
 
 
 //Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/register', 'Auth\RegisterController@__construct');
+//Route::get('/register', 'AccessRegisterController@getRegisterView'); //I think it is making "register" ambiguous.
