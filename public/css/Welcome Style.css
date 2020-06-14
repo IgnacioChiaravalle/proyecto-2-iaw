@@ -1,0 +1,94 @@
+body {
+	background-image: url("Backgrounds/Mario UnderWater.jpg");
+}
+
+h1 {
+	color: rgb(197, 34, 5);
+	text-shadow: -1px -1px 2px rgb(230, 206, 180), 1px -1px 2px rgb(230, 206, 180), -1px 1px 2px rgb(230, 206, 180), 1px 1px 2px rgb(230, 206, 180);
+	line-height: 95%;
+	text-align: center;
+	font-weight: bold;
+	font-size: 300%;
+	font-family: MuseoModerno;
+	margin-bottom: 5%;
+}
+
+form {
+	/* Display */
+	margin-top: 2%;
+	margin-left: auto;
+	margin-right: auto;
+
+	/* Size */
+	width: 60%;
+	padding: 2.5%;
+	border: 5px solid rgb(25, 170, 20);
+	border-radius: 7%/15%;
+
+	/* Animation */
+	animation: expandFromCenter 1500ms;
+
+	/* Background */
+	background-color: rgba(219, 102, 219, 0.85);
+}
+	label {
+		color: rgb(16, 25, 110);
+		text-shadow: -1px -1px 2px whitesmoke, 1px -1px 2px whitesmoke, -1px 1px 2px whitesmoke, 1px 1px 2px whitesmoke;
+		font-weight: bold;
+		font-size: 150%;
+		font-family: MuseoModerno;
+	}
+		#description {
+			width: 84%;
+			margin-left: 8%;
+			margin-right: 8%;
+			text-align: center;
+			font-style: italic;
+			font-size: 175%;
+			color: rgb(167, 213, 241);
+			text-shadow: -1px -1px 2px black, 1px -1px 2px black, -1px 1px 2px black, 1px 1px 2px black;
+		}
+
+	input {
+		width: 100%;
+		border-style: groove;
+		border-radius: 2%/20%;
+		background-color: rgb(226, 226, 226);
+		font-size: 225%;
+		font-family: MuseoModerno;
+	}
+		input.default-field {
+			color: rgba(146, 153, 214, 0.733);
+		}
+		input.active-field {
+			color: rgb(21, 70, 160);
+		}
+		input.submit {
+			width: 50%;
+			margin-left: 25%;
+			margin-right: 25%;
+			padding: 1%;
+
+			border-radius: 5%/30%;
+
+			text-align: center;
+			font-size: 275%;
+		}
+			input.disabled-submit {
+				background-color: rgb(180, 190, 187);
+				color: rgb(68, 68, 68);
+				border: 2px solid black;
+			}
+			input.enabled-submit {
+				background-color: rgb(16, 207, 150);
+				color: midnightblue;
+				border: 2px solid rgb(243, 154, 38);
+			}
+			input.enabled-submit:hover, input.enabled-submit:focus {
+				background-color: rgb(10, 173, 124);
+				color: rgb(224, 224, 253);
+				font-weight: bold;
+			}
+			input.enabled-submit:hover {
+				cursor: pointer;
+			}

@@ -12,7 +12,7 @@
 			¡¡Bienvenido al Administrador de Stock de<br>
 			The Water Level!!
 		</h1>
-		<form method="POST" action="{{ url('redirect.blade.php') }}">
+        <form method="POST" action="{{ url('redirect.blade.php') }}">
 			<label id="description">Por favor, ingrese sus datos de usuario para continuar:</label><br>
 			<label for="username">Nombre de Usuario:</label><br>
 			<input type="text" id="username" class="default-field" value="Usuario" onselect = "clearFieldIfDefault(this)" onclick="clearFieldIfDefault(this)"><br>
