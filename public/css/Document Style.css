@@ -1,0 +1,22 @@
+@font-face {
+	font-family: MuseoModerno;
+	src: url(Fonts/MuseoModerno_Font.ttf);
+}
+
+@keyframes expandFromCenter {
+	from { transform: scale(0); }
+	to { transform: scale(1); }
+}
+
+html{
+	height: 100%;
+	width: 100%;
+	margin:0;
+	cursor: auto;
+}
+
+body { /* Background should be fixed at all times in all documents. */
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-attachment: fixed;
+}
