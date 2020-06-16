@@ -6,11 +6,28 @@
 	font-family: ArcadeClassic;
 	src: url(Fonts/ArcadeClassic_Font.ttf);
 }
+@font-face {
+	font-family: OdibeeSans;
+	src: url(Fonts/OdibeeSans_Font.ttf);
+}
+@font-face {
+	font-family: LondrinaSolid;
+	src: url(Fonts/LondrinaSolid_Font.ttf);
+}
+@font-face {
+	font-family: Orbitron;
+	src: url(Fonts/Orbitron_Font.ttf);
+}
+@font-face {
+	font-family: AllertaStencil;
+	src: url(Fonts/AllertaStencil_Font.ttf);
+}
 
 @keyframes expandFromCenter {
 	from { transform: scale(0); }
 	to { transform: scale(1); }
 }
+
 
 html{
 	height: 100%;

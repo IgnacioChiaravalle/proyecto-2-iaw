@@ -1,11 +1,15 @@
 @extends('layouts.app')
+<script src = "{{ url('/js/InputFieldClearer.js') }}" type = "text/javascript"></script>
+<script src = "{{ url('/js/SubmitEnabler.js') }}" type = "text/javascript"></script>
+<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Document Style.css') }}"/>
+<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Password Recovery Style.css') }}"/>
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+                <h1>Recuperá tu<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspContraseña</h1>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -18,10 +22,10 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">Ingresá tu dirección de e-mail para que podamos enviarte el Link de Recuperación:</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <input id="email" type="email" class="default-field form-control @error('email') is-invalid @enderror" value="Dirección de Correo Electrónico" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus onselect = "clearFieldIfDefault(this); enable('submit-btn-restore-password')" onclick="clearFieldIfDefault(this); enable('submit-btn-restore-password')">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -33,8 +37,8 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Send Password Reset Link') }}
+                                <button type="submit" id="submit-btn-restore-password" class="disabled-submit" disabled="disabled">
+                                    Enviar Link de Recuperación
                                 </button>
                             </div>
                         </div>

@@ -3,23 +3,70 @@ body {
 	font-family: ArcadeClassic;
 }
 
-image {
+img {
 	src: url("Backgrounds/Company Logo.png");
-	width: 10%;
-	height: 5%;
-	position: absolute;
-	margin-left: 5%;
-	margin-top: 5%;
-	border-radius: 7%/15%; /* A large part of this stuff is not doing anything. */
+	width: 15%;
+	height: 20%;
+	position: fixed;
+	margin-top: 0.75%;
+	margin-left: 1%;
+	border: 5px inset rgb(132, 18, 185);
+	border-radius: 7%/15%;
+	transition: transform .35s ease-in-out;
 }
+	img:hover {
+		border: 5px solid rgb(171, 45, 230);
+		transform: scale(1.05);
+	}
 
 form {
 	margin-left: auto;
 	margin-right: auto;
 	width: 60%;
-	padding: 2.5%;
+	padding: 2%;
 	border: 5px solid rgb(221, 23, 23);
 	border-radius: 7%/15%;
 	animation: expandFromCenter 1500ms;
 	background-color: rgba(145, 92, 57, 0.85);
+	font-size: 222%;
 }
+	label {
+		line-height: 90%;
+		color: aqua;
+		text-shadow: -1px -1px 2px black, 1px -1px 2px black, -1px 1px 2px black, 1px 1px 2px black;
+	}
+	
+	input {
+		width: 100%;
+		border-style: groove;
+		border-radius: 2%/20%;
+		background-color: rgb(226, 222, 162);
+		color: rgb(25, 13, 99);
+		font-size: 225%;
+		padding-bottom: 0.4%;
+		font-family: OdibeeSans;
+	}
+
+	button {
+		width: 50%;
+		margin-top: 2%;
+		margin-left: 25%;
+		margin-right: 25%;
+		font-size: 150%;
+		color: rgb(56, 54, 134);
+		font-family: LondrinaSolid;
+		border: 5px outset rgb(23, 221, 221);
+		border-radius: 2%/20%;
+		background-color: rgb(215, 224, 134);
+		transition: transform .15s ease-in-out;
+	}
+		button:hover, button:focus {
+			font-weight: bold;
+			color: rgb(233, 241, 159);
+			border-color: rgb(116, 184, 53);
+			background-color: rgb(136, 23, 23);
+			transform: scale(1.07);
+		}
+		button:hover {
+			cursor: pointer;
+		}
