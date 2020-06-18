@@ -32,27 +32,27 @@ Route::get('/register', function () {
 });
 
 Route::get('/adminsite', function () {
-	return view('adminsite');
+	return view('adminuser\adminsite');
 });
 
 Route::get('/addgame', function () {
-	return view('games\addgame');
+	return view('adminuser\games\addgame');
 });
 Route::get('/editgame', function () {
-	return view('games\editgame');
+	return view('adminuser\games\editgame');
 });
 Route::get('/removegame', function () {
-	return view('games\removegame');
+	return view('adminuser\games\removegame');
 });
 
 Route::get('/addmerch', function () {
-	return view('merch\addmerch');
+	return view('adminuser\merch\addmerch');
 });
 Route::get('/editmerch', function () {
-	return view('merch\editmerch');
+	return view('adminuser\merch\editmerch');
 });
 Route::get('/removemerch', function () {
-	return view('merch\removemerch');
+	return view('adminuser\merch\removemerch');
 });
 
 
