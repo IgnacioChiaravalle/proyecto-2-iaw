@@ -1,7 +1,7 @@
 @extends('layouts.app')
+<title>The Water Level - Recuperar Contraseña</title>
 <script src = "{{ url('/js/InputFieldClearer.js') }}" type = "text/javascript"></script>
 <script src = "{{ url('/js/SubmitEnabler.js') }}" type = "text/javascript"></script>
-<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Document Style.css') }}"/>
 <link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Password Recovery Style.css') }}"/>
 
 @section('content')
@@ -28,9 +28,9 @@
                                 <input id="email" type="email" class="default-field form-control @error('email') is-invalid @enderror" value="Dirección de Correo Electrónico" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus onselect = "clearFieldIfDefault(this); enable('submit-btn-restore-password')" onclick="clearFieldIfDefault(this); enable('submit-btn-restore-password')">
 
                                 @error('email')
-                                    <span class="invalid-feedback" role="alert">
+                                    <label class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
-                                    </span>
+                                    </label>
                                 @enderror
                             </div>
                         </div>

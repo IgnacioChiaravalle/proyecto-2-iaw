@@ -8,6 +8,6 @@ function checkBothActive() {
 }
 
 function swapType(field) {
-	if (field.type == 'text')
-		field.type = 'password';
+	if (field.type == "text")
+		field.type = "password";
 }

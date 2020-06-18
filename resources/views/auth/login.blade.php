@@ -32,9 +32,9 @@
 								<input id="email" type="email" class="default-field form-control @error('email') is-invalid @enderror" value="Dirección de Correo Electrónico" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus onselect = "clearFieldIfDefault(this); checkBothActive()" onclick="clearFieldIfDefault(this); checkBothActive()">
 
 								@error('email')
-									<span class="invalid-feedback" role="alert">
+									<label class="invalid-feedback" role="alert">
 										<strong>{{ $message }}</strong>
-									</span>
+									</label>
 								@enderror
 							</div>
 						</div>
@@ -46,9 +46,9 @@
 								<input id="password" type="text" class="default-field form-control @error('password') is-invalid @enderror" value="Contraseña" name="password" required autocomplete="current-password" onselect = "clearFieldIfDefault(this); checkBothActive(); swapType(this)" onclick="clearFieldIfDefault(this); checkBothActive(); swapType(this)">
 
 								@error('password')
-									<span class="invalid-feedback" role="alert">
+									<label class="invalid-feedback" role="alert">
 										<strong>{{ $message }}</strong>
-									</span>
+									</label>
 								@enderror
 							</div>
 						</div>

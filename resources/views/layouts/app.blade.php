@@ -18,6 +18,7 @@
 
 	<!-- Styles -->
 	<link href="{{ url('/css/Document Style.css') }}" rel="stylesheet">
+	<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Label - Invalid Feedback.css') }}"/>
 	
 </head>
 <body>    
