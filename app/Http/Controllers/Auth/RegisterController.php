@@ -29,7 +29,7 @@ class RegisterController extends Controller
 	 *
 	 * @var string
 	 */
-	protected $redirectTo = RouteServiceProvider::WELCOME;
+	protected $redirectTo = RouteServiceProvider::ADMIN_SITE;
 
 	/**
 	 * Create a new controller instance.
@@ -53,7 +53,7 @@ class RegisterController extends Controller
 			'name' => ['required', 'string', 'max:255'],
 			'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
 			'password' => ['required', 'string', 'min:8', 'confirmed'],
-			'admin_password_confirm' => ['required_if:admin_user,==,checked']
+			'admin_password_confirm' => ['required_if:admin_user,==,checked'],
 		]);
 	}
 
@@ -65,10 +65,15 @@ class RegisterController extends Controller
 	 */
 	protected function create(array $data)
 	{
-		if(!empty($data['admin_user']))
+		if(!empty($data['admin_user'])) {
 			$admin = 1;
-		else
+			$redirectTo = RouteServiceProvider::ADMIN_SITE;
+		}
+		else {
 			$admin = 0;
+			$redirectTo = RouteServiceProvider::WELCOME;
+		}
+			
 
 		return User::create([
 			'name' => $data['name'],

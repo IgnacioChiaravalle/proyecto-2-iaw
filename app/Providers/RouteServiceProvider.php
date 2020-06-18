@@ -37,6 +37,19 @@ class RouteServiceProvider extends ServiceProvider
 	 */
 	public const PASSWORD_RESET = '/password/reset';
 
+	/**
+	 * The path to the "adminsite" route for your application.
+	 *
+	 * @var string
+	 */
+	public const ADMIN_SITE = '/adminsite';
+
+	/**
+	 * The path to the "addgame" route for your application.
+	 *
+	 * @var string
+	 */
+	public const ADD_GAME = '/addgame';
 
 	/**
 	 * Define your route model bindings, pattern filters, etc.

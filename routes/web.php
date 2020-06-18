@@ -31,6 +31,31 @@ Route::get('/register', function () {
 	return view('auth\register');
 });
 
+Route::get('/adminsite', function () {
+	return view('adminsite');
+});
+
+Route::get('/addgame', function () {
+	return view('games\addgame');
+});
+Route::get('/editgame', function () {
+	return view('games\editgame');
+});
+Route::get('/removegame', function () {
+	return view('games\removegame');
+});
+
+Route::get('/addmerch', function () {
+	return view('merch\addmerch');
+});
+Route::get('/editmerch', function () {
+	return view('merch\editmerch');
+});
+Route::get('/removemerch', function () {
+	return view('merch\removemerch');
+});
+
+
 Auth::routes();
 
 
