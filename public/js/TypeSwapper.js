@@ -1,9 +1,9 @@
-function checkBothActive() {
-	if (document.getElementsByClassName("active-field").length == 2) {
+function checkAllActive(total, toEnableID) {
+	if (document.getElementsByClassName("active-field").length == total) {
 		var script = document.createElement('script');
 		document.body.appendChild(script);
 		script.setAttribute('src', 'js/SubmitEnabler.js');
-		script.onload = function() { enable("submit-btn-login"); }
+		script.onload = function() { enable(toEnableID); }
 	}
 }
 

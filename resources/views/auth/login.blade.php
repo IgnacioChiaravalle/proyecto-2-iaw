@@ -1,8 +1,8 @@
 @extends('layouts.app')
 <title>The Water Level - Login</title>
 <script src = "{{ url('/js/InputFieldClearer.js') }}" type = "text/javascript"></script>
-<script src = "{{ url('/js/LoginTypeSwapper.js') }}" type = "text/javascript"></script>
-<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Login Style.css') }}"/>
+<script src = "{{ url('/js/TypeSwapper.js') }}" type = "text/javascript"></script>
+<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/User Auth Styles/Login Style.css') }}"/>
 
 @section('content')
 <div class="container">
@@ -29,7 +29,7 @@
 							<label for="email" class="col-md-4 col-form-label text-md-right">E-Mail:</label>
 
 							<div class="col-md-6">
-								<input id="email" type="email" class="default-field form-control @error('email') is-invalid @enderror" value="Dirección de Correo Electrónico" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus onselect = "clearFieldIfDefault(this); checkBothActive()" onclick="clearFieldIfDefault(this); checkBothActive()">
+								<input id="email" type="email" class="{{old('email') ? 'active-field' : 'default-field'}} form-control @error('email') is-invalid @enderror" name="email" value="{{old('email') ? old('email') : 'Dirección de Correo Electrónico'}}" required autocomplete="email" onselect = "clearFieldIfDefault(this); checkAllActive(2, 'submit-btn-login')" onclick="clearFieldIfDefault(this); checkAllActive(2, 'submit-btn-login')">
 
 								@error('email')
 									<label class="invalid-feedback" role="alert">
@@ -43,7 +43,7 @@
 							<label for="password" class="col-md-4 col-form-label text-md-right">Contraseña:</label>
 
 							<div class="col-md-6">
-								<input id="password" type="text" class="default-field form-control @error('password') is-invalid @enderror" value="Contraseña" name="password" required autocomplete="current-password" onselect = "clearFieldIfDefault(this); checkBothActive(); swapType(this)" onclick="clearFieldIfDefault(this); checkBothActive(); swapType(this)">
+								<input id="password" type="text" class="default-field form-control @error('password') is-invalid @enderror" value="Contraseña" name="password" required autocomplete="current-password" onselect = "clearFieldIfDefault(this); checkAllActive(2, 'submit-btn-login'); swapType(this)" onclick="clearFieldIfDefault(this); checkAllActive(2, 'submit-btn-login'); swapType(this)">
 
 								@error('password')
 									<label class="invalid-feedback" role="alert">

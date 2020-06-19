@@ -1,26 +1,34 @@
 @font-face {
-	font-family: MuseoModerno;
-	src: url(Fonts/MuseoModerno_Font.ttf);
+	font-family: AllertaStencil;
+	src: url(Fonts/AllertaStencil_Font.ttf);
 }
 @font-face {
 	font-family: ArcadeClassic;
 	src: url(Fonts/ArcadeClassic_Font.ttf);
 }
 @font-face {
-	font-family: OdibeeSans;
-	src: url(Fonts/OdibeeSans_Font.ttf);
+	font-family: ArchitectsDaughter;
+	src: url(Fonts/ArchitectsDaughter_Font.ttf);
 }
 @font-face {
 	font-family: LondrinaSolid;
 	src: url(Fonts/LondrinaSolid_Font.ttf);
 }
 @font-face {
+	font-family: MuseoModerno;
+	src: url(Fonts/MuseoModerno_Font.ttf);
+}
+@font-face {
+	font-family: OdibeeSans;
+	src: url(Fonts/OdibeeSans_Font.ttf);
+}
+@font-face {
 	font-family: Orbitron;
 	src: url(Fonts/Orbitron_Font.ttf);
 }
 @font-face {
-	font-family: AllertaStencil;
-	src: url(Fonts/AllertaStencil_Font.ttf);
+	font-family: Staatliches;
+	src: url(Fonts/Staatliches_Font.ttf);
 }
 
 @keyframes expandFromCenter {

@@ -17,8 +17,8 @@
 	<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
 	<!-- Styles -->
-	<link href="{{ url('/css/Document Style.css') }}" rel="stylesheet">
-	<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Label - Invalid Feedback.css') }}"/>
+	<link rel = "stylesheet" type = "text/css" href="{{ url('/css/Document Style.css') }}">
+	<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Label - Invalid Feedback Style.css') }}"/>
 	
 </head>
 <body>

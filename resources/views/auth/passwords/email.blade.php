@@ -2,7 +2,7 @@
 <title>The Water Level - Recuperar Contraseña</title>
 <script src = "{{ url('/js/InputFieldClearer.js') }}" type = "text/javascript"></script>
 <script src = "{{ url('/js/SubmitEnabler.js') }}" type = "text/javascript"></script>
-<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Password Recovery Style.css') }}"/>
+<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/User Auth Styles/Password Recovery Style.css') }}"/>
 
 @section('content')
 <div class="container">
@@ -25,7 +25,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">Ingresá tu dirección de e-mail para que podamos enviarte el Link de Recuperación:</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="default-field form-control @error('email') is-invalid @enderror" value="Dirección de Correo Electrónico" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus onselect = "clearFieldIfDefault(this); enable('submit-btn-restore-password')" onclick="clearFieldIfDefault(this); enable('submit-btn-restore-password')">
+                                <input id="email" type="email" class="default-field form-control @error('email') is-invalid @enderror" value="Dirección de Correo Electrónico" name="email" value="{{ old('email') }}" required autocomplete="email" onselect = "clearFieldIfDefault(this); enable('submit-btn-restore-password')" onclick="clearFieldIfDefault(this); enable('submit-btn-restore-password')">
 
                                 @error('email')
                                     <label class="invalid-feedback" role="alert">

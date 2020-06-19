@@ -1,12 +1,12 @@
 @extends('layouts.app')
 <title>The Water Level - Register</title>
 <script src = "{{ url('/js/CheckboxEnabledChecker.js') }}" type = "text/javascript"></script>
-<link href = "{{ url('/css/Register Style.css') }}" rel = "stylesheet">
+<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/User Auth Styles/Register Style.css') }}">
 
 @section('content')
 <div class="container">
 	<a href="{{ url('/') }}">
-		<img src="Company Logo.png" alt="The Water Level Logo">
+		<img src="Company Logo.png" alt="The Water Level Logo; Retornar al Sitio de Login">
 	</a>
 
 	<div class="row justify-content-center">
@@ -21,7 +21,7 @@
 							<label for="name" class="col-md-4 col-form-label text-md-right">Nombre:</label>
 
 							<div class="col-md-6">
-								<input id="name" type="text" class="active-field form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+								<input id="name" type="text" class="active-field form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name">
 
 								@error('name')
 									<label class="invalid-feedback" role="alert">

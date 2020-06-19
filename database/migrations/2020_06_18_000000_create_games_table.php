@@ -17,11 +17,11 @@ class CreateGamesTable extends Migration
 			$table->id();
 			$table->string('name')->unique();
 			$table->smallInteger('release_year');
-			$table->char('esrb_rating')->nullable();
+			$table->string('esrb_rating')->nullable();
 			$table->text('cover');
 			$table->text('counter_cover')->nullable();
-			$table->smallInteger('price_new');
-			$table->smallInteger('price_used');
+			$table->real('price_new');
+			$table->real('price_used');
 		});
 	}
 

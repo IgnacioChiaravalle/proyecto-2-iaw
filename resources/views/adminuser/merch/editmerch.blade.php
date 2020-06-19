@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>{{ config('app.name', 'Laravel') }} - Editar Merchandising</title>
+	<title>The Water Level - Editar Merchandising</title>
 	
 </head>
 <body>
