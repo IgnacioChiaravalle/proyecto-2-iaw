@@ -21,8 +21,6 @@ El usuario Adminsitrador de Empresa se tendrá permitida la creación de nuevos 
 
 Del mismo modo, podrá eliminar juegos o artículos si fuera necesario por cualquier motivo.
 
-También tendrá la capacidad de dar de alta y de baja a los Empleados, así como modificar sus datos personales almacenados.
-
 ### Empleado
 El usuario empleado es aquél que está en contacto directo con los clientes de *TheWaterLevel*, por lo que se encarga de mantener permanentemente actualizados los datos de stock del administrador. Además, su interfaz de usuario debería facilitarle el acceso a *merchandising* de los juegos vendidos (y viceversa), a fin de que pueda ofrecerlos a los clientes más adecuados.
 

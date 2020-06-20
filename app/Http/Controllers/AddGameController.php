@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Game;
 use App\Developer;
 use App\Console;
+use Illuminate\Database\QueryException;
 
 class AddGameController extends Controller {
 
@@ -57,10 +58,15 @@ class AddGameController extends Controller {
 	 * @return \App\Game
 	 */
 	protected function saveInDatabaseAndReturn(Request $request) {
-		$this->saveGame($request);
+		try { $this->saveGame($request); }
+		catch (QueryException $ex) { return back()->with('error', "ERROR AL ALMACENAR EL JUEGO: Ya existe un juego en la base de datos con el nombre " . $request->input('nombre') . "."); }
+		
 		$this->saveEntity($request->input('nombre'), $request->input('desarrolladores'), "createDeveloper");
-		$this->saveEntity($request->input('nombre'), $request->input('consolas'), "createConsole");
-		return redirect()->back()->with('status', '¡Juego Agregado con Éxito!'); //Don't know how to read this, but it'd be awesome to just show an alert with it.
+		
+		try { $this->saveEntity($request->input('nombre'), $request->input('consolas'), "createConsole"); }
+		catch (QueryException $ex) { return back()->with('error', "ERROR AL ALMACENAR EL LA DISPONIBLIDAD EN CONSOLAS: La sintaxis usada en el campo correspondiente a las Consolas no es correcta."); }
+		
+		return back()->with('success','¡Juego almacenado con Éxito!');
 	}
 
 
@@ -69,7 +75,7 @@ class AddGameController extends Controller {
 		$countercoverContent = null;
 		if ($request->file('contraportada') != null)
 			$countercoverContent = $this->getContent($request, "contraportada");
-		
+	
 		$game = Game::create([
 			'name' => $request->input('nombre'),
 			'release_year' => $request->input('año'),
