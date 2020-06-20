@@ -12,21 +12,17 @@
 
 </head>
 <body>
-
 	<h1>
 		Agregar un Juego al Catálogo
 	</h1>
 
-	<a href="{{ url('/adminsite') }}">
-	<img src="Company Logo.png" alt="The Water Level Logo; Retornar a la Pantalla Inicial del Administrador" class="side-of-screen">
-	</a>
-
-	<form method="POST" action="{{ route('register') }}"> <!-- Change when ready -->
+	<form method="POST" action="{{url('addgame')}}" enctype="multipart/form-data">
+		@csrf
 
 		<div>
-			<label for="name">Nombre del Juego:</label>
+			<label for="nombre">Nombre del Juego:</label>
 			<div>
-				<input id="name" type="text" class="{{old('name') ? 'active-field' : 'default-field'}}" name="name" value="{{old('name') ? old('name') : 'Nombre del Juego'}}" required autocomplete="name" onselect = "clearFieldIfDefault(this); activateField(this); checkAllActive(8, 'submit-btn-addgame')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(8, 'submit-btn-addgame')">
+				<input id="nombre" type="text" class="{{old('nombre') ? 'active-field' : 'default-field'}}" name="nombre" value="{{old('nombre') ? old('nombre') : 'Nombre del Juego'}}" required autocomplete="nombre" onselect = "clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addgame')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addgame')">
 				@error('nombre')
 					<label class="invalid-feedback" role="alert">
 						<strong>{{ $message }}</strong>
@@ -36,9 +32,9 @@
 		</div>
 
 		<div>
-			<label for="devs">Desarrolladores:</label>
+			<label for="desarrolladores">Desarrolladores:</label>
 			<div>
-				<input id="devs" type="text" class="{{old('devs') ? 'active-field' : 'default-field'}}" name="devs" value="{{old('devs') ? old('devs') : 'Compañías Desarrolladoras del Juego (se separan por \';\')'}}" required autocomplete="devs" onselect = "clearFieldIfDefault(this); activateField(this); checkAllActive(8, 'submit-btn-addgame')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(8, 'submit-btn-addgame')">
+				<input id="desarrolladores" type="text" class="{{old('desarrolladores') ? 'active-field' : 'default-field'}}" name="desarrolladores" value="{{old('desarrolladores') ? old('desarrolladores') : 'Compañías Desarrolladoras del Juego (se separan por \';\')'}}" required autocomplete="desarrolladores" onselect = "clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addgame')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addgame')">
 				@error('desarrolladores')
 					<label class="invalid-feedback" role="alert">
 						<strong>{{ $message }}</strong>
@@ -50,9 +46,9 @@
 		<div class="value-set">
 
 			<div class="value-set-item value-set-left">
-				<label for="year">Año de Lanzamiento:</label>
+				<label for="año">Año de Lanzamiento:</label>
 				<div>
-					<input id="year" type="text" class="value-set-input {{old('year') ? 'active-field' : 'default-field'}}" name="year" value="{{old('year') ? old('year') : 0}}" required autocomplete="year" onselect = "clearFieldIfDefault(this); activateField(this); checkAllActive(8, 'submit-btn-addgame')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(8, 'submit-btn-addgame')">
+					<input id="año" type="text" class="value-set-input {{old('año') ? 'active-field' : 'default-field'}}" name="año" value="{{old('año') ? old('año') : 0}}" required autocomplete="año" onselect = "clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addgame')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addgame')">
 					@error('año')
 						<label class="invalid-feedback" role="alert">
 							<strong>{{ $message }}</strong>
@@ -62,9 +58,9 @@
 			</div>
 
 			<div class="value-set-item value-set-right">
-				<label for="esrb">Rating ESRB:</label>
+				<label for="ESRB">Rating ESRB (Opcional):</label>
 				<div>
-					<input id="esrb" type="text" class="value-set-input {{old('esrb') ? 'active-field' : 'default-field'}}" name="esrb" value="{{old('esrb') ? old('esrb') : 'Rating ESRB'}}" required autocomplete="esrb" onselect = "clearFieldIfDefault(this); activateField(this); checkAllActive(8, 'submit-btn-addgame')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(8, 'submit-btn-addgame')">
+					<input id="ESRB" type="text" class="value-set-input {{old('ESRB') ? 'active-field' : 'default-field'}}" name="ESRB" value="{{old('ESRB') ? old('ESRB') : 'Rating ESRB'}}" autocomplete="ESRB" onselect = "clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addgame')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addgame')">
 					@error('ESRB')
 						<label class="invalid-feedback" role="alert">
 							<strong>{{ $message }}</strong>
@@ -78,9 +74,9 @@
 		<div class="image-selection-set">
 
 			<div class="image-selection-set-item image-selection-set-left">
-				<label for="cover">Portada:</label>
+				<label for="portada">Portada:</label>
 				<div>
-					<input id="cover" type="file" class="image-selector {{old('cover') ? 'active-field' : 'default-field'}}" name="cover" value="{{old('cover') ? old('cover') : null}}" required autocomplete="cover" onselect = "activateField(this); checkAllActive(8, 'submit-btn-addgame')" onclick="activateField(this); checkAllActive(8, 'submit-btn-addgame')">
+					<input id="portada" type="file" class="image-selector {{old('portada') ? 'active-field' : 'default-field'}}" name="portada" value="{{old('portada') ? old('portada') : null}}" required autocomplete="portada" onselect = "activateField(this); checkAllActive(7, 'submit-btn-addgame')" onclick="activateField(this); checkAllActive(7, 'submit-btn-addgame')">
 					@error('portada')
 						<label class="invalid-feedback" role="alert">
 							<strong>{{ $message }}</strong>
@@ -90,9 +86,9 @@
 			</div>
 
 			<div class="image-selection-set-item image-selection-set-right">
-				<label for="countercover">Contraportada (Opcional):</label>
+				<label for="contraportada">Contraportada (Opcional):</label>
 				<div>
-					<input id="countercover" type="file" class="image-selector {{old('countercover') ? 'active-field' : 'default-field'}}" name="countercover" value="{{old('countercover') ? old('countercover') : null}}" autocomplete="countercover" onselect = "activateField(this); checkAllActive(8, 'submit-btn-addgame')" onclick="activateField(this); checkAllActive(8, 'submit-btn-addgame')">
+					<input id="contraportada" type="file" class="image-selector {{old('contraportada') ? 'active-field' : 'default-field'}}" name="contraportada" value="{{old('contraportada') ? old('contraportada') : null}}" autocomplete="contraportada" onselect = "activateField(this); checkAllActive(7, 'submit-btn-addgame')" onclick="activateField(this); checkAllActive(7, 'submit-btn-addgame')">
 					@error('contraportada')
 						<label class="invalid-feedback" role="alert">
 							<strong>{{ $message }}</strong>
@@ -106,10 +102,10 @@
 		<div class="value-set">
 
 			<div class="value-set-item value-set-left">
-				<label for="pricenew">Precio de las Copias Nuevas:</label>
+				<label for="precio-nuevo">Precio de las Copias Nuevas:</label>
 				<div class="pricetag">
-					<input id="pricenew" type="text" class="value-set-input {{old('pricenew') ? 'active-field' : 'default-field'}}" name="pricenew" value="{{old('pricenew') ? old('pricenew') : 0}}" required autocomplete="pricenew" onselect = "clearFieldIfDefault(this); activateField(this); checkAllActive(8, 'submit-btn-addgame')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(8, 'submit-btn-addgame')">
-					@error('precio (nuevo)')
+					<input id="precio-nuevo" type="text" class="value-set-input {{old('precio-nuevo') ? 'active-field' : 'default-field'}}" name="precio-nuevo" value="{{old('precio-nuevo') ? old('precio-nuevo') : 0}}" required autocomplete="precio-nuevo" onselect = "clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addgame')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addgame')">
+					@error('precio-nuevo')
 						<label class="invalid-feedback" role="alert">
 							<strong>{{ $message }}</strong>
 						</label>
@@ -120,10 +116,10 @@
 			</div>
 
 			<div class="value-set-item value-set-right">
-				<label for="priceused">Precio de las Copias Usadas:</label>
+				<label for="precio-usado">Precio de las Copias Usadas:</label>
 				<div class="pricetag">
-					<input id="priceused" type="text" class="value-set-input {{old('priceused') ? 'active-field' : 'default-field'}}" name="priceused" value="{{old('priceused') ? old('priceused') : 0}}" required autocomplete="priceused" onselect = "clearFieldIfDefault(this); activateField(this); checkAllActive(8, 'submit-btn-addgame')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(8, 'submit-btn-addgame')">
-					@error('precio (usado)')
+					<input id="precio-usado" type="text" class="value-set-input {{old('precio-usado') ? 'active-field' : 'default-field'}}" name="precio-usado" value="{{old('precio-usado') ? old('precio-usado') : 0}}" required autocomplete="precio-usado" onselect = "clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addgame')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addgame')">
+					@error('precio-usado')
 						<label class="invalid-feedback" role="alert">
 							<strong>{{ $message }}</strong>
 						</label>
@@ -136,9 +132,9 @@
 		</div>
 
 		<div>
-			<label for="consoles">Consolas en las que está Disponible, y Cantidad de cada tipo de Copias en cada una:</label>
+			<label for="consolas">Consolas en las que está Disponible, y Cantidad de cada tipo de Copias en cada una:</label>
 			<div>
-				<input id="consoles" type="text" class="{{old('consoles') ? 'active-field' : 'default-field'}}" name="consoles" value="{{old('consoles') ? old('consoles') : 'Consolas de Disponibilidad (se separan por \';\', escribiendo \'consola-nuevas-usadas\' para cada una)'}}" required autocomplete="consoles" onselect = "clearFieldIfDefault(this); activateField(this); checkAllActive(8, 'submit-btn-addgame')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(8, 'submit-btn-addgame')">
+				<input id="consolas" type="text" class="{{old('consolas') ? 'active-field' : 'default-field'}}" name="consolas" value="{{old('consolas') ? old('consolas') : 'Consolas de Disponibilidad (se separan por \';\', escribiendo \'consola-nuevas-usadas\' para cada una)'}}" required autocomplete="consolas" onselect = "clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addgame')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addgame')">
 				@error('consolas')
 					<label class="invalid-feedback" role="alert">
 						<strong>{{ $message }}</strong>
@@ -157,31 +153,3 @@
 
 </body>
 </html>
-
-<!--<div class="value-set">
-
-			<div class="value-set-left">
-				<label for="copiesnew">Cantidad de Copias Nuevas:</label>
-				<div>
-					<input id="copiesnew" type="text" class="active-field" name="copiesnew" value="{{old('copiesnew') ? old('copiesnew') : 0}}" required autocomplete="copiesnew">
-					@error('copias (nuevas)')
-						<label class="invalid-feedback" role="alert">
-							<strong>{{ $message }}</strong>
-						</label>
-					@enderror
-				</div>
-			</div>
-
-			<div class="value-set-right">
-				<label for="copiesused">Cantidad de Copias Usadas:</label>
-				<div>
-					<input id="copiesused" type="text" class="active-field" name="copiesused" value="{{old('copiesused') ? old('copiesused') : 0}}" required autocomplete="copiesused">
-					@error('copias (usadas)')
-						<label class="invalid-feedback" role="alert">
-							<strong>{{ $message }}</strong>
-						</label>
-					@enderror
-				</div>
-			</div>
-
-		</div>			THIS COULD BE ON ANOTHER VIEW. ON SUBMIT, REDIRECT TO THIS VIEW ONCE FOR EVERY CONSOLE LISTED. THE NAME OF THE CONSOLE SHOULD BE SENT TO THE VIEW IF IMPLEMENTED. -->

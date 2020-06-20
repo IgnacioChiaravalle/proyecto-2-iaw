@@ -59,7 +59,7 @@ return [
 	'image' => 'La :attribute debe ser una imagen.', //Se usa sólo en las portadas.
 	'in' => 'The selected :attribute is invalid.',
 	'in_array' => 'The :attribute field does not exist in :other.',
-	'integer' => 'The :attribute must be an integer.',
+	'integer' => 'El :attribute debe ser un valor entero.',
 	'ip' => 'The :attribute must be a valid IP address.',
 	'ipv4' => 'The :attribute must be a valid IPv4 address.',
 	'ipv6' => 'The :attribute must be a valid IPv6 address.',
@@ -82,8 +82,8 @@ return [
 		'string' => 'The :attribute may not be greater than :max characters.',
 		'array' => 'The :attribute may not have more than :max items.',
 	],
-	'mimes' => 'The :attribute must be a file of type: :values.',
-	'mimetypes' => 'The :attribute must be a file of type: :values.',
+	'mimes' => 'La :attribute debe ser un archivo de tipo: :values.',
+	'mimetypes' => 'La :attribute debe ser un archivo de tipo: :values.',
 	'min' => [
 		'numeric' => 'El :attribute debe ser al menos :min.',
 		'file' => 'El :attribute debe ocupar al menos :min kilobytes.',

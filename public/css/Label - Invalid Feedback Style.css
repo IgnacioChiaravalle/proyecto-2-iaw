@@ -1,4 +1,5 @@
 label.invalid-feedback {
+	display: block;
 	color: rgb(218, 49, 49);
 	font-family: OdibeeSans;
 	font-size: 150%;

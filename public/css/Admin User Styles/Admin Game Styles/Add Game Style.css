@@ -32,6 +32,10 @@ form {
 	margin-left: 2%;
 }
 
+div {
+	display: block;
+}
+
 div.value-set {
 	display: flex;
 	width: 75%;

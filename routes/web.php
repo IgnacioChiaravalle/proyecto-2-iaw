@@ -55,6 +55,8 @@ Route::get('/removemerch', function () {
 	return view('adminuser\merch\removemerch');
 });
 
+Route::post('addgame', 'AddGameController@index');
+
 
 Auth::routes();
 

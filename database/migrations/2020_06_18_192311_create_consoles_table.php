@@ -14,11 +14,13 @@ class CreateConsolesTable extends Migration
 	public function up()
 	{
 		Schema::create('consoles', function (Blueprint $table) {
+			$table->id();
 			$table->string('game_name');
 			$table->foreign('game_name')->references('name')->on('games');
 			$table->string('console_name');
 			$table->smallInteger('new_copies');
 			$table->smallInteger('used_copies');
+			$table->timestamps();
 		});
 	}
 

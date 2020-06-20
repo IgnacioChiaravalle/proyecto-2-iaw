@@ -14,9 +14,11 @@ class CreateDevelopersTable extends Migration
 	public function up()
 	{
 		Schema::create('developers', function (Blueprint $table) {
+			$table->id();
 			$table->string('game_name');
 			$table->foreign('game_name')->references('name')->on('games');
 			$table->string('dev_name');
+			$table->timestamps();
 		});
 	}
 

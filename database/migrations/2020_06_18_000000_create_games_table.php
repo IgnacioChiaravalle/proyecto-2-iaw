@@ -20,8 +20,9 @@ class CreateGamesTable extends Migration
 			$table->string('esrb_rating')->nullable();
 			$table->text('cover');
 			$table->text('counter_cover')->nullable();
-			$table->real('price_new');
-			$table->real('price_used');
+			$table->float('price_new');
+			$table->float('price_used');
+			$table->timestamps();
 		});
 	}
 
