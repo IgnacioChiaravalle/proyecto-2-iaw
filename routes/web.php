@@ -58,17 +58,17 @@ Route::post('removegame', 'Admin\RemoveGameController@index');
 Route::get('/addmerch', function () {
 	return view('adminuser\merch\addmerch');
 });
-Route::post('addmerch', 'Admin\AddMerchController@index');
+Route::post('addmerch', 'Admin\AddMerchItemController@index');
 
 Route::get('/editmerch', function () {
 	return view('adminuser\merch\editmerch');
 });
-Route::post('editmerch', 'Admin\EditMerchController@index');
+Route::post('editmerch', 'Admin\EditMerchItemController@index');
 
 Route::get('/removemerch', function () {
 	return view('adminuser\merch\removemerch');
 });
-Route::post('removemerch', 'Admin\RemoveMerchController@index');
+Route::post('removemerch', 'Admin\RemoveMerchItemController@index');
 
 
 Auth::routes();

@@ -25,7 +25,7 @@ class RemoveGameController extends Controller{
 		return back()->with('success','¡Juego removido con ÉXITO!');
 	}
 	private function deleteGame(Request $request) {
-		GAME::where('name', $request->input('nombre'))->firstOrFail(); //Verify that the game is stored. 
-		GAME::where('name', $request->input('nombre'))->delete();
+		Game::where('name', $request->input('nombre'))->firstOrFail(); //Verify that the game is stored. 
+		Game::where('name', $request->input('nombre'))->delete();
 	}
 }

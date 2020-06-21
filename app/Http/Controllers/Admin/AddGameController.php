@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\FunctionHouseController;
 use Illuminate\Http\Request;
 use App\Game;
 use App\Developer;
@@ -30,24 +31,24 @@ class AddGameController extends Controller {
 	}
 
 	protected function saveInDatabaseAndReturn(Request $request) {
-		try { $this->saveGame($request); }
+		$functionHouseController = new FunctionHouseController;
+
+		try { $this->saveGame($functionHouseController, $request); }
 		catch (QueryException $ex) { return back()->with('error', "ERROR AL ALMACENAR EL JUEGO: Ya existe un juego en la base de datos con el nombre " . $request->input('nombre') . "."); }
 		
-		$this->saveEntity($request->input('nombre'), $request->input('desarrolladores'), "createDeveloper");
+		$functionHouseController->handleMultipleValueInput($this, $request->input('nombre'), $request->input('desarrolladores'), "createDeveloper");
 		
-		try { $this->saveEntity($request->input('nombre'), $request->input('consolas'), "createConsole"); }
-		catch (QueryException $ex) { return back()->with('error', "ERROR AL ALMACENAR EL LA DISPONIBLIDAD EN CONSOLAS: La sintaxis usada en el campo correspondiente a las Consolas no es correcta."); }
+		try { $functionHouseController->handleMultipleValueInput($this, $request->input('nombre'), $request->input('consolas'), "createConsole"); }
+		catch (QueryException $ex) { return back()->with('error', "ERROR AL ALMACENAR LA DISPONIBLIDAD EN CONSOLAS: La sintaxis usada en el campo correspondiente a las Consolas no es correcta."); }
 		
 		return back()->with('success','¡Juego almacenado con ÉXITO!');
 	}
 
-
-	private function saveGame(Request $request) {
-		$coverContent = $this->getContent($request, "portada");
+	private function saveGame(Controller $functionHouseController, Request $request) {
+		$coverContent = $functionHouseController->getContent($request, "portada");
 		$countercoverContent = null;
 		if ($request->file('contraportada') != null)
-			$countercoverContent = $this->getContent($request, "contraportada");
-	
+			$countercoverContent = $functionHouseController->getContent($request, "contraportada");
 		Game::create([
 			'name' => $request->input('nombre'),
 			'release_year' => $request->input('año'),
@@ -58,36 +59,18 @@ class AddGameController extends Controller {
 			'price_used' => $request->input('precio-usado')
 		]);
 	}
-	private function getContent(Request $request, String $input) {
-		$inputValue = $request->file($input);
-		return $inputValue->openfile()->fread($inputValue->getSize());
-	}
-
-	private function saveEntity(String $gameName, String $allItems, $createFunction) {
-		$pos = strpos($allItems, ";");
-		while ($pos != false) {
-			$oneItem = $this->getFirst($allItems, $pos);
-			$this->$createFunction($oneItem, $gameName);
-			$allItems = $this->getRest($allItems, $pos);
-			$pos = strpos($allItems, ";");
-		}
-		if (strlen($allItems) >= 1) { //Check if the input ended with ';' or not.
-			$allItems = $this->removeSpaceAt($allItems, strlen($allItems)-1, 0, strlen($allItems)-1);
-			$this->$createFunction($allItems, $gameName);
-		}
-	}
-
-	private function createDeveloper(String $developer, String $gameName) {
+	
+	public function createDeveloper(Controller $functionHouseController, String $developer, String $gameName) {
 		Developer::create([
 			'game_name' => $gameName,
 			'dev_name' => $developer
 		]);
 	}
 
-	private function createConsole(String $consoleNewUsed, String $gameName) {
-		$consoleName = $this->getConsoleName($consoleNewUsed);
-		$newCopies = $this->getCopies($consoleNewUsed, 1);
-		$usedCopies = $this->getCopies($consoleNewUsed, 2);
+	public function createConsole(Controller $functionHouseController, String $consoleNewUsed, String $gameName) {
+		$consoleName = $this->getConsoleName($functionHouseController, $consoleNewUsed);
+		$newCopies = $this->getCopies($functionHouseController, $consoleNewUsed, 1);
+		$usedCopies = $this->getCopies($functionHouseController, $consoleNewUsed, 2);
 		Console::create([
 			'game_name' => $gameName,
 			'console_name' => $consoleName,
@@ -95,34 +78,18 @@ class AddGameController extends Controller {
 			'used_copies' => $usedCopies
 		]);
 	}
-	private function getConsoleName(String $consoleNewUsed) {
+	private function getConsoleName(Controller $functionHouseController, String $consoleNewUsed) {
 		$pos = strpos($consoleNewUsed, "-");
-		return $this->getFirst($consoleNewUsed, $pos);
+		return $functionHouseController->getFirst($consoleNewUsed, $pos);
 	}
-	private function getCopies(String $consoleNewUsed, int $valueNumber) {
+	private function getCopies(Controller $functionHouseController, String $consoleNewUsed, int $valueNumber) {
 		$pos = strpos($consoleNewUsed, "-");
-		$newUsed = $this->getRest($consoleNewUsed, $pos);
+		$newUsed = $functionHouseController->getRest($consoleNewUsed, $pos);
 		$pos = strpos($newUsed, "-");
 		if ($valueNumber == 1)
-			return $this->getFirst($newUsed, $pos);
+			return $functionHouseController->getFirst($newUsed, $pos);
 		else
-			return $this->getRest($newUsed, $pos);
+			return $functionHouseController->getRest($newUsed, $pos);
 	}
 
-
-	private function getFirst(String $all, int $posOfDelimiter) {
-		$first = substr($all, 0, $posOfDelimiter);
-		$first = $this->removeSpaceAt($first, $posOfDelimiter-1, 0, $posOfDelimiter-1);
-		return $first;
-	}
-	private function getRest(String $all, int $posOfDelimiter) {
-		$rest = substr($all, $posOfDelimiter + 1);
-		$rest = $this->removeSpaceAt($rest, 0, 1, strlen($rest)-1);
-		return $rest;
-	}
-	private function removeSpaceAt(String $string, int $index, int $newStart, $newLength) {
-		if (substr($string, $index, 1) == " ")
-			$string = substr($string, $newStart, $newLength);
-		return $string;
-	}
 }
