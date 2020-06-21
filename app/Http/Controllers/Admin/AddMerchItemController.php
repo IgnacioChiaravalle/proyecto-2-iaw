@@ -28,14 +28,10 @@ class AddMerchItemController extends Controller {
 
 	protected function saveInDatabaseAndReturn(Request $request) {
 		$functionHouseController = new FunctionHouseController;
-
 		try { $this->saveMerchItem($functionHouseController, $request); }
-		catch (QueryException $ex) { return back()->with('error', "ERROR AL ALMACENAR EL ART\U00CDCULO: Ya existe un art\U00EDculo de merchandising en la base de datos con el nombre " . $request->input('nombre') . "."); }
-		
-		try { $functionHouseController->handleMultipleValueInput($this, $request->input('nombre'), $request->input('categorías'), "createCategoryOfMerch"); }
-		catch (QueryException $ex) { return back()->with('error', "ERROR AL ALMACENAR LAS CATEGOR\U00CDAS: La sintaxis usada en el campo correspondiente a las Categor\U00EDas no es correcta."); }
-		
-		return back()->with('success','¡Art\U00EDculo almacenado con ÉXITO!');
+		catch (QueryException $ex) { return back()->with('error', "ERROR AL ALMACENAR EL ARTÍCULO: Ya existe un artículo de merchandising en la base de datos con el nombre " . $request->input('nombre') . "."); }
+		$functionHouseController->handleMultipleValueInput($this, $request->input('nombre'), $request->input('categorías'), "createCategoryOfMerch");
+		return back()->with('success','¡Artículo almacenado con ÉXITO!');
 	}
 
 	private function saveMerchItem(Controller $functionHouseController, Request $request) {

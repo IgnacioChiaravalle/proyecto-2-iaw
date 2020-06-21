@@ -32,15 +32,14 @@ class EditMerchItemController extends Controller {
 		$functionHouseController = new FunctionHouseController;
 
 		try { $this->updateMerchItem($functionHouseController, $request); }
-		catch (ModelNotFoundException $ex) { return back()->with('error', "ERROR AL EDITAR EL ART\U00CDCULO: No hay un art\U00EDculo de merchandising con nombre " . $request->input('nombre') . " en la base de datos."); }
+		catch (ModelNotFoundException $ex) { return back()->with('error', "ERROR AL EDITAR EL ARTÍCULO: No hay un artículo de merchandising con nombre " . $request->input('nombre') . " en la base de datos."); }
 		
 		if ($request->input('categorías') != null){
 			CategoryOfMerch::where('merch_item_name', $request->input('nombre'))->delete();
-			try { $functionHouseController->handleMultipleValueInput(new AddMerchItemController, $request->input('nombre'), $request->input('categorías'), "createCategoryOfMerch"); }
-			catch (QueryException $ex) { return back()->with('error', "ERROR AL EDITAR LAS CATEGOR\U00CDAS: La sintaxis usada en el campo correspondiente a las Categor\U00EDas no es correcta."); }
+			$functionHouseController->handleMultipleValueInput(new AddMerchItemController, $request->input('nombre'), $request->input('categorías'), "createCategoryOfMerch");
 		}
 
-		return back()->with('success','¡Art\U00EDculo editado con ÉXITO!');
+		return back()->with('success','¡Artículo editado con ÉXITO!');
 	}
 	
 	private function updateMerchItem(Controller $functionHouseController, Request $request) {

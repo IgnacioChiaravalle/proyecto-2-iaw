@@ -1,76 +1,22 @@
-body {
-	background-image: url("../Backgrounds/MGS UnderWater.jpg");
-}
 
-img.return-btn {
-	width: 5%;
-	height: 10%;
-	position: fixed;
-	margin-left: 0.5%;
-	border: 5px inset rgb(132, 18, 185);
-	border-radius: 10%/10%;
-	transition: transform .35s ease-in-out;
+div.value-set-div {
+	width: 22%;
 }
-	img.return-btn:hover {
-		border: 5px solid rgb(171, 45, 230);
-		transform: scale(1.05);
+	div.value-set-left {
+		margin-left: 10%;
+		margin-right: auto;
 	}
-
-h1 {
-	margin-top: 3%;
-	margin-left: 8%;
-	margin-bottom: 2%;
-	font-size: 350%;
-	font-weight: normal;
-	font-family: LondrinaSolid;
-	color: rgb(194, 29, 0);
-	text-shadow: -1px -1px 2px rgb(46, 13, 136), 1px -1px 2px rgb(46, 13, 136), -1px 1px 2px rgb(46, 13, 136), 1px 1px 2px rgb(46, 13, 136);
-}
-
-form {
-	margin-left: 2%;
-}
-
-div {
-	display: block;
-}
-
-div.value-set {
-	display: flex;
-	width: 75%;
-}
-	div.value-set-item {
-		width: 22%;
+	div.value-set-right {
+		margin-left: auto;
+		margin-right: 10%;
 	}
-		div.value-set-left {
-			margin-left: 10%;
-			margin-right: auto;
-		}
-		div.value-set-right {
-			margin-left: auto;
-			margin-right: 10%;
-		}
-	
-	div.pricetag {
-		display: flex;
-	}
-		img.coin {
-			margin-top: -2%;
-			width: 20%;
-			height: 20%;
-			transition: transform .5s;
-			transform-style: preserve-3d;
-		}
-			img.coin:hover {
-				transform: rotateY(360deg);
-			}
 
 div.image-selection-set {
 	display: flex;
 	width: 90%;
 	margin-left: -1%;
 }
-	div.image-selection-set-item {
+	div.image-selection-set-div {
 		width: 40%;
 	}
 		div.image-selection-set-left {
@@ -90,14 +36,6 @@ label {
 }
 
 input {
-	width: 75%;
-	margin-bottom: 1%;
-	padding-left: 0.5%;
-	padding-right: 0.5%;
-	border-style: groove;
-	border-radius: 1%/20%;
-	border-color: gray;
-	font-size: 129%;
 	font-family: Orbitron;
 }
 	input.default-field {
@@ -126,32 +64,16 @@ input.image-selector {
 
 
 button {
-	width: 40%;
-	margin-top: 1%;
-	margin-left: 30%;
-	margin-right: 30%;
 	font-size: 200%;
 	font-family: LondrinaSolid;
-	border-radius: 2%/20%;
-	transition: transform .15s ease-in-out;
 }
-	button.disabled-submit {
-		background-color: gray;
-		color: rgb(44, 43, 43);
-		border: 5px solid rgb(96, 97, 97);
-	}
 	button.enabled-submit {
 		border: 5px outset rgb(23, 221, 221);
 		background-color: rgb(241, 217, 77);
 		color: rgb(56, 54, 134);
 	}
 		button.enabled-submit:hover, button.enabled-submit:focus {
-			font-weight: bold;
 			border-color: rgb(116, 184, 53);
 			background-color: rgb(136, 23, 23);
 			color: rgb(233, 241, 159);
-			transform: scale(1.07);
-		}
-		button.enabled-submit:hover {
-			cursor: pointer;
 		}

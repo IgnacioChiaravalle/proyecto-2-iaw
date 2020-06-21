@@ -1,0 +1,86 @@
+body {
+	background-image: url("../Backgrounds/MGS UnderWater.jpg");
+}
+
+img.return-btn {
+	width: 5%;
+	height: 10%;
+	position: fixed;
+	margin-left: 0.5%;
+	border: 5px inset rgb(132, 18, 185);
+	border-radius: 10%/10%;
+	transition: transform .35s ease-in-out;
+}
+	img.return-btn:hover {
+		border: 5px solid rgb(171, 45, 230);
+		transform: scale(1.05);
+	}
+
+form {
+	margin-left: 2%;
+}
+
+div {
+	display: block;
+}
+	div.value-set {
+		display: flex;
+		width: 75%;
+	}
+
+	div.pricetag-div {
+		display: flex;
+	}
+		img.coin {
+			margin-top: -2%;
+			width: 20%;
+			height: 20%;
+			transition: transform .5s;
+			transform-style: preserve-3d;
+		}
+			img.coin:hover {
+				transform: rotateY(360deg);
+			}
+
+h1 {
+	margin-top: 3%;
+	margin-left: 8%;
+	margin-bottom: 2%;
+	font-size: 350%;
+	font-weight: normal;
+	font-family: LondrinaSolid;
+	color: rgb(194, 29, 0);
+	text-shadow: -1px -1px 2px rgb(46, 13, 136), 1px -1px 2px rgb(46, 13, 136), -1px 1px 2px rgb(46, 13, 136), 1px 1px 2px rgb(46, 13, 136);
+}
+
+input {
+	width: 75%;
+	margin-bottom: 1%;
+	padding-left: 0.5%;
+	padding-right: 0.5%;
+	border-style: groove;
+	border-radius: 1%/20%;
+	border-color: gray;
+	font-size: 129%;
+}
+
+button {
+	width: 40%;
+	margin-top: 1%;
+	margin-left: 30%;
+	margin-right: 30%;
+	border-radius: 2%/20%;
+	transition: transform .15s ease-in-out;
+}
+	button.disabled-submit {
+		background-color: gray;
+		color: rgb(44, 43, 43);
+		border: 5px solid rgb(96, 97, 97);
+	}
+	button.enabled-submit {
+		cursor: pointer;
+	}
+		button.enabled-submit:hover, button.enabled-submit:focus {
+			font-weight: bold;
+			transform: scale(1.07);
+		}

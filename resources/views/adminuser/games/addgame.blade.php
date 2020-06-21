@@ -8,6 +8,7 @@
 	<script src = "{{ url('/js/TypeSwapper.js') }}" type = "text/javascript"></script>
 	<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Document Style.css') }}">
 	<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Label - Invalid Feedback Style.css') }}"/>
+	<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Admin User Styles/Admin CRUD Style.css') }}"/>
 	<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Admin User Styles/Admin Game Style.css') }}"/>
 
 </head>
@@ -57,7 +58,7 @@
 
 		<div class="value-set">
 
-			<div class="value-set-item value-set-left">
+			<div class="value-set-div value-set-left">
 				<label for="año">Año de Lanzamiento:</label>
 				<div>
 					<input id="año" type="text" class="value-set-input {{old('año') ? 'active-field' : 'default-field'}}" name="año" value="{{old('año')}}" placeholder=0 required autocomplete="año" onkeypress = "clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addgame')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addgame')">
@@ -69,7 +70,7 @@
 				</div>
 			</div>
 
-			<div class="value-set-item value-set-right">
+			<div class="value-set-div value-set-right">
 				<label for="ESRB">Rating ESRB (Opcional):</label>
 				<div>
 					<input id="ESRB" type="text" class="value-set-input {{old('ESRB') ? 'active-field' : 'default-field'}}" name="ESRB" value="{{old('ESRB')}}" placeholder="Rating ESRB" autocomplete="ESRB" onkeypress = "clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addgame')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addgame')">
@@ -85,7 +86,7 @@
 
 		<div class="image-selection-set">
 
-			<div class="image-selection-set-item image-selection-set-left">
+			<div class="image-selection-set-div image-selection-set-left">
 				<label for="portada">Portada:</label>
 				<div>
 					<input id="portada" type="file" class="image-selector {{old('portada') ? 'active-field' : 'default-field'}}" name="portada" required autocomplete="portada" onkeypress = "activateField(this); checkAllActive(7, 'submit-btn-addgame')" onclick="activateField(this); checkAllActive(7, 'submit-btn-addgame')">
@@ -97,7 +98,7 @@
 				</div>
 			</div>
 
-			<div class="image-selection-set-item image-selection-set-right">
+			<div class="image-selection-set-div image-selection-set-right">
 				<label for="contraportada">Contraportada (Opcional):</label>
 				<div>
 					<input id="contraportada" type="file" class="image-selector {{old('contraportada') ? 'active-field' : 'default-field'}}" name="contraportada" autocomplete="contraportada" onkeypress = "activateField(this); checkAllActive(7, 'submit-btn-addgame')" onclick="activateField(this); checkAllActive(7, 'submit-btn-addgame')">
@@ -113,9 +114,9 @@
 
 		<div class="value-set">
 
-			<div class="value-set-item value-set-left">
+			<div class="value-set-div value-set-left">
 				<label for="precio-nuevo">Precio de las Copias Nuevas:</label>
-				<div class="pricetag">
+				<div class="pricetag-div">
 					<input id="precio-nuevo" type="text" class="value-set-input {{old('precio-nuevo') ? 'active-field' : 'default-field'}}" name="precio-nuevo" value="{{old('precio-nuevo')}}" placeholder=0 required autocomplete="precio-nuevo" onkeypress = "clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addgame')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addgame')">
 					@error('precio-nuevo')
 						<label class="invalid-feedback" role="alert">
@@ -127,9 +128,9 @@
 				</div>
 			</div>
 
-			<div class="value-set-item value-set-right">
+			<div class="value-set-div value-set-right">
 				<label for="precio-usado">Precio de las Copias Usadas:</label>
-				<div class="pricetag">
+				<div class="pricetag-div">
 					<input id="precio-usado" type="text" class="value-set-input {{old('precio-usado') ? 'active-field' : 'default-field'}}" name="precio-usado" value="{{old('precio-usado')}}" placeholder=0 required autocomplete="precio-usado" onkeypress = "clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addgame')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addgame')">
 					@error('precio-usado')
 						<label class="invalid-feedback" role="alert">

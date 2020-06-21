@@ -19,6 +19,10 @@
 	src: url(Fonts/MuseoModerno_Font.ttf);
 }
 @font-face {
+	font-family: Notable;
+	src: url(Fonts/Notable_Font.ttf);
+}
+@font-face {
 	font-family: OdibeeSans;
 	src: url(Fonts/OdibeeSans_Font.ttf);
 }
