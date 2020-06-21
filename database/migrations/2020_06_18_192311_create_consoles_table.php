@@ -16,7 +16,7 @@ class CreateConsolesTable extends Migration
 		Schema::create('consoles', function (Blueprint $table) {
 			$table->id();
 			$table->string('game_name');
-			$table->foreign('game_name')->references('name')->on('games');
+			$table->foreign('game_name')->references('name')->on('games')->onDelete('cascade')->onUpdate('cascade');
 			$table->string('console_name');
 			$table->smallInteger('new_copies');
 			$table->smallInteger('used_copies');

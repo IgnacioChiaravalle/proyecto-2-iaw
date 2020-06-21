@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//LOGIN AND SITES:
 Route::get('/', function () {
 	return view('auth\login');
 });
@@ -35,32 +36,39 @@ Route::get('/adminsite', function () {
 	return view('adminuser\adminsite');
 });
 
+
+//GAMES:
 Route::get('/addgame', function () {
 	return view('adminuser\games\addgame');
 });
+Route::post('addgame', 'AddGameController@index');
+
 Route::get('/editgame', function () {
 	return view('adminuser\games\editgame');
 });
+Route::post('editgame', 'EditGameController@index');
+
 Route::get('/removegame', function () {
 	return view('adminuser\games\removegame');
 });
+Route::post('removegame', 'RemoveGameController@index');
 
+
+//MERCH:
 Route::get('/addmerch', function () {
 	return view('adminuser\merch\addmerch');
 });
+Route::post('addmerch', 'AddMerchController@index');
+
 Route::get('/editmerch', function () {
 	return view('adminuser\merch\editmerch');
 });
+Route::post('editmerch', 'EditMerchController@index');
+
 Route::get('/removemerch', function () {
 	return view('adminuser\merch\removemerch');
 });
-
-Route::post('addgame', 'AddGameController@index');
+Route::post('removemerch', 'RemoveMerchController@index');
 
 
 Auth::routes();
-
-
-//Route::get('/home', 'HomeController@index')->name('home');
-
-//Route::get('/register', 'AccessRegisterController@getRegisterView'); //I think it is making "register" ambiguous.

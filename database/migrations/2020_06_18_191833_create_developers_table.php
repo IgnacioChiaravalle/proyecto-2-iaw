@@ -16,7 +16,7 @@ class CreateDevelopersTable extends Migration
 		Schema::create('developers', function (Blueprint $table) {
 			$table->id();
 			$table->string('game_name');
-			$table->foreign('game_name')->references('name')->on('games');
+			$table->foreign('game_name')->references('name')->on('games')->onDelete('cascade')->onUpdate('cascade');
 			$table->string('dev_name');
 			$table->timestamps();
 		});

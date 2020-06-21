@@ -8,7 +8,7 @@
 	<script src = "{{ url('/js/TypeSwapper.js') }}" type = "text/javascript"></script>
 	<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Document Style.css') }}">
 	<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Label - Invalid Feedback Style.css') }}"/>
-	<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Admin User Styles/Admin Game Styles/Add Game Style.css') }}"/>
+	<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Admin User Styles/Admin Game Style.css') }}"/>
 
 </head>
 <body>
@@ -45,7 +45,7 @@
 		<div>
 			<label for="desarrolladores">Desarrolladores:</label>
 			<div>
-				<input id="desarrolladores" type="text" class="{{old('desarrolladores') ? 'active-field' : 'default-field'}}" name="desarrolladores" value="{{old('desarrolladores')}}" placeholder="Compañías Desarrolladoras del Juego (se separan por \';\')" required autocomplete="desarrolladores" onkeypress = "clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addgame')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addgame')">
+				<input id="desarrolladores" type="text" class="{{old('desarrolladores') ? 'active-field' : 'default-field'}}" name="desarrolladores" value="{{old('desarrolladores')}}" placeholder="Compañías Desarrolladoras del Juego (se separan por ';')" required autocomplete="desarrolladores" onkeypress = "clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addgame')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addgame')">
 				@error('desarrolladores')
 					<label class="invalid-feedback" role="alert">
 						<strong>{{ $message }}</strong>
@@ -145,7 +145,7 @@
 		<div>
 			<label for="consolas">Consolas en las que está Disponible, y Cantidad de cada tipo de Copias en cada una:</label>
 			<div>
-				<input id="consolas" type="text" class="{{old('consolas') ? 'active-field' : 'default-field'}}" name="consolas" value="{{old('consolas')}}" placeholder="Consolas de Disponibilidad (se separan por \';\', escribiendo \'consola-nuevas-usadas\' para cada una)" required autocomplete="consolas" onkeypress = "clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addgame')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addgame')">
+				<input id="consolas" type="text" class="{{old('consolas') ? 'active-field' : 'default-field'}}" name="consolas" value="{{old('consolas')}}" placeholder="Consolas de Disponibilidad (se separan por ';', escribiendo 'consola-nuevas-usadas' para cada una)" required autocomplete="consolas" onkeypress = "clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addgame')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addgame')">
 				@error('consolas')
 					<label class="invalid-feedback" role="alert">
 						<strong>{{ $message }}</strong>

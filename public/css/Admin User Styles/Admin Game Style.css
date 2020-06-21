@@ -1,5 +1,5 @@
 body {
-	background-image: url("../../Backgrounds/MGS UnderWater.jpg");
+	background-image: url("../Backgrounds/MGS UnderWater.jpg");
 }
 
 img.return-btn {
@@ -102,28 +102,28 @@ input {
 }
 	input.default-field {
 		background-color: rgb(221, 177, 203);
-		color: rgb(89, 87, 100);
 	}
 	input.active-field {
 		background-color: rgb(226, 222, 162);
 		color: rgb(25, 13, 99);
 	}
 
-	input.value-set-input {
-		border-radius: 5%/20%;
-		padding-left: 2.5%;
-		padding-right: 2.5%;
-		margin-bottom: 5%;
-		text-align: center;
-	}
+input.value-set-input {
+	border-radius: 5%/20%;
+	padding-left: 2.5%;
+	padding-right: 2.5%;
+	margin-bottom: 5%;
+	text-align: center;
+}
 
-	input.image-selector {
-		width: 100%;
-		margin-bottom: 5%;
-		padding: 1%;
-		border-radius: 2%/20%;
-		cursor: pointer;
-	}
+input.image-selector {
+	width: 100%;
+	margin-bottom: 5%;
+	padding: 1%;
+	border-radius: 2%/20%;
+	cursor: pointer;
+}
+
 
 button {
 	width: 40%;

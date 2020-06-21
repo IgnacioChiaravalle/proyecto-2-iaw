@@ -10,8 +10,9 @@ use App\Game;
 use App\Developer;
 use App\Console;
 use Illuminate\Database\QueryException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class AddGameController extends Controller {
+class EditGameController extends Controller {
 	/**
 	 * Create a new controller instance.
 	 *
@@ -22,7 +23,7 @@ class AddGameController extends Controller {
 	}
 
 	/**
-	 * Validate an incoming game addition request.
+	 * Validate an incoming game edition request.
 	 *
 	 * @param  Request $request
 	 * @return \Illuminate\Contracts\Validation\Validator
@@ -30,70 +31,93 @@ class AddGameController extends Controller {
 	protected function index(Request $request) {
 		$request->validate([
 			'nombre' => ['required', 'string'],
-			'desarrolladores' => ['required', 'string'],
-			'año' => ['required', 'numeric', 'min:1950'],
+			'desarrolladores' => ['nullable', 'string'],
+			'año' => ['nullable', 'numeric', 'min:1950'],
 			'ESRB' => ['nullable', 'string'],
-			'portada' => ['required', 'image'],
+			'portada' => ['nullable', 'image'],
 			'contraportada' => ['nullable', 'image'],
-			'precio-nuevo' => ['required', 'numeric', 'min:0'],
-			'precio-usado' => ['required', 'numeric', 'min:0'],
-			'consolas' => ['required', 'string'],
+			'precio-nuevo' => ['nullable', 'numeric', 'min:0'],
+			'precio-usado' => ['nullable', 'numeric', 'min:0'],
+			'consolas' => ['nullable', 'string'],
 		]);
 		return $this->saveInDatabaseAndReturn($request);
 	}
-
-
+	
 	/**
-	 * Create a new game instance after validation.
+	 *Edit a game instance after validation.
 	 *
 	 * @param  Request $request
 	 * @return \App\Game
 	 */
 	protected function saveInDatabaseAndReturn(Request $request) {
-		try { $this->saveGame($request); }
-		catch (QueryException $ex) { return back()->with('error', "ERROR AL ALMACENAR EL JUEGO: Ya existe un juego en la base de datos con el nombre " . $request->input('nombre') . "."); }
+		try { $this->updateGame($request); }
+		catch (ModelNotFoundException $ex) { return back()->with('error', "ERROR AL EDITAR EL JUEGO: No hay un juego con nombre " . $request->input('nombre') . " en la base de datos."); }
 		
-		$this->saveEntity($request->input('nombre'), $request->input('desarrolladores'), "createDeveloper");
+		if ($request->input('desarrolladores') != null) {
+			Developer::where('game_name', $request->input('nombre'))->delete();
+			$this->updateEntity($request->input('nombre'), $request->input('desarrolladores'), "createDeveloper");
+		}
 		
-		try { $this->saveEntity($request->input('nombre'), $request->input('consolas'), "createConsole"); }
-		catch (QueryException $ex) { return back()->with('error', "ERROR AL ALMACENAR EL LA DISPONIBLIDAD EN CONSOLAS: La sintaxis usada en el campo correspondiente a las Consolas no es correcta."); }
-		
-		return back()->with('success','¡Juego almacenado con ÉXITO!');
+		if ($request->input('consolas') != null){
+			Console::where('game_name', $request->input('nombre'))->delete();
+			try { $this->updateEntity($request->input('nombre'), $request->input('consolas'), "createConsole"); }
+			catch (QueryException $ex) { return back()->with('error', "ERROR AL EDITAR EL LA DISPONIBLIDAD EN CONSOLAS: La sintaxis usada en el campo correspondiente a las Consolas no es correcta."); }
+		}
+
+		return back()->with('success','¡Juego editado con ÉXITO!');
 	}
-
-
-	private function saveGame(Request $request) {
-		$coverContent = $this->getContent($request, "portada");
-		$countercoverContent = null;
-		if ($request->file('contraportada') != null)
-			$countercoverContent = $this->getContent($request, "contraportada");
 	
-		Game::create([
-			'name' => $request->input('nombre'),
-			'release_year' => $request->input('año'),
-			'esrb_rating' => $request->input('ESRB'),
-			'cover' => base64_encode($coverContent),
-			'counter_cover' => base64_encode($countercoverContent),
-			'price_new' => $request->input('precio-nuevo'),
-			'price_used' => $request->input('precio-usado')
+
+	private function updateGame(Request $request) {
+		GAME::where('name', $request->input('nombre'))->firstOrFail(); //Verify that the game is stored. 
+		$requestArray = $this->getRequestArray($request, $request->input('nombre'));
+		Game::where('name', $request->input('nombre'))->update([
+			'release_year' => $requestArray[0],
+			'esrb_rating' => $requestArray[1],
+			'cover' => $requestArray[2],
+			'counter_cover' => $requestArray[3],
+			'price_new' => $requestArray[4],
+			'price_used' => $requestArray[5],
 		]);
+	}
+	private function getRequestArray(Request $request, String $gameName) {
+		$requestArray = [];
+
+		array_push($requestArray, $request->input('año') ?? Game::where('name', $gameName)->pluck('release_year')[0]);
+		array_push($requestArray, $request->input('ESRB') ?? Game::where('name', $gameName)->pluck('esrb_rating')[0]);
+
+		if ($request->file('portada') != null)
+			array_push($requestArray, base64_encode($this->getContent($request, "portada")));
+		else
+			array_push($requestArray, Game::where('name', $gameName)->pluck('cover')[0]);
+		
+		if ($request->file('contraportada') != null)
+			array_push($requestArray, base64_encode($this->getContent($request, "contraportada")));
+		else
+			array_push($requestArray, Game::where('name', $gameName)->pluck('counter_cover')[0]);
+		
+		array_push($requestArray, $request->input('precio-nuevo') ?? Game::where('name', $gameName)->pluck('price_new')[0]);
+		array_push($requestArray, $request->input('precio-usado') ?? Game::where('name', $gameName)->pluck('price_used')[0]);
+
+		return $requestArray;
 	}
 	private function getContent(Request $request, String $input) {
 		$inputValue = $request->file($input);
 		return $inputValue->openfile()->fread($inputValue->getSize());
 	}
 
-	private function saveEntity(String $gameName, String $allItems, $createFunction) {
+
+	private function updateEntity(String $gameName, String $allItems, $updateFunction) {
 		$pos = strpos($allItems, ";");
 		while ($pos != false) {
 			$oneItem = $this->getFirst($allItems, $pos);
-			$this->$createFunction($oneItem, $gameName);
+			$this->$updateFunction($oneItem, $gameName);
 			$allItems = $this->getRest($allItems, $pos);
 			$pos = strpos($allItems, ";");
 		}
 		if (strlen($allItems) >= 1) { //Checking if the input ended with ';' or not.
 			$allItems = $this->removeSpaceAt($allItems, strlen($allItems)-1, 0, strlen($allItems)-1);
-			$this->$createFunction($allItems, $gameName);
+			$this->$updateFunction($allItems, $gameName);
 		}
 	}
 
@@ -145,4 +169,5 @@ class AddGameController extends Controller {
 			$string = substr($string, $newStart, $newLength);
 		return $string;
 	}
+
 }
