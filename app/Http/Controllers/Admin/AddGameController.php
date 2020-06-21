@@ -1,32 +1,19 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Support\Facades\Validator;
 use App\Game;
 use App\Developer;
 use App\Console;
 use Illuminate\Database\QueryException;
 
 class AddGameController extends Controller {
-	/**
-	 * Create a new controller instance.
-	 *
-	 * @return void
-	 */
 	public function __construct() {
 		$this->middleware('guest');
 	}
 
-	/**
-	 * Validate an incoming game addition request.
-	 *
-	 * @param  Request $request
-	 * @return \Illuminate\Contracts\Validation\Validator
-	 */
 	protected function index(Request $request) {
 		$request->validate([
 			'nombre' => ['required', 'string'],
@@ -42,13 +29,6 @@ class AddGameController extends Controller {
 		return $this->saveInDatabaseAndReturn($request);
 	}
 
-
-	/**
-	 * Create a new game instance after validation.
-	 *
-	 * @param  Request $request
-	 * @return \App\Game
-	 */
 	protected function saveInDatabaseAndReturn(Request $request) {
 		try { $this->saveGame($request); }
 		catch (QueryException $ex) { return back()->with('error', "ERROR AL ALMACENAR EL JUEGO: Ya existe un juego en la base de datos con el nombre " . $request->input('nombre') . "."); }
@@ -91,7 +71,7 @@ class AddGameController extends Controller {
 			$allItems = $this->getRest($allItems, $pos);
 			$pos = strpos($allItems, ";");
 		}
-		if (strlen($allItems) >= 1) { //Checking if the input ended with ';' or not.
+		if (strlen($allItems) >= 1) { //Check if the input ended with ';' or not.
 			$allItems = $this->removeSpaceAt($allItems, strlen($allItems)-1, 0, strlen($allItems)-1);
 			$this->$createFunction($allItems, $gameName);
 		}

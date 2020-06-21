@@ -12,6 +12,7 @@
 
 </head>
 <body>
+
 	@if (Session::has('success'))
 		<script type="text/javascript">alert("{{ Session::get('success') }}");</script>
 	@endif
@@ -156,7 +157,7 @@
 
 
 		<button type="submit" id="submit-btn-addgame" class="submit disabled-submit" disabled="disabled">
-			Confirmar
+			Agregar Juego
 		</button>
 
 

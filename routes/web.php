@@ -37,38 +37,38 @@ Route::get('/adminsite', function () {
 });
 
 
-//GAMES:
+//ADMIN - GAMES:
 Route::get('/addgame', function () {
 	return view('adminuser\games\addgame');
 });
-Route::post('addgame', 'AddGameController@index');
+Route::post('addgame', 'Admin\AddGameController@index');
 
 Route::get('/editgame', function () {
 	return view('adminuser\games\editgame');
 });
-Route::post('editgame', 'EditGameController@index');
+Route::post('editgame', 'Admin\EditGameController@index');
 
 Route::get('/removegame', function () {
 	return view('adminuser\games\removegame');
 });
-Route::post('removegame', 'RemoveGameController@index');
+Route::post('removegame', 'Admin\RemoveGameController@index');
 
 
-//MERCH:
+//ADMIN - MERCH:
 Route::get('/addmerch', function () {
 	return view('adminuser\merch\addmerch');
 });
-Route::post('addmerch', 'AddMerchController@index');
+Route::post('addmerch', 'Admin\AddMerchController@index');
 
 Route::get('/editmerch', function () {
 	return view('adminuser\merch\editmerch');
 });
-Route::post('editmerch', 'EditMerchController@index');
+Route::post('editmerch', 'Admin\EditMerchController@index');
 
 Route::get('/removemerch', function () {
 	return view('adminuser\merch\removemerch');
 });
-Route::post('removemerch', 'RemoveMerchController@index');
+Route::post('removemerch', 'Admin\RemoveMerchController@index');
 
 
 Auth::routes();

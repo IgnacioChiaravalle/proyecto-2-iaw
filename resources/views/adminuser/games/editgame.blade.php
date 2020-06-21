@@ -12,13 +12,13 @@
 
 </head>
 <body>
+
 	@if (Session::has('success'))
 		<script type="text/javascript">alert("{{ Session::get('success') }}");</script>
 	@endif
 	@if (Session::has('error'))
 		<script type="text/javascript">alert("{{ Session::get('error') }}");</script>
 	@endif
-
 
 	<a href="{{ url('/adminsite') }}">
 		<img src="Company Logo.png" alt="The Water Level Logo; Retornar al Sitio Principal del Administrador" class="return-btn">

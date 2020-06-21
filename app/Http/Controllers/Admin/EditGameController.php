@@ -1,11 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Support\Facades\Validator;
 use App\Game;
 use App\Developer;
 use App\Console;
@@ -13,21 +11,10 @@ use Illuminate\Database\QueryException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class EditGameController extends Controller {
-	/**
-	 * Create a new controller instance.
-	 *
-	 * @return void
-	 */
 	public function __construct() {
 		$this->middleware('guest');
 	}
 
-	/**
-	 * Validate an incoming game edition request.
-	 *
-	 * @param  Request $request
-	 * @return \Illuminate\Contracts\Validation\Validator
-	 */
 	protected function index(Request $request) {
 		$request->validate([
 			'nombre' => ['required', 'string'],
@@ -40,16 +27,10 @@ class EditGameController extends Controller {
 			'precio-usado' => ['nullable', 'numeric', 'min:0'],
 			'consolas' => ['nullable', 'string'],
 		]);
-		return $this->saveInDatabaseAndReturn($request);
+		return $this->editInDatabaseAndReturn($request);
 	}
 	
-	/**
-	 *Edit a game instance after validation.
-	 *
-	 * @param  Request $request
-	 * @return \App\Game
-	 */
-	protected function saveInDatabaseAndReturn(Request $request) {
+	protected function editInDatabaseAndReturn(Request $request) {
 		try { $this->updateGame($request); }
 		catch (ModelNotFoundException $ex) { return back()->with('error', "ERROR AL EDITAR EL JUEGO: No hay un juego con nombre " . $request->input('nombre') . " en la base de datos."); }
 		
@@ -115,7 +96,7 @@ class EditGameController extends Controller {
 			$allItems = $this->getRest($allItems, $pos);
 			$pos = strpos($allItems, ";");
 		}
-		if (strlen($allItems) >= 1) { //Checking if the input ended with ';' or not.
+		if (strlen($allItems) >= 1) { //Check if the input ended with ';' or not.
 			$allItems = $this->removeSpaceAt($allItems, strlen($allItems)-1, 0, strlen($allItems)-1);
 			$this->$updateFunction($allItems, $gameName);
 		}
