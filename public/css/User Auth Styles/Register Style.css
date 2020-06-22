@@ -29,65 +29,60 @@ form {
 	background-color: rgba(145, 92, 57, 0.85);
 	font-size: 222%;
 }
-	label {
-		line-height: 90%;
-		color: aqua;
-		text-shadow: -1px -1px 2px black, 1px -1px 2px black, -1px 1px 2px black, 1px 1px 2px black;
-	}
 
-	div.form-check {
-		display: inline-flex;
-		width: 100%;
-	}
-		label.form-check-label {
-			width: 63%;
-			margin-top: 1%;
-			margin-bottom: 1%;
-		}
-		input.form-check-input-admin-user {
-			width: 2%;
-			margin-top: 2%;
-			margin-left: 0%;
-			cursor: pointer;
-		}
+label {
+	line-height: 90%;
+	color: aqua;
+	text-shadow: -1px -1px 2px black, 1px -1px 2px black, -1px 1px 2px black, 1px 1px 2px black;
+}
 	
-	input {
-		width: 100%;
-		border-style: groove;
-		border-radius: 2%/20%;
-		font-size: 150%;
-		padding-bottom: 0.4%;
-		font-family: OdibeeSans;
-	}
-		input.default-field {
-			background-color: rgb(172, 172, 172);
-			color: rgb(89, 87, 100);
-		}
-		input.active-field {
-			background-color: rgb(226, 222, 162);
-			color: rgb(25, 13, 99);
-		}
+input {
+	width: 100%;
+	margin-bottom: 2.5%;
+	border-style: groove;
+	border-radius: 2%/20%;
+	font-size: 150%;
+	padding-bottom: 0.4%;
+	font-family: OdibeeSans;
+	background-color: rgb(226, 222, 162);
+	color: rgb(25, 13, 99);
+}
 
-	button {
-		width: 50%;
-		margin-top: 2%;
-		margin-left: 25%;
-		margin-right: 25%;
-		font-size: 150%;
-		color: rgb(56, 54, 134);
-		font-family: LondrinaSolid;
-		border: 5px outset rgb(23, 221, 221);
-		border-radius: 2%/20%;
-		background-color: rgb(215, 224, 134);
-		transition: transform .15s ease-in-out;
+div.form-check {
+	display: inline-flex;
+	width: 100%;
+}
+	label.form-check-label {
+		width: 63%;
+		margin-top: 1%;
+		margin-bottom: 1%;
 	}
-		button:hover, button:focus {
-			font-weight: bold;
-			color: rgb(233, 241, 159);
-			border-color: rgb(116, 184, 53);
-			background-color: rgb(136, 23, 23);
-			transform: scale(1.07);
-		}
-		button:hover {
-			cursor: pointer;
-		}
+	input.form-check-input-admin-user {
+		width: 2%;
+		margin-top: 2%;
+		margin-bottom: 0%;
+		margin-left: 0%;
+		cursor: pointer;
+	}
+
+button {
+	width: 50%;
+	margin-top: 2%;
+	margin-left: 25%;
+	margin-right: 25%;
+	font-size: 150%;
+	color: rgb(56, 54, 134);
+	font-family: LondrinaSolid;
+	border: 5px outset rgb(23, 221, 221);
+	border-radius: 2%/20%;
+	background-color: rgb(215, 224, 134);
+	transition: transform .15s ease-in-out;
+	cursor: pointer;
+}
+	button:hover, button:focus {
+		font-weight: bold;
+		color: rgb(233, 241, 159);
+		border-color: rgb(116, 184, 53);
+		background-color: rgb(136, 23, 23);
+		transform: scale(1.07);
+	}

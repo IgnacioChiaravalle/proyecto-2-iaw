@@ -11,8 +11,16 @@
 	src: url(Fonts/ArchitectsDaughter_Font.ttf);
 }
 @font-face {
+	font-family: Bungee;
+	src: url(Fonts/Bungee_Font.ttf);
+}
+@font-face {
 	font-family: LondrinaSolid;
 	src: url(Fonts/LondrinaSolid_Font.ttf);
+}
+@font-face {
+	font-family: LuckiestGuy;
+	src: url(Fonts/LuckiestGuy_Font.ttf);
 }
 @font-face {
 	font-family: MuseoModerno;
@@ -29,6 +37,10 @@
 @font-face {
 	font-family: Orbitron;
 	src: url(Fonts/Orbitron_Font.ttf);
+}
+@font-face {
+	font-family: PermanentMarker;
+	src: url(Fonts/PermanentMarker_Font.ttf);
 }
 @font-face {
 	font-family: Staatliches;

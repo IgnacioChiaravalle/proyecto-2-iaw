@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//LOGIN AND SITES:
+//LOGIN AND REGISTER:
 Route::get('/', function () {
 	return view('auth\login');
 });
@@ -32,10 +32,11 @@ Route::get('/register', function () {
 	return view('auth\register');
 });
 
+
+//ADMIN - SITE:
 Route::get('/adminsite', function () {
 	return view('adminuser\adminsite');
 });
-
 
 //ADMIN - GAMES:
 Route::get('/addgame', function () {
@@ -52,7 +53,6 @@ Route::get('/removegame', function () {
 	return view('adminuser\games\removegame');
 });
 Route::post('removegame', 'Admin\RemoveGameController@index');
-
 
 //ADMIN - MERCH:
 Route::get('/addmerch', function () {
@@ -71,4 +71,23 @@ Route::get('/removemerch', function () {
 Route::post('removemerch', 'Admin\RemoveMerchItemController@index');
 
 
+//EMPLOYEE - SITE:
+Route::get('/employeesite', function () {
+	return view('employeeuser\employeesite');
+});
+
+//EMPLOYEE - GAMES:
+Route::get('/stockgames', 'Employee\StockGamesController@index');/*function () {
+	return view('employeeuser\games\stockgames');
+});*/
+Route::post('stockgames', 'Employee\StockGamesController@index');
+
+//EMPLOYEE - MERCH:
+Route::get('/stockmerch', function () {
+	return view('employeeuser\merch\stockmerch');
+});
+Route::post('stockmerch', 'Employee\StockMerchController@index');
+
+
+//OTHERS:
 Auth::routes();

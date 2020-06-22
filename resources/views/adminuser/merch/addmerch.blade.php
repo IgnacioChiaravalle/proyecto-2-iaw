@@ -8,7 +8,8 @@
 	<script src = "{{ url('/js/TypeSwapper.js') }}" type = "text/javascript"></script>
 	<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Document Style.css') }}">
 	<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Label - Invalid Feedback Style.css') }}"/>
-	<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Admin User Styles/Admin CRUD Style.css') }}"/>
+	<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Return Button Style.css') }}"/>
+	<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Admin User Styles/Admin General Style.css') }}"/>
 	<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Admin User Styles/Admin Merch Style.css') }}"/>
 
 </head>

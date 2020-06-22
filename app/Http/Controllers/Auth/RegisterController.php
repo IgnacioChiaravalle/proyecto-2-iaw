@@ -25,19 +25,11 @@ class RegisterController extends Controller
 	use RegistersUsers;
 
 	/**
-	 * Where to redirect users after registration.
-	 *
-	 * @var string
-	 */
-	protected $redirectTo = RouteServiceProvider::ADMIN_SITE;
-
-	/**
 	 * Create a new controller instance.
 	 *
 	 * @return void
 	 */
-	public function __construct()
-	{
+	public function __construct() {
 		$this->middleware('guest');
 	}
 
@@ -47,8 +39,7 @@ class RegisterController extends Controller
 	 * @param  array  $data
 	 * @return \Illuminate\Contracts\Validation\Validator
 	 */
-	protected function validator(array $data)
-	{
+	protected function validator(array $data) {
 		return Validator::make($data, [
 			'name' => ['required', 'string', 'max:255'],
 			'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -62,23 +53,16 @@ class RegisterController extends Controller
 	 * @param  array  $data
 	 * @return \App\User
 	 */
-	protected function create(array $data)
-	{
-		if(!empty($data['admin_user'])) {
-			$admin = 1;
-			$redirectTo = RouteServiceProvider::ADMIN_SITE;
-		}
-		else {
-			$admin = 0;
-			$redirectTo = RouteServiceProvider::WELCOME;
-		}
-			
-
-		return User::create([
+	protected function create(array $data) {
+		$admin = empty($data['admin_user']) ? 0 : 1;
+		User::create([
 			'name' => $data['name'],
 			'email' => $data['email'],
 			'password' => Hash::make($data['password']),
 			'admin' => $admin,
 		]);
+		$location = $admin == 1 ? 'Location: /adminsite' : 'Location: /welcome';
+		header($location);
+		exit;
 	}
 }

@@ -132,12 +132,10 @@ form.login-form {
 			background-color: rgb(16, 207, 150);
 			color: midnightblue;
 			border: 2px solid rgb(243, 154, 38);
+			cursor: pointer;
 		}
 			button.enabled-submit:hover, button.enabled-submit:focus {
 				background-color: rgb(10, 173, 124);
 				color: rgb(224, 224, 253);
 				font-weight: bold;
-			}
-			button.enabled-submit:hover {
-				cursor: pointer;
 			}
