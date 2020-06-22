@@ -1,0 +1,13 @@
+table {
+	text-align: center;	
+	width: 100%;
+	border-bottom: 1px solid black; /* Probably table borders wil be fixed by adding classes for tables-in-table (the ones within the main one). */
+}
+tr {
+	border: 1px solid black;
+	background-color: white;
+}
+td {
+	vertical-align: middle;
+	width: auto;
+}

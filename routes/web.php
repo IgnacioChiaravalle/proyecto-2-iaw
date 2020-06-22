@@ -77,7 +77,7 @@ Route::get('/employeesite', function () {
 });
 
 //EMPLOYEE - GAMES:
-Route::get('/stockgames', 'Employee\StockGamesController@index');/*function () {
+Route::get('/stockgames', 'Employee\StockGamesController@getData');/*function () {
 	return view('employeeuser\games\stockgames');
 });*/
 Route::post('stockgames', 'Employee\StockGamesController@index');
