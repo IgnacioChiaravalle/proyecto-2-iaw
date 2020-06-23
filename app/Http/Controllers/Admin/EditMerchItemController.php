@@ -32,14 +32,14 @@ class EditMerchItemController extends Controller {
 		$functionHouseController = new FunctionHouseController;
 
 		try { $this->updateMerchItem($functionHouseController, $request); }
-		catch (ModelNotFoundException $ex) { return back()->with('error', "ERROR AL EDITAR EL ARTÍCULO: No hay un artículo de merchandising con nombre " . $request->input('nombre') . " en la base de datos."); }
+		catch (ModelNotFoundException $ex) { return back()->with('message', "ERROR AL EDITAR EL ARTÍCULO: No hay un artículo de merchandising con nombre " . $request->input('nombre') . " en la base de datos."); }
 		
 		if ($request->input('categorías') != null){
 			CategoryOfMerch::where('merch_item_name', $request->input('nombre'))->delete();
 			$functionHouseController->handleMultipleValueInput(new AddMerchItemController, $request->input('nombre'), $request->input('categorías'), "createCategoryOfMerch");
 		}
 
-		return back()->with('success','¡Artículo editado con ÉXITO!');
+		return back()->with('message','¡Artículo editado con ÉXITO!');
 	}
 	
 	private function updateMerchItem(Controller $functionHouseController, Request $request) {

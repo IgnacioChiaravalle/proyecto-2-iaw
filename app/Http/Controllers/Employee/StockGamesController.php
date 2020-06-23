@@ -14,7 +14,7 @@ class StockGamesController extends Controller {
 	}
 
 	protected function getData() {
-		$games = Game::all();
+		$games = Game::orderBy('name', 'asc')->get();
 		$gamesArray = [];
 		foreach($games as $game) {
 			$gameData = [
@@ -40,7 +40,7 @@ class StockGamesController extends Controller {
 	}
 
 	private function getDevsArray(array $gameData) {
-		$devs = Developer::where('game_name', $gameData[0])->get();
+		$devs = Developer::where('game_name', $gameData[0])->orderBy('dev_name', 'asc')->get();
 		$devsArray = [];
 		foreach ($devs as $dev)
 			array_push($devsArray, $dev->dev_name);
@@ -48,7 +48,7 @@ class StockGamesController extends Controller {
 	}
 
 	private function getConsolesArray(array $gameData) {
-		$consoles = Console::where('game_name', $gameData[0])->get();
+		$consoles = Console::where('game_name', $gameData[0])->orderBy('console_name', 'asc')->get();
 		$consolesArray = [];
 		foreach ($consoles as $console) {
 			$consoleData = [
@@ -61,7 +61,7 @@ class StockGamesController extends Controller {
 		return $consolesArray;
 	}
 
-	private function printArrayTheWayGodIntendsItFFS(array $gameDevsConsoles) {
+	/*private function printArrayTheWayGodIntendsItFFS(array $gameDevsConsoles) {
 		echo "{ ";
 		foreach ($gameDevsConsoles as $gDC) {
 			echo "[ Game=( ";
@@ -81,5 +81,5 @@ class StockGamesController extends Controller {
 
 		}
 		echo " }";
-	}
+	}*/
 }

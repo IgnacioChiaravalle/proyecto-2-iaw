@@ -15,11 +15,8 @@
 </head>
 <body>
 
-	@if (Session::has('success'))
-		<script type="text/javascript">alert("{{ Session::get('success') }}");</script>
-	@endif
-	@if (Session::has('error'))
-		<script type="text/javascript">alert("{{ Session::get('error') }}");</script>
+	@if (Session::has('message'))
+		<script type="text/javascript">alert("{{ Session::get('message') }}");</script>
 	@endif
 
 	<a href="{{ url('/adminsite') }}">
@@ -34,7 +31,7 @@
 		@csrf
 
 		<div>
-			<label for="nombre">Inserte aquí el Nombre del Juego cuyos datos quiere editar:</label>
+			<label for="nombre">Insertá acá el Nombre del Juego cuyos datos vas a editar:</label>
 			<div>
 				<input id="nombre" type="text" class="{{old('nombre') ? 'active-field' : 'default-field'}}" name="nombre" value="{{old('nombre')}}" placeholder="Nombre del Juego" required autocomplete="nombre" onkeypress="clearFieldIfDefault(this); activateField(this); checkAllActive(2, 'submit-btn-editgame')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(2, 'submit-btn-editgame')">
 				@error('nombre')

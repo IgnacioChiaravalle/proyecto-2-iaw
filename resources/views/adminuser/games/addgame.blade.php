@@ -15,11 +15,8 @@
 </head>
 <body>
 
-	@if (Session::has('success'))
-		<script type="text/javascript">alert("{{ Session::get('success') }}");</script>
-	@endif
-	@if (Session::has('error'))
-		<script type="text/javascript">alert("{{ Session::get('error') }}");</script>
+	@if (Session::has('message'))
+		<script type="text/javascript">alert("{{ Session::get('message') }}");</script>
 	@endif
 
 	<a href="{{ url('/adminsite') }}">

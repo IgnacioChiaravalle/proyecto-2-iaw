@@ -14,11 +14,8 @@
 </head>
 <body>
 
-	@if (Session::has('success'))
-		<script type="text/javascript">alert("{{ Session::get('success') }}");</script>
-	@endif
-	@if (Session::has('error'))
-		<script type="text/javascript">alert("{{ Session::get('error') }}");</script>
+	@if (Session::has('message'))
+		<script type="text/javascript">alert("{{ Session::get('message') }}");</script>
 	@endif
 
 	<a href="{{ url('/adminsite') }}">
@@ -33,9 +30,9 @@
 		@csrf
 
 		<div>
-			<label for="nombre">Inserte aquí el Nombre del Juego a remover:</label>
+			<label for="nombre">Insertá acá el Nombre del Juego a remover:</label>
 			<div>
-				<input id="nombre" type="text" class="{{old('nombre') ? 'active-field' : 'default-field'}}" name="nombre" value="{{old('nombre')}}" placeholder="Nombre del Juego" required autocomplete="nombre" onkeypress="clearFieldIfDefault(this); activateField(this); checkAllActive(1, 'submit-btn-editgame')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(1, 'submit-btn-editgame')">
+				<input id="nombre" type="text" class="{{old('nombre') ? 'active-field' : 'default-field'}}" name="nombre" value="{{old('nombre')}}" placeholder="Nombre del Juego" required autocomplete="nombre" onkeypress="clearFieldIfDefault(this); activateField(this); checkAllActive(1, 'submit-btn-removegame')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(1, 'submit-btn-removegame')">
 				@error('nombre')
 					<label class="invalid-feedback" role="alert">
 						<strong>{{ $message }}</strong>
@@ -45,7 +42,7 @@
 		</div>	
 
 
-		<button type="submit" id="submit-btn-editgame" class="submit disabled-submit" disabled="disabled">
+		<button type="submit" id="submit-btn-removegame" class="submit disabled-submit" disabled="disabled">
 			Remover Juego
 		</button>
 

@@ -21,8 +21,8 @@ class RemoveGameController extends Controller{
 	
 	protected function deleteInDatabaseAndReturn(Request $request) {
 		try { $this->deleteGame($request); }
-		catch (ModelNotFoundException $ex) { return back()->with('error', "ERROR AL REMOVER EL JUEGO: No hay un juego con nombre " . $request->input('nombre') . " en la base de datos."); }
-		return back()->with('success','¡Juego removido con ÉXITO!');
+		catch (ModelNotFoundException $ex) { return back()->with('message', "ERROR AL REMOVER EL JUEGO: No hay un juego con nombre " . $request->input('nombre') . " en la base de datos."); }
+		return back()->with('message','¡Juego removido con ÉXITO!');
 	}
 	private function deleteGame(Request $request) {
 		Game::where('name', $request->input('nombre'))->firstOrFail(); //Verify that the game is stored. 

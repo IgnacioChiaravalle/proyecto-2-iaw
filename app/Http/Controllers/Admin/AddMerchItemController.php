@@ -29,9 +29,9 @@ class AddMerchItemController extends Controller {
 	protected function saveInDatabaseAndReturn(Request $request) {
 		$functionHouseController = new FunctionHouseController;
 		try { $this->saveMerchItem($functionHouseController, $request); }
-		catch (QueryException $ex) { return back()->with('error', "ERROR AL ALMACENAR EL ARTÍCULO: Ya existe un artículo de merchandising en la base de datos con el nombre " . $request->input('nombre') . "."); }
+		catch (QueryException $ex) { return back()->with('message', "ERROR AL ALMACENAR EL ARTÍCULO: Ya existe un artículo de merchandising en la base de datos con el nombre " . $request->input('nombre') . "."); }
 		$functionHouseController->handleMultipleValueInput($this, $request->input('nombre'), $request->input('categorías'), "createCategoryOfMerch");
-		return back()->with('success','¡Artículo almacenado con ÉXITO!');
+		return back()->with('message','¡Artículo almacenado con ÉXITO!');
 	}
 
 	private function saveMerchItem(Controller $functionHouseController, Request $request) {

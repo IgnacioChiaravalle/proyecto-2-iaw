@@ -34,14 +34,14 @@ class AddGameController extends Controller {
 		$functionHouseController = new FunctionHouseController;
 
 		try { $this->saveGame($functionHouseController, $request); }
-		catch (QueryException $ex) { return back()->with('error', "ERROR AL ALMACENAR EL JUEGO: Ya existe un juego en la base de datos con el nombre " . $request->input('nombre') . "."); }
+		catch (QueryException $ex) { return back()->with('message', "ERROR AL ALMACENAR EL JUEGO: Ya existe un juego en la base de datos con el nombre " . $request->input('nombre') . "."); }
 		
 		$functionHouseController->handleMultipleValueInput($this, $request->input('nombre'), $request->input('desarrolladores'), "createDeveloper");
 		
 		try { $functionHouseController->handleMultipleValueInput($this, $request->input('nombre'), $request->input('consolas'), "createConsole"); }
-		catch (QueryException $ex) { return back()->with('error', "ERROR AL ALMACENAR LA DISPONIBLIDAD EN CONSOLAS: La sintaxis usada en el campo correspondiente a las Consolas no es correcta."); }
+		catch (QueryException $ex) { return back()->with('message', "ERROR AL ALMACENAR LA DISPONIBLIDAD EN CONSOLAS: La sintaxis usada en el campo correspondiente a las Consolas no es correcta."); }
 		
-		return back()->with('success','¡Juego almacenado con ÉXITO!');
+		return back()->with('message','¡Juego almacenado con ÉXITO!');
 	}
 
 	private function saveGame(Controller $functionHouseController, Request $request) {

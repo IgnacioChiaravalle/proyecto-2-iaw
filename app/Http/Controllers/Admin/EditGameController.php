@@ -36,7 +36,7 @@ class EditGameController extends Controller {
 		$functionHouseController = new FunctionHouseController;
 
 		try { $this->updateGame($functionHouseController, $request); }
-		catch (ModelNotFoundException $ex) { return back()->with('error', "ERROR AL EDITAR EL JUEGO: No hay un juego con nombre " . $request->input('nombre') . " en la base de datos."); }
+		catch (ModelNotFoundException $ex) { return back()->with('message', "ERROR AL EDITAR EL JUEGO: No hay un juego con nombre " . $request->input('nombre') . " en la base de datos."); }
 		
 		if ($request->input('desarrolladores') != null) {
 			Developer::where('game_name', $request->input('nombre'))->delete();
@@ -46,10 +46,10 @@ class EditGameController extends Controller {
 		if ($request->input('consolas') != null){
 			Console::where('game_name', $request->input('nombre'))->delete();
 			try { $functionHouseController->handleMultipleValueInput(new AddGameController, $request->input('nombre'), $request->input('consolas'), "createConsole"); }
-			catch (QueryException $ex) { return back()->with('error', "ERROR AL EDITARL LA DISPONIBLIDAD EN CONSOLAS: La sintaxis usada en el campo correspondiente a las Consolas no es correcta."); }
+			catch (QueryException $ex) { return back()->with('message', "ERROR AL EDITARL LA DISPONIBLIDAD EN CONSOLAS: La sintaxis usada en el campo correspondiente a las Consolas no es correcta."); }
 		}
 
-		return back()->with('success','¡Juego editado con ÉXITO!');
+		return back()->with('message','¡Juego editado con ÉXITO!');
 	}
 	
 	private function updateGame(Controller $functionHouseController, Request $request) {
