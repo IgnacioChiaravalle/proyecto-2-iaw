@@ -24,6 +24,17 @@ div {
 		display: flex;
 		width: 75%;
 	}
+		div.value-set-div {
+			width: 22%;
+		}
+		div.value-set-left {
+			margin-left: 10%;
+			margin-right: auto;
+		}
+		div.value-set-right {
+			margin-left: auto;
+			margin-right: 10%;
+		}
 
 	div.pricetag-div {
 		display: flex;
@@ -48,6 +59,14 @@ input {
 	border-radius: 1%/20%;
 	border-color: gray;
 	font-size: 129%;
+}
+
+input.value-set-input {
+	border-radius: 5%/20%;
+	padding-left: 2.5%;
+	padding-right: 2.5%;
+	margin-bottom: 5%;
+	text-align: center;
 }
 
 button {

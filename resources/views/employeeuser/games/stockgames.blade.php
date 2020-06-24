@@ -11,7 +11,7 @@
 	<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Return Button Style.css') }}"/>
 	<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Employee User Styles/Employee General Style.css') }}"/>
 	<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Employee User Styles/Employee Game Style.css') }}"/>
-
+	
 </head>
 <body>
 
@@ -20,14 +20,14 @@
 	@endif
 
 	<a href="{{ url('/employeesite') }}">
-		<img src="Company Logo.png" alt="The Water Level Logo; Retornar al Sitio Principal del Empleado" class="return-btn">
+		<img src="../../Company Logo.png" alt="The Water Level Logo; Retornar al Sitio Principal del Empleado" class="return-btn">
 	</a>
 
-	<h1>
-		Stock de Juegos
-	</h1>
+	<a href="{{ url('/stockgames') }}">
+		<h1>Stock de Juegos</h1>
+	</a>
 
-	<form method="POST" action="{{url('searchgame')}}" enctype="multipart/form-data"> <!-- TODO -->
+	<form method="POST" action="{{url('searchgame')}}" enctype="multipart/form-data">
 		@csrf
 		<div class="search-div">
 			<label for="nombre" class="search-label">Buscá acá el Nombre de un Juego:</label>
@@ -45,6 +45,13 @@
 		</button>
 	</form>
 
+	<?php
+		$remove = "/-1";
+		$add = "/1";
+		$bar = "/";
+		$used = "/used";
+		$new = "/new";
+	?>
 
 	<table class="main-table">
 		<tr class="table-header-row">
@@ -67,7 +74,7 @@
 						@if ($gameAttribute != null)
 							<td class="game-attribute clickable" onclick="">{{ $gameAttribute }}</td>
 						@else
-							<td class="game-attribute clickable" onclick="">No Disponible</td>
+							<td class="game-attribute" onclick="">No Disponible</td>
 						@endif
 					@endforeach
 
@@ -87,8 +94,9 @@
 					<td>
 						@foreach($gDC[2] as $consoleAttributesList)
 							<table class="inner-table sub-row">
+								<?php $url = "stockgames/filterbyconsole/" . $consoleAttributesList[0]; ?>
 								<tr>
-									<td class="clickable" onclick="">{{ $consoleAttributesList[0] }}</td>
+									<td class="clickable" onclick="location.href='{{ $bar . $url }}'">{{ $consoleAttributesList[0] }}</td>
 								</tr>
 							</table>
 							@if ($consoleAttributesList != $gDC[2][count($gDC[2])-1]) <!-- If not working on the last console -->
@@ -99,11 +107,12 @@
 					<td>
 						@foreach($gDC[2] as $consoleAttributesList)
 							<table class="inner-table sub-row">
+								<?php $url = "changegamestock/" . $gDC[0][0] . "/" . $consoleAttributesList[0]; ?>
 								<tr>
-									<td class="stock-value">
-										<button class="stock-handler btn-left">&#8595</button>
+									<td class="stock-value">	
+										<button class="stock-handler btn-left" onclick="location.href='{{ $bar . $url . $new . $remove }}'">&#8595</button>
 										<label class="stock-label">{{ $consoleAttributesList[1] }}</label>
-										<button class="stock-handler btn-right">&#8593</button>
+										<button class="stock-handler btn-left" onclick="location.href='{{ $bar . $url . $new . $add }}'">&#8593</button>
 									</td>
 								</tr>
 							</table>
@@ -115,11 +124,12 @@
 					<td>
 						@foreach($gDC[2] as $consoleAttributesList)
 							<table class="inner-table sub-row">
+								<?php $url = "changegamestock/" . $gDC[0][0] . "/" . $consoleAttributesList[0]; ?>
 								<tr>
 									<td class="stock-value">
-										<button class="stock-handler btn-left">&#8595</button>
+										<button class="stock-handler btn-left" onclick="location.href='{{ $bar . $url . $used . $remove }}'">&#8595</button>
 										<label class="stock-label">{{ $consoleAttributesList[2] }}</label>
-										<button class="stock-handler btn-right">&#8593</button>
+										<button class="stock-handler btn-left" onclick="location.href='{{ $bar . $url . $used . $add }}'">&#8593</button>
 									</td>
 								</tr>
 							</table>

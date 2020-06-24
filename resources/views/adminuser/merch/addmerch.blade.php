@@ -33,7 +33,7 @@
 		<div>
 			<label for="nombre">Nombre del Artículo de Merchandising:</label>
 			<div>
-				<input id="nombre" type="text" class="{{old('nombre') ? 'active-field' : 'default-field'}}" name="nombre" value="{{old('nombre')}}" placeholder="Nombre del Artículo" required autocomplete="nombre" onkeypress = "clearFieldIfDefault(this); activateField(this); checkAllActive(6, 'submit-btn-addmerch')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(6, 'submit-btn-addmerch')">
+				<input id="nombre" type="text" class="{{old('nombre') ? 'active-field' : 'default-field'}}" name="nombre" value="{{old('nombre')}}" placeholder="Nombre del Artículo" required autocomplete="nombre" onkeypress = "clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addmerch')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addmerch')">
 				@error('nombre')
 					<label class="invalid-feedback" role="alert">
 						<strong>{{ $message }}</strong>
@@ -45,8 +45,20 @@
 		<div class="description-field">
 			<label for="descripción">Descripción:</label>
 			<div>
-				<input id="descripción" type="text" class="{{old('descripción') ? 'active-field' : 'default-field'}}" name="descripción" value="{{old('descripción')}}" placeholder="Descripción del Artículo" required autocomplete="descripción" onkeypress = "clearFieldIfDefault(this); activateField(this); checkAllActive(6, 'submit-btn-addmerch')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(6, 'submit-btn-addmerch')">
+				<input id="descripción" type="text" class="{{old('descripción') ? 'active-field' : 'default-field'}}" name="descripción" value="{{old('descripción')}}" placeholder="Descripción del Artículo" required autocomplete="descripción" onkeypress = "clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addmerch')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addmerch')">
 				@error('descripción')
+					<label class="invalid-feedback" role="alert">
+						<strong>{{ $message }}</strong>
+					</label>
+				@enderror
+			</div>
+		</div>
+
+		<div>
+			<label for="multimedia-de-origen">Nombre de la Multimedia de Origen:</label>
+			<div class="multimedia-div">
+				<input id="multimedia-de-origen" type="text" class="value-set-input-left  {{old('multimedia-de-origen') ? 'active-field' : 'default-field'}}" name="multimedia-de-origen" value="{{old('multimedia-de-origen')}}" placeholder="Multimedia de Origen" required autocomplete="multimedia-de-origen" onkeypress = "clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addmerch')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addmerch')">
+				@error('multimedia-de-origen')
 					<label class="invalid-feedback" role="alert">
 						<strong>{{ $message }}</strong>
 					</label>
@@ -56,11 +68,11 @@
 
 		<div class="value-set">
 
-			<div class="value-set-left">
-				<label for="multimedia-de-origen">Nombre de la Multimedia de Origen:</label>
-				<div class="multimedia-div">
-					<input id="multimedia-de-origen" type="text" class="value-set-input-left  {{old('multimedia-de-origen') ? 'active-field' : 'default-field'}}" name="multimedia-de-origen" value="{{old('multimedia-de-origen')}}" placeholder="Multimedia de Origen" required autocomplete="multimedia-de-origen" onkeypress = "clearFieldIfDefault(this); activateField(this); checkAllActive(6, 'submit-btn-addmerch')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(6, 'submit-btn-addmerch')">
-					@error('multimedia-de-origen')
+			<div class="value-set-div value-set-left">
+				<label for="stock">Stock:</label>
+				<div>
+					<input id="stock" type="text" class="value-set-input  {{old('stock') ? 'active-field' : 'default-field'}}" name="stock" value="{{old('stock')}}" placeholder=0 required autocomplete="stock" onkeypress = "clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addmerch')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addmerch')">
+					@error('stock')
 						<label class="invalid-feedback" role="alert">
 							<strong>{{ $message }}</strong>
 						</label>
@@ -68,10 +80,10 @@
 				</div>
 			</div>
 
-			<div class="value-set-right">
+			<div class="value-set-div value-set-right">
 				<label for="precio">Precio del Artículo:</label>
 				<div class="pricetag-div">
-					<input id="precio" type="text" class="value-set-input-right {{old('precio') ? 'active-field' : 'default-field'}}" name="precio" value="{{old('precio')}}" placeholder=0 required autocomplete="precio" onkeypress = "clearFieldIfDefault(this); activateField(this); checkAllActive(6, 'submit-btn-addmerch')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(6, 'submit-btn-addmerch')">
+					<input id="precio" type="text" class="value-set-input {{old('precio') ? 'active-field' : 'default-field'}}" name="precio" value="{{old('precio')}}" placeholder=0 required autocomplete="precio" onkeypress = "clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addmerch')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addmerch')">
 					@error('precio')
 						<label class="invalid-feedback" role="alert">
 							<strong>{{ $message }}</strong>
@@ -87,7 +99,7 @@
 		<div>
 			<label for="categorías">Categorías del Artículo:</label>
 			<div>
-				<input id="categorías" type="textarea" class="category {{old('categorías') ? 'active-field' : 'default-field'}}" name="categorías" value="{{old('categorías')}}" placeholder="Categorías del Artículo (se separan por ';')" required autocomplete="categorías" onkeypress = "clearFieldIfDefault(this); activateField(this); checkAllActive(6, 'submit-btn-addmerch')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(6, 'submit-btn-addmerch')">
+				<input id="categorías" type="textarea" class="category {{old('categorías') ? 'active-field' : 'default-field'}}" name="categorías" value="{{old('categorías')}}" placeholder="Categorías del Artículo (se separan por ';')" required autocomplete="categorías" onkeypress = "clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addmerch')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addmerch')">
 				@error('categorías')
 					<label class="invalid-feedback" role="alert">
 						<strong>{{ $message }}</strong>
@@ -99,7 +111,7 @@
 		<div class="image-selection">
 			<label for="foto">Foto del Artículo:</label>
 			<div>
-				<input id="foto" type="file" class="image-selector {{old('foto') ? 'active-field' : 'default-field'}}" name="foto" required autocomplete="foto" onkeypress = "activateField(this); checkAllActive(6, 'submit-btn-addmerch')" onclick="activateField(this); checkAllActive(6, 'submit-btn-addmerch')">
+				<input id="foto" type="file" class="image-selector {{old('foto') ? 'active-field' : 'default-field'}}" name="foto" required autocomplete="foto" onkeypress = "activateField(this); checkAllActive(7, 'submit-btn-addmerch')" onclick="activateField(this); checkAllActive(7, 'submit-btn-addmerch')">
 				@error('foto')
 					<label class="invalid-feedback" role="alert">
 						<strong>{{ $message }}</strong>

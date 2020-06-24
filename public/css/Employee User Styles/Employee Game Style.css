@@ -24,7 +24,7 @@ div.search-div {
 		border-radius: 1%/20%;
 		border-color: gray;
 		font-size: 129%;
-		font-family: Staatliches;
+		font-family: LondrinaSolid;
 	}
 		input.default-field {
 			background-color: rgb(188, 168, 221);
@@ -126,6 +126,7 @@ td.stock-value {
 		border-radius: 25%/25%;
 		color: rgb(133, 25, 175);
 		text-shadow: 0px 1px 3px black;
+		text-decoration: none;
 		cursor: pointer;
 	}
 		button.stock-handler:hover {
@@ -136,10 +137,12 @@ td.stock-value {
 				margin-right: auto;
 			}
 			button.btn-right {
+				
 				margin-left: auto;
 				margin-right: 7.5%;
 			}
 	label.stock-label {
+		width: 25%;
 		margin-left: auto;
 		margin-right: auto;
 	}

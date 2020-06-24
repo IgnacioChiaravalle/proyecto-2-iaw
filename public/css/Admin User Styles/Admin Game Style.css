@@ -1,15 +1,3 @@
-div.value-set-div {
-	width: 22%;
-}
-	div.value-set-left {
-		margin-left: 10%;
-		margin-right: auto;
-	}
-	div.value-set-right {
-		margin-left: auto;
-		margin-right: 10%;
-	}
-
 div.image-selection-set {
 	display: flex;
 	width: 90%;
@@ -45,14 +33,6 @@ input {
 		color: rgb(25, 13, 99);
 	}
 
-input.value-set-input {
-	border-radius: 5%/20%;
-	padding-left: 2.5%;
-	padding-right: 2.5%;
-	margin-bottom: 5%;
-	text-align: center;
-}
-
 input.image-selector {
 	width: 100%;
 	margin-bottom: 5%;
@@ -60,7 +40,6 @@ input.image-selector {
 	border-radius: 2%/20%;
 	cursor: pointer;
 }
-
 
 button {
 	font-size: 200%;

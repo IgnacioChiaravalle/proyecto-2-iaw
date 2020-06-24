@@ -27,10 +27,6 @@ Route::get('/login', function () {
 	return view('auth\login');
 });
 
-Route::get('/welcome', function () { //TO REMOVE
-	return view('welcome');
-});
-
 Route::get('/register', function () {
 	return view('auth\register');
 });
@@ -79,17 +75,19 @@ Route::get('/employeesite', function () {
 	return view('employeeuser\employeesite');
 })->middleware('auth');
 
-//EMPLOYEE - GAMES:
-Route::get('/stockgames', 'Employee\StockGamesController@getData')->middleware('auth');/*function () {
-	return view('employeeuser\games\stockgames');
-});*/
-Route::post('stockgames', 'Employee\StockGamesController@index')->middleware('auth');
+//EMPLOYEE - GAMES (WITH OR WITHOUT FILTERS):
+Route::get('stockgames', 'Employee\GamesFinderController@getAllGames')->middleware('auth');
+Route::post('searchgame', 'Employee\GamesFinderController@getGame')->middleware('auth');
+Route::get('stockgames/filterbyconsole/{consoleName}', 'Employee\FilterController@filterByConsole')->middleware('auth');
 
-//EMPLOYEE - MERCH:
+//EMPLOYEE - MERCH (WITH OR WITHOUT FILTERS):
 Route::get('/stockmerch', function () {
 	return view('employeeuser\merch\stockmerch');
 })->middleware('auth');
 Route::post('stockmerch', 'Employee\StockMerchController@index')->middleware('auth');
+
+//EMPLOYEE - STOCK CHANGES:
+Route::get('changegamestock/{gameName}/{consoleName}/{newOrUsed}/{value}', 'Employee\StockGamesController@changeGameStock')->middleware('auth');
 
 
 //OTHERS:

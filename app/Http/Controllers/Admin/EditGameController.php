@@ -46,7 +46,7 @@ class EditGameController extends Controller {
 		if ($request->input('consolas') != null){
 			Console::where('game_name', $request->input('nombre'))->delete();
 			try { $functionHouseController->handleMultipleValueInput(new AddGameController, $request->input('nombre'), $request->input('consolas'), "createConsole"); }
-			catch (QueryException $ex) { return back()->with('message', "ERROR AL EDITARL LA DISPONIBLIDAD EN CONSOLAS: La sintaxis usada en el campo correspondiente a las Consolas no es correcta."); }
+			catch (QueryException $ex) { return back()->with('message', "ERROR AL EDITAR LA DISPONIBLIDAD EN CONSOLAS: La sintaxis usada en el campo correspondiente a las Consolas no es correcta."); }
 		}
 
 		return back()->with('message','¡Juego editado con ÉXITO!');

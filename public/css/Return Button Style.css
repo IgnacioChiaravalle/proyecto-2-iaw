@@ -1,7 +1,7 @@
 img.return-btn {
 	width: 5%;
 	height: 10%;
-	position: fixed;
+	position: absolute;
 	margin-left: 0.5%;
 	border: 5px inset rgb(132, 18, 185);
 	border-radius: 10%/10%;

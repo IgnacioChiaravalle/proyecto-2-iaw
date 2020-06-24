@@ -18,6 +18,7 @@ class CreateMerchItemsTable extends Migration {
 			$table->text('photo');
 			$table->text('description');
 			$table->string('origin_media');
+			$table->integer('stock');
 			$table->float('price');
 			$table->timestamps();
 		});

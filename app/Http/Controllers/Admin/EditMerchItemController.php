@@ -22,6 +22,7 @@ class EditMerchItemController extends Controller {
 			'foto' => ['nullable', 'image'],
 			'descripción' => ['nullable', 'string'],
 			'multimedia-de-origen' => ['nullable', 'string'],
+			'stock' => ['nullable', 'integer', 'min:0'],
 			'precio' => ['nullable', 'numeric', 'min:0'],
 			'categorías' => ['nullable', 'string'],
 		]);
@@ -49,7 +50,8 @@ class EditMerchItemController extends Controller {
 			'photo' => $requestArray[0],
 			'description' => $requestArray[1],
 			'origin_media' => $requestArray[2],
-			'price' => $requestArray[3]
+			'stock' => $requestArray[3],
+			'price' => $requestArray[4]
 		]);
 	}
 	private function getRequestArray(Controller $functionHouseController, Request $request, String $merchItemName) {
@@ -60,6 +62,7 @@ class EditMerchItemController extends Controller {
 			array_push($requestArray, MerchItem::where('name', $merchItemName)->pluck('photo')[0]);
         array_push($requestArray, $request->input('descripción') ?? MerchItem::where('name', $merchItemName)->pluck('description')[0]);
 		array_push($requestArray, $request->input('multimedia-de-origen') ?? MerchItem::where('name', $merchItemName)->pluck('origin_media')[0]);
+		array_push($requestArray, $request->input('stock') ?? MerchItem::where('name', $merchItemName)->pluck('stock')[0]);
 		array_push($requestArray, $request->input('precio') ?? MerchItem::where('name', $merchItemName)->pluck('price')[0]);
 		return $requestArray;
 	}

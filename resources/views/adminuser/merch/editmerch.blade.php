@@ -53,13 +53,25 @@
 			</div>
 		</div>
 
+		<div>
+			<label for="multimedia-de-origen">Nombre de la Multimedia de Origen:</label>
+			<div class="multimedia-div">
+				<input id="multimedia-de-origen" type="text" class="value-set-input-left  {{old('multimedia-de-origen') ? 'active-field' : 'default-field'}}" name="multimedia-de-origen" value="{{old('multimedia-de-origen')}}" placeholder="Multimedia de Origen" autocomplete="multimedia-de-origen" onkeypress = "clearFieldIfDefault(this); activateField(this); checkAllActive(2, 'submit-btn-editmerch')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(2, 'submit-btn-editmerch')">
+				@error('multimedia-de-origen')
+					<label class="invalid-feedback" role="alert">
+						<strong>{{ $message }}</strong>
+					</label>
+				@enderror
+			</div>
+		</div>
+
 		<div class="value-set">
 
-			<div class="value-set-left">
-				<label for="multimedia-de-origen">Nombre de la Multimedia de Origen:</label>
-				<div class="multimedia-div">
-					<input id="multimedia-de-origen" type="text" class="value-set-input-left  {{old('multimedia-de-origen') ? 'active-field' : 'default-field'}}" name="multimedia-de-origen" value="{{old('multimedia-de-origen')}}" placeholder="Multimedia de Origen" autocomplete="multimedia-de-origen" onkeypress = "clearFieldIfDefault(this); activateField(this); checkAllActive(2, 'submit-btn-editmerch')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(2, 'submit-btn-editmerch')">
-					@error('multimedia-de-origen')
+			<div class="value-set-div value-set-left">
+				<label for="stock">Stock:</label>
+				<div>
+					<input id="stock" type="text" class="value-set-input  {{old('stock') ? 'active-field' : 'default-field'}}" name="stock" value="{{old('stock')}}" placeholder=0 autocomplete="stock" onkeypress = "clearFieldIfDefault(this); activateField(this); checkAllActive(2, 'submit-btn-editmerch')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(2, 'submit-btn-editmerch')">
+					@error('stock')
 						<label class="invalid-feedback" role="alert">
 							<strong>{{ $message }}</strong>
 						</label>
@@ -67,10 +79,10 @@
 				</div>
 			</div>
 
-			<div class="value-set-right">
+			<div class="value-set-div value-set-right">
 				<label for="precio">Precio del Artículo:</label>
 				<div class="pricetag-div">
-					<input id="precio" type="text" class="value-set-input-right {{old('precio') ? 'active-field' : 'default-field'}}" name="precio" value="{{old('precio')}}" placeholder=0 autocomplete="precio" onkeypress = "clearFieldIfDefault(this); activateField(this); checkAllActive(2, 'submit-btn-editmerch')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(2, 'submit-btn-editmerch')">
+					<input id="precio" type="text" class="value-set-input {{old('precio') ? 'active-field' : 'default-field'}}" name="precio" value="{{old('precio')}}" placeholder=0 autocomplete="precio" onkeypress = "clearFieldIfDefault(this); activateField(this); checkAllActive(2, 'submit-btn-editmerch')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(2, 'submit-btn-editmerch')">
 					@error('precio')
 						<label class="invalid-feedback" role="alert">
 							<strong>{{ $message }}</strong>

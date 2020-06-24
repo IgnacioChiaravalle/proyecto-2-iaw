@@ -20,6 +20,7 @@ class AddMerchItemController extends Controller {
 			'foto' => ['required', 'image'],
 			'descripción' => ['required', 'string'],
 			'multimedia-de-origen' => ['required', 'string'],
+			'stock' => ['required', 'integer', 'min:0'],
 			'precio' => ['required', 'numeric', 'min:0'],
 			'categorías' => ['required', 'string'],
 		]);
@@ -41,6 +42,7 @@ class AddMerchItemController extends Controller {
 			'photo' => base64_encode($photoContent),
 			'description' => $request->input('descripción'),
 			'origin_media' => $request->input('multimedia-de-origen'),
+			'stock' => $request->input('stock'),
 			'price' => $request->input('precio')
 		]);
 	}

@@ -11,7 +11,7 @@ class MerchItem extends Model {
 	 * @var array
 	 */
 	protected $fillable = [
-		'name', 'photo', 'description', 'origin_media', 'price'
+		'name', 'photo', 'description', 'origin_media', 'stock', 'price'
 	];
 
 }
