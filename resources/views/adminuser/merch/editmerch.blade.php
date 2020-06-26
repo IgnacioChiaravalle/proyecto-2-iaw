@@ -70,7 +70,7 @@
 			<div class="value-set-div value-set-left">
 				<label for="stock">Stock:</label>
 				<div>
-					<input id="stock" type="text" class="value-set-input  {{old('stock') ? 'active-field' : 'default-field'}}" name="stock" value="{{old('stock')}}" placeholder=0 autocomplete="stock" onkeypress = "clearFieldIfDefault(this); activateField(this); checkAllActive(2, 'submit-btn-editmerch')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(2, 'submit-btn-editmerch')">
+					<input id="stock" type="number" class="value-set-input  {{old('stock') ? 'active-field' : 'default-field'}}" name="stock" value="{{old('stock')}}" placeholder=0 autocomplete="stock" onkeypress = "clearFieldIfDefault(this); activateField(this); checkAllActive(2, 'submit-btn-editmerch')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(2, 'submit-btn-editmerch')">
 					@error('stock')
 						<label class="invalid-feedback" role="alert">
 							<strong>{{ $message }}</strong>
@@ -82,7 +82,7 @@
 			<div class="value-set-div value-set-right">
 				<label for="precio">Precio del Artículo:</label>
 				<div class="pricetag-div">
-					<input id="precio" type="text" class="value-set-input {{old('precio') ? 'active-field' : 'default-field'}}" name="precio" value="{{old('precio')}}" placeholder=0 autocomplete="precio" onkeypress = "clearFieldIfDefault(this); activateField(this); checkAllActive(2, 'submit-btn-editmerch')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(2, 'submit-btn-editmerch')">
+					<input id="precio" type="number" step=".01" class="value-set-input {{old('precio') ? 'active-field' : 'default-field'}}" name="precio" value="{{old('precio')}}" placeholder=0 autocomplete="precio" onkeypress = "clearFieldIfDefault(this); activateField(this); checkAllActive(2, 'submit-btn-editmerch')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(2, 'submit-btn-editmerch')">
 					@error('precio')
 						<label class="invalid-feedback" role="alert">
 							<strong>{{ $message }}</strong>

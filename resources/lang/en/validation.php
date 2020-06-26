@@ -38,7 +38,7 @@ return [
 	'digits' => 'The :attribute must be :digits digits.',
 	'digits_between' => 'The :attribute must be between :min and :max digits.',
 	'dimensions' => 'The :attribute has invalid image dimensions.',
-	'distinct' => 'The :attribute field has a duplicate value.',
+	'distinct' => 'Hay un duplicado ya almacenado para el valor ingresado en el campo :attribute.',
 	'email' => 'El atributo :attribute debe ser una dirección válida de e-mail.',
 	'ends_with' => 'The :attribute must end with one of the following: :values.',
 	'exists' => 'The selected :attribute is invalid.',
@@ -56,7 +56,7 @@ return [
 		'string' => 'The :attribute must be greater than or equal :value characters.',
 		'array' => 'The :attribute must have :value items or more.',
 	],
-	'image' => 'La :attribute debe ser una imagen.', //Se usa sólo en las portadas.
+	'image' => 'La :attribute debe ser una imagen.', //Only used on covers.
 	'in' => 'The selected :attribute is invalid.',
 	'in_array' => 'The :attribute field does not exist in :other.',
 	'integer' => 'El :attribute debe ser un valor entero.',
@@ -95,7 +95,7 @@ return [
 	'numeric' => 'El :attribute debe ser un número.',
 	'password' => 'El password ingresado es incorrecto.',
 	'present' => 'The :attribute field must be present.',
-	'regex' => 'The :attribute format is invalid.',
+	'regex' => 'El atributo :attribute tiene un máximo de dos posiciones decimales.', //Only used on prices.
 	'required' => 'El campo :attribute es requerido.',
 	'required_if' => 'El campo :attribute es requerido cuando :other está :value.',
 	'required_unless' => 'The :attribute field is required unless :other is in :values.',

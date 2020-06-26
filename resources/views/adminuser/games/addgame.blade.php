@@ -59,7 +59,7 @@
 			<div class="value-set-div value-set-left">
 				<label for="año">Año de Lanzamiento:</label>
 				<div>
-					<input id="año" type="text" class="value-set-input {{old('año') ? 'active-field' : 'default-field'}}" name="año" value="{{old('año')}}" placeholder=0 required autocomplete="año" onkeypress = "clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addgame')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addgame')">
+					<input id="año" type="number" class="value-set-input {{old('año') ? 'active-field' : 'default-field'}}" name="año" value="{{old('año')}}" placeholder=0 required autocomplete="año" onkeypress = "clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addgame')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addgame')">
 					@error('año')
 						<label class="invalid-feedback" role="alert">
 							<strong>{{ $message }}</strong>
@@ -115,7 +115,7 @@
 			<div class="value-set-div value-set-left">
 				<label for="precio-nuevo">Precio de las Copias Nuevas:</label>
 				<div class="pricetag-div">
-					<input id="precio-nuevo" type="text" class="value-set-input {{old('precio-nuevo') ? 'active-field' : 'default-field'}}" name="precio-nuevo" value="{{old('precio-nuevo')}}" placeholder=0 required autocomplete="precio-nuevo" onkeypress = "clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addgame')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addgame')">
+					<input id="precio-nuevo" type="number" step=".01" class="value-set-input {{old('precio-nuevo') ? 'active-field' : 'default-field'}}" name="precio-nuevo" value="{{old('precio-nuevo')}}" placeholder=0 required autocomplete="precio-nuevo" onkeypress = "clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addgame')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addgame')">
 					@error('precio-nuevo')
 						<label class="invalid-feedback" role="alert">
 							<strong>{{ $message }}</strong>
@@ -129,7 +129,7 @@
 			<div class="value-set-div value-set-right">
 				<label for="precio-usado">Precio de las Copias Usadas:</label>
 				<div class="pricetag-div">
-					<input id="precio-usado" type="text" class="value-set-input {{old('precio-usado') ? 'active-field' : 'default-field'}}" name="precio-usado" value="{{old('precio-usado')}}" placeholder=0 required autocomplete="precio-usado" onkeypress = "clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addgame')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addgame')">
+					<input id="precio-usado" type="number" step=".01" class="value-set-input {{old('precio-usado') ? 'active-field' : 'default-field'}}" name="precio-usado" value="{{old('precio-usado')}}" placeholder=0 required autocomplete="precio-usado" onkeypress = "clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addgame')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(7, 'submit-btn-addgame')">
 					@error('precio-usado')
 						<label class="invalid-feedback" role="alert">
 							<strong>{{ $message }}</strong>

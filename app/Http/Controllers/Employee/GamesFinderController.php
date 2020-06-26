@@ -70,27 +70,4 @@ class GamesFinderController extends Controller {
 		}
 		return $consolesArray;
 	}
-
-
-	/*private function printArrayTheWayGodIntendsItFFS(array $gameDevsConsoles) {
-		echo "{ ";
-		foreach ($gameDevsConsoles as $gDC) {
-			echo "[ Game=( ";
-			foreach ($gDC[0] as $gameAttribute)
-				echo $gameAttribute . " ";
-			echo ") ; Devs=( ";
-			foreach ($gDC[1] as $dev)
-				echo $dev . " ";
-			echo ") ; Consoles=( ";
-			foreach ($gDC[2] as $consoleData) {
-				echo "/ ";
-				foreach ($consoleData as $consoleAttribute)
-					echo $consoleAttribute . " ";
-				echo "\ ";
-			}
-			echo ") ]          ;          ";
-
-		}
-		echo " }";
-	}*/
 }

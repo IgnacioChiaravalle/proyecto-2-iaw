@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<title>The Water Level - Stock de Juegos</title>
 	<script src = "{{ url('/js/InputFieldClassHandler.js') }}" type = "text/javascript"></script>
-	<script src = "{{ url('/js/TypeSwapper.js') }}" type = "text/javascript"></script>
+	<script src = "{{ url('/js/SubmitEnabler.js') }}" type = "text/javascript"></script>
 	<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Document Style.css') }}">
 	<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Label - Invalid Feedback Style.css') }}"/>
 	<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Return Button Style.css') }}"/>
@@ -19,20 +19,21 @@
 		<script type="text/javascript">alert("{{ Session::get('message') }}");</script>
 	@endif
 
-	<a href="{{ url('/employeesite') }}">
-		<img src="../../Company Logo.png" alt="The Water Level Logo; Retornar al Sitio Principal del Empleado" class="return-btn">
+	<a href="{{ url('employeesite') }}">
+		<img src="../../../../Company Logo.png" alt="The Water Level Logo; Retornar al Sitio Principal del Empleado" class="return-btn">
 	</a>
 
 	<a href="{{ url('/stockgames') }}">
 		<h1>Stock de Juegos</h1>
 	</a>
 
+	<?php $id = $_SERVER['REQUEST_URI']; ?>
 	<form method="POST" action="{{url('searchgame')}}" enctype="multipart/form-data">
 		@csrf
 		<div class="search-div">
 			<label for="nombre" class="search-label">Buscá acá el Nombre de un Juego:</label>
 			<div>
-				<input id="nombre" type="text" class="{{old('nombre') ? 'active-field' : 'default-field'}}" name="nombre" value="{{old('nombre')}}" placeholder="Nombre de un Juego" required autocomplete="nombre" onkeypress="clearFieldIfDefault(this); activateField(this); checkAllActive(1, 'submit-btn-searchgame')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(1, 'submit-btn-searchgame')">
+				<input id="nombre" type="text" class="{{old('nombre') ? 'active-field' : 'default-field'}}" name="nombre" value="{{old('nombre')}}" placeholder="Nombre de un Juego" required autocomplete="nombre" onkeypress="clearFieldIfDefault(this); activateField(this); enable('{{ $id }}')" onclick="clearFieldIfDefault(this); activateField(this); enable('{{ $id }}')">
 				@error('nombre')
 					<label class="invalid-feedback" role="alert">
 						<strong>{{ $message }}</strong>
@@ -40,7 +41,7 @@
 				@enderror
 			</div>
 		</div>	
-		<button type="submit" id="submit-btn-searchgame" class="submit disabled-submit" disabled="disabled">
+		<button type="submit" id="{{ $id }}" class="submit disabled-submit" disabled="disabled">
 			BUSCAR
 		</button>
 	</form>
@@ -69,20 +70,33 @@
 		@isset ($gameDevsConsoles)
 			@foreach ($gameDevsConsoles as $gDC)
 				<tr class="table-inner-row">
+					
+					<?php $url = "stockgames/getfullgamedata/" . $gDC[0][0]; ?>
+					<td class="game-attribute clickable" onclick="location.href='{{ $bar . $url }}'">{{ $gDC[0][0] }}</td> <!-- Name of Game -->
 
-					@foreach ($gDC[0] as $gameAttribute) <!-- Fill all game attributes -->
-						@if ($gameAttribute != null)
-							<td class="game-attribute clickable" onclick="">{{ $gameAttribute }}</td>
-						@else
-							<td class="game-attribute" onclick="">No Disponible</td>
-						@endif
-					@endforeach
+					<?php $url = "stockgames/filterbyyear/" . $gDC[0][1]; ?>
+					<td class="game-attribute clickable" onclick="location.href='{{ $bar . $url }}'">{{ $gDC[0][1] }}</td> <!-- Release Year -->
+					
+					@if ($gDC[0][2] != null) <!-- ESRB Rating -->
+						<?php $url = "stockgames/filterbyesrb/" . $gDC[0][2]; ?>
+						<td class="game-attribute clickable" onclick="location.href='{{ $bar . $url }}'">{{ $gDC[0][2] }}</td>
+					@else
+						<?php $url = "stockgames/filterbyesrb/null"; ?>
+						<td class="game-attribute clickable" onclick="location.href='{{ $bar . $url }}'">No Disponible</td>
+					@endif
+
+					<?php $url = "stockgames/filterbynewprice/" . floor($gDC[0][3]) . "/" . (($gDC[0][3] - floor($gDC[0][3])) * 100); ?>
+					<td class="game-attribute clickable" onclick="location.href='{{ $bar . $url }}'">{{ $gDC[0][3] }}</td> <!-- Price of New Copies -->
+
+					<?php $url = "stockgames/filterbyusedprice/" . floor($gDC[0][4]) . "/" . (($gDC[0][4] - floor($gDC[0][4])) * 100); ?>
+					<td class="game-attribute clickable" onclick="location.href='{{ $bar . $url }}'">{{ $gDC[0][4] }}</td> <!-- Price of Used Copies -->
 
 					<td>
 						@foreach ($gDC[1] as $devOfGame) <!-- Write each developer in a separate row -->
+							<?php $url = "stockgames/filterbydeveloper/" . $devOfGame; ?>
 							<table class="inner-table sub-row">
 								<tr>
-									<td class="clickable" onclick="">{{ $devOfGame }}</td>
+									<td class="clickable" onclick="location.href='{{ $bar . $url }}'">{{ $devOfGame }}</td>
 								</tr>
 							</table>
 							@if ($devOfGame != $gDC[1][count($gDC[1])-1]) <!-- If not working on the last developer -->

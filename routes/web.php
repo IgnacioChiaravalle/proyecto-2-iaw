@@ -78,10 +78,19 @@ Route::get('/employeesite', function () {
 //EMPLOYEE - GAMES (WITH OR WITHOUT FILTERS):
 Route::get('stockgames', 'Employee\GamesFinderController@getAllGames')->middleware('auth');
 Route::post('searchgame', 'Employee\GamesFinderController@getGame')->middleware('auth');
+Route::get('searchgame', function () {
+	return view('employeeuser\games\stockgames');
+})->middleware('auth');
+
+Route::get('stockgames/filterbyyear/{year}', 'Employee\FilterController@filterByYear')->middleware('auth');
+Route::get('stockgames/filterbyesrb/{esrb}', 'Employee\FilterController@filterByESRB')->middleware('auth');
+Route::get('stockgames/filterbynewprice/{newPriceInteger}/{newPriceDecimal}', 'Employee\FilterController@filterByNewPrice')->middleware('auth');
+Route::get('stockgames/filterbyusedprice/{usedPriceInteger}/{usedPriceDecimal}', 'Employee\FilterController@filterByUsedPrice')->middleware('auth');
+Route::get('stockgames/filterbydeveloper/{devName}', 'Employee\FilterController@filterByDeveloper')->middleware('auth');
 Route::get('stockgames/filterbyconsole/{consoleName}', 'Employee\FilterController@filterByConsole')->middleware('auth');
 
 //EMPLOYEE - MERCH (WITH OR WITHOUT FILTERS):
-Route::get('/stockmerch', function () {
+Route::get('stockmerch', function () {
 	return view('employeeuser\merch\stockmerch');
 })->middleware('auth');
 Route::post('stockmerch', 'Employee\StockMerchController@index')->middleware('auth');
