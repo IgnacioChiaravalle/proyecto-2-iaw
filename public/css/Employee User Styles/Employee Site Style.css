@@ -5,7 +5,7 @@ div {
 	width: 80%;
 	display: flex;
 }
-	a {
+	a.stock {
 		width: 40%;
 		padding-top: 5%;
 		padding-bottom: 5%;
@@ -17,7 +17,7 @@ div {
 		animation: expandFromCenter 1500ms;
 		transition: transform .3s ease-in-out;
 	}
-		a:hover {
+		a.stock:hover {
 			font-weight: bold;
 			transform: scale(1.1);
 		}

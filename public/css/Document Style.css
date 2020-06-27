@@ -15,6 +15,10 @@
 	src: url(Fonts/Bungee_Font.ttf);
 }
 @font-face {
+	font-family: ChakraPetch;
+	src: url(Fonts/ChakraPetch_Font.ttf);
+}
+@font-face {
 	font-family: LondrinaSolid;
 	src: url(Fonts/LondrinaSolid_Font.ttf);
 }
@@ -46,6 +50,7 @@
 	font-family: Staatliches;
 	src: url(Fonts/Staatliches_Font.ttf);
 }
+
 
 @keyframes expandFromCenter {
 	from { transform: scale(0); }

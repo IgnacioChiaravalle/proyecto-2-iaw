@@ -61,7 +61,7 @@ class RegisterController extends Controller
 			'password' => Hash::make($data['password']),
 			'admin' => $admin,
 		]);
-		$location = $admin == 1 ? 'Location: /adminsite' : 'Location: /welcome';
+		$location = $admin == 1 ? 'Location: /adminsite' : 'Location: /employeesite';
 		header($location);
 		exit;
 	}
