@@ -10,7 +10,7 @@
 	<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Label - Invalid Feedback Style.css') }}"/>
 	<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Return Button Style.css') }}"/>
 	<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Employee User Styles/Employee General Style.css') }}"/>
-	<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Employee User Styles/Employee Game Style.css') }}"/>
+	<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Employee User Styles/Employee Stock Game Style.css') }}"/>
 	
 </head>
 <body>

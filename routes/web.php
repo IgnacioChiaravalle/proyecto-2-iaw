@@ -82,18 +82,23 @@ Route::get('searchgame', function () {
 	return view('employeeuser\games\stockgames');
 })->middleware('auth');
 
-Route::get('stockgames/filterbyyear/{year}', 'Employee\FilterController@filterByYear')->middleware('auth');
-Route::get('stockgames/filterbyesrb/{esrb}', 'Employee\FilterController@filterByESRB')->middleware('auth');
-Route::get('stockgames/filterbynewprice/{newPriceInteger}/{newPriceDecimal}', 'Employee\FilterController@filterByNewPrice')->middleware('auth');
-Route::get('stockgames/filterbyusedprice/{usedPriceInteger}/{usedPriceDecimal}', 'Employee\FilterController@filterByUsedPrice')->middleware('auth');
-Route::get('stockgames/filterbydeveloper/{devName}', 'Employee\FilterController@filterByDeveloper')->middleware('auth');
-Route::get('stockgames/filterbyconsole/{consoleName}', 'Employee\FilterController@filterByConsole')->middleware('auth');
+Route::get('stockgames/getfullgamedata/{gameName}', 'Employee\FullGameDataController@getFullGameData')->middleware('auth');
+Route::get('stockgames/filterbyyear/{year}', 'Employee\GameFilterController@filterByYear')->middleware('auth');
+Route::get('stockgames/filterbyesrb/{esrb}', 'Employee\GameFilterController@filterByESRB')->middleware('auth');
+Route::get('stockgames/filterbynewprice/{newPriceInteger}/{newPriceDecimal}', 'Employee\GameFilterController@filterByNewPrice')->middleware('auth');
+Route::get('stockgames/filterbyusedprice/{usedPriceInteger}/{usedPriceDecimal}', 'Employee\GameFilterController@filterByUsedPrice')->middleware('auth');
+Route::get('stockgames/filterbydeveloper/{devName}', 'Employee\GameFilterController@filterByDeveloper')->middleware('auth');
+Route::get('stockgames/filterbyconsole/{consoleName}', 'Employee\GameFilterController@filterByConsole')->middleware('auth');
 
 //EMPLOYEE - MERCH (WITH OR WITHOUT FILTERS):
 Route::get('stockmerch', function () {
 	return view('employeeuser\merch\stockmerch');
 })->middleware('auth');
-Route::post('stockmerch', 'Employee\StockMerchController@index')->middleware('auth');
+Route::post('stockmerch', 'Employee\StockMerchController@getAllMerch')->middleware('auth');
+Route::post('searchmerch', 'Employee\GamesFinderController@getMerch')->middleware('auth');
+
+Route::get('stockmerch/filterbyoriginmedia/{originMedia}', 'Employee\MerchFilterController@filterByOriginMedia')->middleware('auth');
+
 
 //EMPLOYEE - STOCK CHANGES:
 Route::get('changegamestock/{gameName}/{consoleName}/{newOrUsed}/{value}', 'Employee\StockGamesController@changeGameStock')->middleware('auth');

@@ -1,0 +1,142 @@
+label {
+	font-size: 150%;
+}
+
+div.attributes, div.covers-div , div.devs-and-consoles {
+	display: flex;
+	width: 92%;
+	margin-left: auto;
+	margin-right: auto;
+}
+	label.attribute-name {
+		font-family: LuckiestGuy;
+		color: rgb(86, 192, 24);
+		text-shadow: -1px -1px 2px black, 1px -1px 2px black, -1px 1px 2px black, 1px 1px 2px black;
+	}
+	label.attribute-value {
+		font-family: Staatliches;
+		color: rgb(192, 167, 24);
+		text-shadow: -1px -1px 2px black, 1px -1px 2px black, -1px 1px 2px black, 1px 1px 2px black;
+	}
+
+#year {
+	margin-left: 0%;
+	margin-right: auto;
+}
+#esrb {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div.prices {
+	margin-top: -1.35%;
+	margin-left: auto;
+	margin-right: 0%;
+}
+	img.coin {
+		margin-top: 0.75%;
+		width: 20px;
+		height: 20px;
+		transition: transform .5s;
+		transform-style: preserve-3d;
+	}
+		img.coin:hover {
+			transform: rotateY(360deg);
+		}
+
+div.covers-div {
+	height: 20%;
+	max-height: 20%;
+}
+	div.cover-item {
+		display: block;
+		height: 100%;
+		width: 40%;
+	}
+
+	div.cover-item-left {
+		margin-left: 7.5%;
+		margin-right: auto;
+	}
+	div.cover-item-right {
+		margin-left: auto;
+		margin-right: 7.5%;
+	}
+
+	img.cover-image {
+		margin-top: 1%;
+		width: 450px;
+		height: 500px;
+		max-width: 100%;
+		max-height: 100%;
+		border-radius: 5%/7.5%;
+		border: 10px groove rgb(221, 119, 23);
+		
+	}
+
+div.devs-and-consoles {
+	margin-top: 2%;
+}
+div.devs {
+	width: 20%;
+	margin-left: 15%;
+	margin-right: auto;
+}
+div.consoles {
+	width: 30%;
+	margin-left: auto;
+	margin-right: 12.5%;
+}
+li.first-level-list {
+	font-size: 120%;
+	font-family: Notable;
+	margin-top: 2%;
+	color: rgb(188, 66, 212);
+	text-shadow: -1px -1px 2px black, 1px -1px 2px black, -1px 1px 2px black, 1px 1px 2px black;
+}
+li.second-level-list {
+	font-size: 110%;
+	font-family: MuseoModerno;
+	color: rgb(192, 181, 24);
+	text-shadow: -1px -1px 2px black, 1px -1px 2px black, -1px 1px 2px black, 1px 1px 2px black;
+}
+button {
+	width: 10%;
+	font-family: AllertaStencil;
+	font-weight: bold;
+	color: darkslateblue;
+	background-color: darksalmon;
+	border: 2px outset rgb(34, 14, 109);
+	border-radius: 25%/50%;
+	cursor: pointer;
+}
+	button:hover,button:focus {
+		color: rgb(212, 16, 16);
+		background-color: rgb(183, 231, 71);
+		border-color: rgb(192, 4, 4);
+	}
+
+a.view-related-sales {
+	display: block;
+	max-width: 60%;
+	margin-top: 2%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 5%;
+	text-align: center;
+	font-size: 200%;
+	font-family: Bungee;
+	border-radius: 2.5%/10%;
+	color: rgb(221, 214, 115);
+	background-color: darkcyan;
+	border: 5px outset rgb(221, 191, 23);
+	transition: transform .15s ease-in-out;
+}
+	a.view-related-sales:hover, a.view-related-sales:focus {
+		font-weight: bold;
+		font-size: 210%;
+		color: rgb(88, 233, 233);
+		background-color: rgb(113, 6, 122);
+		border-color: rgb(23, 175, 221);
+		transform: scale(1.07);
+	}

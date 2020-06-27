@@ -11,7 +11,7 @@ use App\Developer;
 use App\Console;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class FilterController extends Controller {
+class GameFilterController extends Controller {
 	public function __construct() {
 		$this->middleware('guest');
 	}
@@ -48,9 +48,10 @@ class FilterController extends Controller {
 		$gamesOfFilterModel = [];
 		foreach ($filterModel as $filterModelRow)
 			array_push($gamesOfFilterModel, Game::where('name', $filterModelRow->$nameString)->first());
-		$gameDevsConsoles = []; $gFC = new GamesFinderController;
+		$gameDevsConsoles = [];
+		$gFC = new GamesFinderController;
 		foreach($gamesOfFilterModel as $game)
 			array_push($gameDevsConsoles, $gFC->getGameInfo($game));
-		return /*redirect()->route('stockgames')*/View::make('employeeuser/games/stockgames')->with('gameDevsConsoles', $gameDevsConsoles); //View::make('employeeuser/games/stockgames')
+		return View::make('employeeuser/games/stockgames')->with('gameDevsConsoles', $gameDevsConsoles);
 	}
 }

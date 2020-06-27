@@ -45,20 +45,20 @@ class GamesFinderController extends Controller {
 			$game->price_new,
 			$game->price_used
 		];
-		$devsArray = $this->getDevsArray($gameData);
-		$consolesArray = $this->getConsolesArray($gameData);
+		$devsArray = $this->getDevsArray($gameData[0]);
+		$consolesArray = $this->getConsolesArray($gameData[0]);
 		return [$gameData, $devsArray, $consolesArray];
 	}
 
-	private function getDevsArray(array $gameData) {
-		$devs = Developer::where('game_name', $gameData[0])->orderBy('dev_name', 'asc')->get();
+	public function getDevsArray(String $gameName) {
+		$devs = Developer::where('game_name', $gameName)->orderBy('dev_name', 'asc')->get();
 		$devsArray = [];
 		foreach ($devs as $dev)
 			array_push($devsArray, $dev->dev_name);
 		return $devsArray;
 	}
-	private function getConsolesArray(array $gameData) {
-		$consoles = Console::where('game_name', $gameData[0])->orderBy('console_name', 'asc')->get();
+	public function getConsolesArray(String $gameName) {
+		$consoles = Console::where('game_name', $gameName)->orderBy('console_name', 'asc')->get();
 		$consolesArray = [];
 		foreach ($consoles as $console) {
 			$consoleData = [
