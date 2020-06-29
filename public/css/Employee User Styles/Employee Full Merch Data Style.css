@@ -1,0 +1,101 @@
+label.attribute-name {
+	font-family: Bungee;
+	color: rgb(197, 51, 216);
+}
+label.attribute-value {
+	font-family: AllertaStencil;
+	color: rgb(94, 218, 211);
+}
+label.stored-image-label {
+	padding-left: 26%;
+	line-height: 130%;
+}
+
+#origin-media {
+	margin-left: 0%;
+	margin-right: auto;
+}
+#stock {
+	margin-top: 2.3%;
+	margin-left: auto;
+	margin-right: auto;
+	line-height: 150%;
+}
+	button.full-data-stock-btn {
+		color: rgb(167, 0, 0);
+		background-color: rgb(165, 185, 252);
+		border: 2px outset rgb(192, 0, 0);
+	}
+		button.full-data-stock-btn:hover, button.full-data-stock-btn:focus {
+			color: rgb(10, 116, 28);
+			background-color: rgb(220, 231, 71);
+			border-color: rgb(5, 139, 16);
+		}
+	button.btn-left { /* Override Employee General Style */
+		margin-left: 15%;
+	}
+	button.btn-right{ /* Override Employee General Style */
+		margin-left: 30%;
+	}
+#price {
+	margin-left: auto;
+	margin-right: 0%;
+}
+
+div.photo-div {
+	height: 20%;
+	max-height: 20%;
+	width: 60%;
+	max-width: 60%;
+	margin-left: auto;
+	margin-right: auto;
+}
+img.stored-image {
+	border-color: rgb(69, 221, 23);
+}
+
+div.description {
+	width: 92%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 1.5%;
+}
+div.categories {
+	width: 92%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+ul {
+	margin-top: -0.5%;
+}
+li {
+	font-size: 120%;
+	font-family: ArchitectsDaughter;
+	color: rgb(255, 60, 60);
+	text-shadow: -1px -1px 2px black, 1px -1px 2px black, -1px 1px 2px black, 1px 1px 2px black;
+}
+a.category-filter {
+	text-decoration: none;
+	font-style: italic;
+}
+	a.category-filter:hover, a.category-filter:focus {
+		font-style: normal;
+		font-weight: bold;
+	}
+
+a.view-related-sales {
+	padding-top: 1%;
+	padding-bottom: 1%;
+	font-size: 260%;
+	font-family: LuckiestGuy;
+	color: rgb(112, 255, 119);
+	background-color: rgb(9, 11, 114);
+	border-color: rgb(25, 184, 72);
+}
+	a.view-related-sales:hover, a.view-related-sales:focus {
+		font-size: 270%;
+		color: gold;
+		background-color: rgb(17, 75, 0);
+		border-color: rgb(189, 160, 0);
+	}

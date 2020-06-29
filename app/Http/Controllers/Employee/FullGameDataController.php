@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Employee\GamesFinderController;
 use Illuminate\Support\Facades\View;
 use App\Game;
-use App\Developer;
-use App\Console;
+use App\MerchItem;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class FullGameDataController extends Controller {
 	public function __construct() {
@@ -19,6 +19,12 @@ class FullGameDataController extends Controller {
 		$gFC = new GamesFinderController;
 		$devsArray = $gFC->getDevsArray($gameName);
 		$consolesArray = $gFC->getConsolesArray($gameName);
-		return View::make('employeeuser/games/fullgamedata')->with('game', $game)->with('devs', $devsArray)->with('consoles', $consolesArray);
+		try {
+			MerchItem::where('origin_media', $gameName)->firstOrFail();
+			return View::make('employeeuser/games/fullgamedata')->with('game', $game)->with('devs', $devsArray)->with('consoles', $consolesArray)->with('found', true);
+		}
+		catch (ModelNotFoundException $ex) {
+			return View::make('employeeuser/games/fullgamedata')->with('game', $game)->with('devs', $devsArray)->with('consoles', $consolesArray)->with('found', false);
+		}
 	}
 }

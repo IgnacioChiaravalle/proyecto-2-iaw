@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Employee;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Employee\GamesFinderController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use App\Game;
 use App\Console;

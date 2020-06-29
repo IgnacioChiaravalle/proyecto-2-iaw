@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Employee;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Employee\GamesFinderController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use App\Game;
 use App\Developer;
@@ -31,12 +30,12 @@ class GameFilterController extends Controller {
 		return $this->filterByGameAttribute('price_used', $usedPriceInteger + ($usedPriceDecimal / 100));
 	}
 	protected function filterByDeveloper($devName) {
-		$developer = Developer::where('dev_name', $devName)->get();
-		return $this->findGamesOfFilter($developer, "game_name");
+		$developers = Developer::where('dev_name', $devName)->get();
+		return $this->findGamesOfFilter($developers, "game_name");
 	}
 	protected function filterByConsole($consoleName) {
-		$console = Console::where('console_name', $consoleName)->get();
-		return $this->findGamesOfFilter($console, "game_name");
+		$consoles = Console::where('console_name', $consoleName)->get();
+		return $this->findGamesOfFilter($consoles, "game_name");
 	}
 
 	private function filterByGameAttribute($modelAttribute, $parameterAttribute) {

@@ -5,6 +5,7 @@
 	<meta charset="utf-8">
 	<title>The Water Level - Empleado de Empresa</title>
 	<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Document Style.css') }}">
+	<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Swap Site Button Style.css') }}"/>
 	<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Logout Button Style.css') }}"/>
 	<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Label - Invalid Feedback Style.css') }}"/>
 	<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Employee User Styles/Employee General Style.css') }}"/>
@@ -12,6 +13,10 @@
 
 </head>
 <body>
+
+	@if (Auth::user()->admin == 1)
+		<a href="{{ url('/adminsite') }}" class="swap-site-btn">Ir al Sitio del<br>Administrador</a>
+	@endif
 	
 	<a href="{{ url('/logout') }}" class="logout-btn">
 		<label class="username-label">{{ Auth::user()->name }}<br></label>

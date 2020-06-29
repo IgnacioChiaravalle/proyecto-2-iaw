@@ -5,6 +5,7 @@
 	<meta charset="utf-8">
 	<title>The Water Level - Admininstrador de Empresa</title>
 	<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Document Style.css') }}">
+	<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Swap Site Button Style.css') }}"/>
 	<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Logout Button Style.css') }}"/>
 	<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Label - Invalid Feedback Style.css') }}"/>
 	<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Admin User Styles/Admin General Style.css') }}"/>
@@ -13,6 +14,8 @@
 </head>
 <body>
 	
+	<a href="{{ url('/employeesite') }}" class="swap-site-btn">Ir al Sitio del<br>Empleado</a>
+
 	<a href="{{ url('/logout') }}" class="logout-btn">
 		<label class="username-label">{{ Auth::user()->name }}<br></label>
 		<label class="logout-label">Cerrar Sesión</label>	

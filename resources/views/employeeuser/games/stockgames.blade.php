@@ -72,24 +72,24 @@
 				<tr class="table-inner-row">
 					
 					<?php $url = "stockgames/getfullgamedata/" . $gDC[0][0]; ?>
-					<td class="game-attribute clickable" onclick="location.href='{{ $bar . $url }}'">{{ $gDC[0][0] }}</td> <!-- Name of Game -->
+					<td class="attribute clickable" onclick="location.href='{{ $bar . $url }}'">{{ $gDC[0][0] }}</td> <!-- Name of Game -->
 
 					<?php $url = "stockgames/filterbyyear/" . $gDC[0][1]; ?>
-					<td class="game-attribute clickable" onclick="location.href='{{ $bar . $url }}'">{{ $gDC[0][1] }}</td> <!-- Release Year -->
+					<td class="attribute clickable" onclick="location.href='{{ $bar . $url }}'">{{ $gDC[0][1] }}</td> <!-- Release Year -->
 					
 					@if ($gDC[0][2] != null) <!-- ESRB Rating -->
 						<?php $url = "stockgames/filterbyesrb/" . $gDC[0][2]; ?>
-						<td class="game-attribute clickable" onclick="location.href='{{ $bar . $url }}'">{{ $gDC[0][2] }}</td>
+						<td class="attribute clickable" onclick="location.href='{{ $bar . $url }}'">{{ $gDC[0][2] }}</td>
 					@else
 						<?php $url = "stockgames/filterbyesrb/null"; ?>
-						<td class="game-attribute clickable" onclick="location.href='{{ $bar . $url }}'">No Disponible</td>
+						<td class="attribute clickable" onclick="location.href='{{ $bar . $url }}'">No Disponible</td>
 					@endif
 
 					<?php $url = "stockgames/filterbynewprice/" . floor($gDC[0][3]) . "/" . (($gDC[0][3] - floor($gDC[0][3])) * 100); ?>
-					<td class="game-attribute clickable" onclick="location.href='{{ $bar . $url }}'">{{ $gDC[0][3] }}</td> <!-- Price of New Copies -->
+					<td class="attribute clickable" onclick="location.href='{{ $bar . $url }}'">{{ $gDC[0][3] }}</td> <!-- Price of New Copies -->
 
 					<?php $url = "stockgames/filterbyusedprice/" . floor($gDC[0][4]) . "/" . (($gDC[0][4] - floor($gDC[0][4])) * 100); ?>
-					<td class="game-attribute clickable" onclick="location.href='{{ $bar . $url }}'">{{ $gDC[0][4] }}</td> <!-- Price of Used Copies -->
+					<td class="attribute clickable" onclick="location.href='{{ $bar . $url }}'">{{ $gDC[0][4] }}</td> <!-- Price of Used Copies -->
 
 					<td>
 						@foreach ($gDC[1] as $devOfGame) <!-- Write each developer in a separate row -->
@@ -123,10 +123,12 @@
 							<table class="inner-table sub-row">
 								<?php $url = "changegamestock/" . $gDC[0][0] . "/" . $consoleAttributesList[0]; ?>
 								<tr>
-									<td class="stock-value">	
-										<button class="stock-handler btn-left" onclick="location.href='{{ $bar . $url . $new . $remove }}'">&#8595</button>
-										<label class="stock-label">{{ $consoleAttributesList[1] }}</label>
-										<button class="stock-handler btn-left" onclick="location.href='{{ $bar . $url . $new . $add }}'">&#8593</button>
+									<td class="stock-value">
+										<div>	
+											<button class="stock-handler btn-left" onclick="location.href='{{ $bar . $url . $new . $remove }}'">&#8595</button>
+											<label class="stock-label">{{ $consoleAttributesList[1] }}</label>
+											<button class="stock-handler btn-left" onclick="location.href='{{ $bar . $url . $new . $add }}'">&#8593</button>
+										</div>
 									</td>
 								</tr>
 							</table>
@@ -141,9 +143,11 @@
 								<?php $url = "changegamestock/" . $gDC[0][0] . "/" . $consoleAttributesList[0]; ?>
 								<tr>
 									<td class="stock-value">
-										<button class="stock-handler btn-left" onclick="location.href='{{ $bar . $url . $used . $remove }}'">&#8595</button>
-										<label class="stock-label">{{ $consoleAttributesList[2] }}</label>
-										<button class="stock-handler btn-left" onclick="location.href='{{ $bar . $url . $used . $add }}'">&#8593</button>
+										<div>
+											<button class="stock-handler btn-left" onclick="location.href='{{ $bar . $url . $used . $remove }}'">&#8595</button>
+											<label class="stock-label">{{ $consoleAttributesList[2] }}</label>
+											<button class="stock-handler btn-left" onclick="location.href='{{ $bar . $url . $used . $add }}'">&#8593</button>
+										</div>
 									</td>
 								</tr>
 							</table>

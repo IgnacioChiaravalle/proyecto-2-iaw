@@ -17,3 +17,176 @@ h1 {
 	text-shadow: -1px -1px 2px rgb(53, 6, 71), 1px -1px 2px rgb(53, 6, 71), -1px 1px 2px rgb(53, 6, 71), 1px 1px 2px rgb(53, 6, 71);
 	text-decoration: none;
 }
+
+form {
+	display: flex;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 2.5%;
+}
+
+div.search-div {
+	width: 80%;
+	margin-left: 0%;
+	margin-right: auto;
+}
+
+input {
+	width: 100%;
+	padding-left: 1%;
+	padding-right: 1%;
+	border-style: groove;
+	border-radius: 1%/20%;
+	border-color: gray;
+}
+
+button.submit {
+	width: 15%;
+	margin-left: auto;
+	margin-right: 1.75%;
+	border-radius: 10%/20%;
+	transition: transform .15s ease-in-out;
+}
+	button.enabled-submit {
+		cursor: pointer;
+	}
+		button.enabled-submit:hover, button.enabled-submit:focus {
+			font-weight: bold;
+			transform: scale(1.07);
+		}
+
+table {
+	text-align: center;
+	vertical-align: middle;	
+}
+table.main-table {
+	width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+	border: 6px outset;
+	border-radius: 1%/2%;
+}
+table.inner-table {
+	width: 100%;
+	margin: 0%;
+}
+table.sub-row:hover {
+	font-weight: bold;
+}
+
+td {
+	width: auto;
+}
+td.table-header-cell {
+	padding-top: 1%;
+	padding-bottom: 1%;
+}
+td.attribute:hover {
+	font-weight: bold;
+}
+td.clickable {
+	cursor: pointer;
+}
+
+td.stock-value div {
+	display: flex;
+}
+	button.stock-handler {
+		background: none;
+		border: hidden;
+		border-radius: 25%/25%;
+		text-shadow: 0px 1px 3px black;
+		text-decoration: none;
+		cursor: pointer;
+	}
+		button.stock-handler:hover {
+			box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.19);
+		}
+			button.btn-left {
+				margin-left: 7.5%;
+				margin-right: auto;
+			}
+			button.btn-right {
+				margin-left: auto;
+				margin-right: 7.5%;
+			}
+	label.stock-label {
+		width: 25%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+hr {
+	margin: 0%;
+}
+
+
+div.attributes, div.covers-div, div.devs-and-consoles {
+	display: flex;
+	width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+label.full-data {
+	font-size: 150%;
+}
+label.attribute-name, label.attribute-value {
+	text-shadow: -1px -1px 2px black, 1px -1px 2px black, -1px 1px 2px black, 1px 1px 2px black;
+}
+
+img.coin {
+	margin-top: 0.75%;
+	width: 20px;
+	height: 20px;
+	transition: transform .5s;
+	transform-style: preserve-3d;
+}
+	img.coin:hover {
+		transform: rotateY(360deg);
+	}
+
+img.stored-image {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 450px;
+	height: 500px;
+	max-width: 100%;
+	max-height: 100%;
+	border-radius: 5%/7.5%;
+	border: 10px groove;
+}
+
+div.after-images {
+	margin-top: 2%;
+}
+
+button.full-data-stock-btn {
+	width: 10%;
+	padding-bottom: 1%;
+	text-align: center;
+	font-family: AllertaStencil;
+	font-weight: bold;
+	border-radius: 25%/50%;
+	cursor: pointer;
+}
+
+a.view-related-sales {
+	display: block;
+	max-width: 60%;
+	margin-top: 2%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 5%;
+	text-align: center;
+	text-decoration: none;
+	border: 5px outset;
+	border-radius: 2.5%/10%;
+	transition: transform .15s ease-in-out;
+}
+	a.view-related-sales:hover, a.view-related-sales:focus {
+		font-weight: bold;
+		transform: scale(1.07);
+	}

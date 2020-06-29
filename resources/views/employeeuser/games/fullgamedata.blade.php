@@ -34,26 +34,26 @@
 
 	<div class="attributes">
 		<p id="year">
-			<label class="attribute-name">Año de Lanzamiento:&nbsp</label>
-			<label class="attribute-value">{{ $game->release_year }}</label>
+			<label class="full-data attribute-name">Año de Lanzamiento:&nbsp</label>
+			<label class="full-data attribute-value">{{ $game->release_year }}</label>
 		</p>
 		<p id="esrb">
-			<label class="attribute-name">Rating ESRB:&nbsp</label>
+			<label class="full-data attribute-name">Rating ESRB:&nbsp</label>
 			@if ($game->esrb_rating != null)
-				<label class="attribute-value">{{ $game->esrb_rating }}</label>
+				<label class="full-data attribute-value">{{ $game->esrb_rating }}</label>
 			@else
-				<label class="attribute-value">No Disponible</label>
+				<label class="full-data attribute-value">No Disponible</label>
 			@endif
 		</p>
 		<div class="prices">
 			<p>
-				<label class="attribute-name">Precio de las Copias Nuevas:&nbsp</label>
-				<label class="attribute-value">{{ $game->price_new }}&nbsp</label>
+				<label class="full-data attribute-name">Precio de las Copias Nuevas:&nbsp</label>
+				<label class="full-data attribute-value">{{ $game->price_new }}&nbsp</label>
 				<img src="../../../../Coin.png" alt="Moneda" class="coin">
 			</p>
 			<p>
-				<label class="attribute-name">Precio de las Copias Usadas:&nbsp</label>
-				<label class="attribute-value">{{ $game->price_used }}</label>
+				<label class="full-data attribute-name">Precio de las Copias Usadas:&nbsp</label>
+				<label class="full-data attribute-value">{{ $game->price_used }}</label>
 				<img src="../../../../Coin.png" alt="Moneda" class="coin">
 			</p>
 		</div>
@@ -61,22 +61,22 @@
 
 	<div class="covers-div">
 		<div class="cover-item cover-item-left">
-			<label for="cover" class="attribute-name">Portada:<br></label>
-			<img name="cover" src="data:image/*;base64, {{ $game->cover }}" alt="Portada del Juego" class="cover-image">
+			<label for="cover" class="full-data attribute-name stored-image-label">Portada:<br></label>
+			<img name="cover" src="data:image/*;base64, {{ $game->cover }}" alt="Portada del Juego" class="stored-image">
 		</div>
 		<div class="cover-item cover-item-right">
-			<label for="countercover" class="attribute-name">Contraportada:<br></label>
+			<label for="countercover" class="full-data attribute-name stored-image-label">Contraportada:<br></label>
 			@if ($game->counter_cover != null)
-				<img name="cover" src="data:image/*;base64, {{ $game->counter_cover }}" alt="Contraportada del Juego" class="cover-image">
+				<img name="cover" src="data:image/*;base64, {{ $game->counter_cover }}" alt="Contraportada del Juego" class="stored-image">
 			@else
-				<img name="cover" src="../../../../Image Not Available.png" alt="Contraportada del Juego" class="cover-image">
+				<img name="cover" src="../../../../Image Not Available.png" alt="Contraportada del Juego" class="stored-image">
 			@endif
 		</div>
 	</div>
 
-	<div class="devs-and-consoles">
+	<div class="after-images devs-and-consoles">
 		<div class="devs">
-			<label for="devs-list" class="attribute-name">Desarrolladores:</label>
+			<label for="devs-list" class="full-data attribute-name">Desarrolladores:</label>
 			<ul name="devs-list">
 				@foreach ($devs as $dev)
 					<li class="first-level-list">{{ $dev }}</li>
@@ -84,7 +84,7 @@
 			</ul>
 		</div>
 		<div class="consoles">
-			<label for="consoles-list" class="attribute-name">Disponibilidad en Consolas:</label>
+			<label for="consoles-list" class="full-data attribute-name">Disponibilidad en Consolas:</label>
 			<ul name="consoles-list">
 				@foreach ($consoles as $consoleAttributesList)
 					<li class="first-level-list">{{ $consoleAttributesList[0] }}</li>
@@ -92,13 +92,13 @@
 						<li class="second-level-list">
 							<?php $url = "changegamestock/" . $game->name . "/" . $consoleAttributesList[0]; ?>
 							Copias Nuevas: {{ $consoleAttributesList[1] }}&nbsp&nbsp
-							<button onclick="location.href='{{ $bar . $url . $new . $remove }}'">-</button>
-							<button onclick="location.href='{{ $bar . $url . $new . $add }}'">+</button>
+							<button class="full-data-stock-btn" onclick="location.href='{{ $bar . $url . $new . $remove }}'">-</button>
+							<button class="full-data-stock-btn" onclick="location.href='{{ $bar . $url . $new . $add }}'">+</button>
 						</li>
 						<li class="second-level-list">
 							Copias Usadas: {{ $consoleAttributesList[2] }}&nbsp&nbsp
-							<button onclick="location.href='{{ $bar . $url . $used . $remove }}'">-</button>
-							<button onclick="location.href='{{ $bar . $url . $used . $add }}'">+</button>
+							<button class="full-data-stock-btn" onclick="location.href='{{ $bar . $url . $used . $remove }}'">-</button>
+							<button class="full-data-stock-btn" onclick="location.href='{{ $bar . $url . $used . $add }}'">+</button>
 						</li>
 					</ul>
 				@endforeach
@@ -106,7 +106,9 @@
 		</div>
 	</div>
 
-	<a href="filterbyoriginmedia/{{ $game->name }}" class="view-related-sales">Ver Merchandising de {{ $game->name }}</a>
+	@if ($found)
+		<a href="../../stockmerch/filterbyoriginmedia/{{ $game->name }}" class="view-related-sales">Ver Merchandising de {{ $game->name }}</a>
+	@endif
 
 </body>
 </html>
