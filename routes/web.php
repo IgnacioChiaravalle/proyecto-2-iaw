@@ -35,39 +35,39 @@ Route::get('/register', function () {
 //ADMIN - SITE:
 Route::get('/adminsite', function () {
 	return view('adminuser\adminsite');
-})->middleware('auth');
+})->middleware('adminAuth');
 
 //ADMIN - GAMES:
 Route::get('/addgame', function () {
 	return view('adminuser\games\addgame');
-})->middleware('auth');
-Route::post('addgame', 'Admin\AddGameController@index')->middleware('auth');
+})->middleware('adminAuth');
+Route::post('addgame', 'Admin\AddGameController@index')->middleware('adminAuth');
 
 Route::get('/editgame', function () {
 	return view('adminuser\games\editgame');
-})->middleware('auth');
-Route::post('editgame', 'Admin\EditGameController@index')->middleware('auth');
+})->middleware('adminAuth');
+Route::post('editgame', 'Admin\EditGameController@index')->middleware('adminAuth');
 
 Route::get('/removegame', function () {
 	return view('adminuser\games\removegame');
-})->middleware('auth');
-Route::post('removegame', 'Admin\RemoveGameController@index')->middleware('auth');
+})->middleware('adminAuth');
+Route::post('removegame', 'Admin\RemoveGameController@index')->middleware('adminAuth');
 
 //ADMIN - MERCH:
 Route::get('/addmerch', function () {
 	return view('adminuser\merch\addmerch');
-})->middleware('auth');
-Route::post('addmerch', 'Admin\AddMerchItemController@index')->middleware('auth');
+})->middleware('adminAuth');
+Route::post('addmerch', 'Admin\AddMerchItemController@index')->middleware('adminAuth');
 
 Route::get('/editmerch', function () {
 	return view('adminuser\merch\editmerch');
-})->middleware('auth');
-Route::post('editmerch', 'Admin\EditMerchItemController@index')->middleware('auth');
+})->middleware('adminAuth');
+Route::post('editmerch', 'Admin\EditMerchItemController@index')->middleware('adminAuth');
 
 Route::get('/removemerch', function () {
 	return view('adminuser\merch\removemerch');
-})->middleware('auth');
-Route::post('removemerch', 'Admin\RemoveMerchItemController@index')->middleware('auth');
+})->middleware('adminAuth');
+Route::post('removemerch', 'Admin\RemoveMerchItemController@index')->middleware('adminAuth');
 
 
 //EMPLOYEE - SITE:

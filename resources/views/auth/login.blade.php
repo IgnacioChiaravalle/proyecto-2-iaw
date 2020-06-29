@@ -5,6 +5,10 @@
 <link rel = "stylesheet" type = "text/css" href = "{{ url('/css/User Auth Styles/Login Style.css') }}"/>
 
 @section('content')
+@if (Session::has('message'))
+	<script type="text/javascript">alert("{{ Session::get('message') }}");</script>
+@endif
+
 <div class="container">
 	<div class="row justify-content-center">
 		<div class="col-md-8">
