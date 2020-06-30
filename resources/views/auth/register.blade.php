@@ -61,6 +61,30 @@
 			</div>
 		</div>
 
+		<div>
+			<label for="api_token">Token&nbsp&nbsp&nbsp&nbsppara&nbsp&nbsp&nbsp&nbspusar&nbsp&nbsp&nbsp&nbspla&nbsp&nbsp&nbsp&nbspAPI:</label>
+			<div>
+				<input id="api-token" type="password" name="api_token" required autocomplete="api_token">
+				@error('api_token')
+					<label class="invalid-feedback" role="alert">
+						<strong>{{ $message }}</strong>
+					</label>
+				@enderror
+			</div>
+		</div>
+
+		<div>
+			<label for="api_token_confirmation">Confirmar&nbsp&nbsp&nbsp&nbspToken&nbsp&nbsp&nbsp&nbsppara&nbsp&nbsp&nbsp&nbspusar&nbsp&nbsp&nbsp&nbspla&nbsp&nbsp&nbsp&nbspAPI:</label>
+			<div>
+				<input id="api-token-confirm" type="password" name="api_token_confirmation" required autocomplete="api_token">
+				@error('api_token')
+					<label class="invalid-feedback" role="alert">
+						<strong>{{ $message }}</strong>
+					</label>
+				@enderror
+			</div>
+		</div>
+
 		<div class="form-check">
 			<label class="form-check-label" for="admin-user">¿Es un Administrador de Empresa?</label>
 			<input class="form-check-input-admin-user" type="checkbox" name="admin_user" id="admin-user" {{ old('admin-user') ? 'checked' : '' }}>

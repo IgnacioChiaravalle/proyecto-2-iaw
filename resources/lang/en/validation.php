@@ -77,10 +77,10 @@ return [
 		'array' => 'The :attribute must not have more than :value items.',
 	],
 	'max' => [
-		'numeric' => 'The :attribute may not be greater than :max.',
-		'file' => 'The :attribute may not be greater than :max kilobytes.',
-		'string' => 'The :attribute may not be greater than :max characters.',
-		'array' => 'The :attribute may not have more than :max items.',
+		'numeric' => 'El :attribute no puede ser mayor que :max.',
+		'file' => 'El :attribute no puede ocupar más de :max kilobytes.',
+		'string' => 'El :attribute no puede contener más de :max caracteres.',
+		'array' => 'El :attribute no puede contener más de :max ítems.',
 	],
 	'mimes' => 'La :attribute debe ser un archivo de tipo: :values.',
 	'mimetypes' => 'La :attribute debe ser un archivo de tipo: :values.',
@@ -95,7 +95,7 @@ return [
 	'numeric' => 'El :attribute debe ser un número.',
 	'password' => 'El password ingresado es incorrecto.',
 	'present' => 'The :attribute field must be present.',
-	'regex' => 'El atributo :attribute tiene un máximo de dos posiciones decimales.', //Only used on prices.
+	'regex' => 'El atributo :attribute tiene un máximo de dos posiciones decimales.',
 	'required' => 'El campo :attribute es requerido.',
 	'required_if' => 'El campo :attribute es requerido cuando :other está :value.',
 	'required_unless' => 'The :attribute field is required unless :other is in :values.',

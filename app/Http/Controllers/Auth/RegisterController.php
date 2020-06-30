@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use Auth;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -44,6 +45,7 @@ class RegisterController extends Controller
 			'name' => ['required', 'string', 'max:255'],
 			'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
 			'password' => ['required', 'string', 'min:8', 'confirmed'],
+			'api_token' => ['required', 'string', 'min:8', 'max:60', 'confirmed','unique:users'],
 		]);
 	}
 
@@ -55,14 +57,14 @@ class RegisterController extends Controller
 	 */
 	protected function create(array $data) {
 		$admin = empty($data['admin_user']) ? 0 : 1;
-		User::create([
+		$user = User::create([
 			'name' => $data['name'],
 			'email' => $data['email'],
 			'password' => Hash::make($data['password']),
 			'admin' => $admin,
+			'api_token' => $data['api_token'],
 		]);
-		$location = $admin == 1 ? 'Location: /adminsite' : 'Location: /employeesite';
-		header($location);
+		header('Location: /login');
 		exit;
 	}
 }

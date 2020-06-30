@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\View;
 use App\MerchItem;
 
 class StockMerchController extends Controller {
-	protected function changeMerchStock(String $itemName, int $value) {
+	public function changeMerchStock(String $itemName, int $value) {
 		$merchItem = MerchItem::where('name', $itemName)->first();		
 		$finalValue = $merchItem->stock + $value;
 		$merchFinderController = new MerchFinderController;

@@ -9,7 +9,7 @@ use App\Game;
 use App\Console;
 
 class StockGamesController extends Controller {
-	protected function changeGameStock(String $gameName, String $consoleName, String $newOrUsed, int $value) {
+	public function changeGameStock(String $gameName, String $consoleName, String $newOrUsed, int $value) {
 		$console = Console::where([
 			['game_name', '=', $gameName],
 			['console_name', '=', $consoleName]
