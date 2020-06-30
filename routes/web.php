@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//LOGIN AND REGISTER:
+//LOGIN, REGISTER AND PASSWORD RECOVERY:
 Route::get('/', function () {
 	return view('auth\login');
 });
@@ -23,6 +23,9 @@ Route::get('/inicio', function () {
 Route::get('/home', function () {
 	return view('auth\login');
 });
+Route::get('/welcome', function () {
+	return view('auth\login');
+});
 Route::get('/login', function () {
 	return view('auth\login');
 });
@@ -30,6 +33,21 @@ Route::get('/login', function () {
 Route::get('/register', function () {
 	return view('auth\register');
 });
+
+Route::get('/requestpasswordreset', function () {
+	return view('auth\passwords\email');
+});
+
+Route::get('/password/reset/{tokenFirstHalf}/{tokenSecondHalf}/{email}', function () {
+	return view('auth\passwords\reset')->with('token', "{tokenFirstHalf} . '/' . {tokenSecondHalf}");
+});
+Route::get('/password/reset/{token}/{email}', function () { //Written twice because sometimes the token is recovered with a '/' in the middle.
+	return view('auth\passwords\reset')->with('token', "{token}");
+});
+
+Route::post('forgotpassword', 'Auth\ForgotPasswordController@passwordResetEmail');
+Route::post('resetpassword', 'Auth\ForgotPasswordController@resetPassword');
+
 
 
 //ADMIN - SITE:

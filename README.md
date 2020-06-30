@@ -9,9 +9,9 @@ Para cada juego será fundamental almacenar su nombre, sus compañías desarroll
 ### *Merchandising*
 En *TheWaterLevel* es bien sabido que, para muchos, los videojuegos van más allá de un simple pasatiempo: hay quienes hasta se ganan la vida jugándolos y debatiendo sobre ellos. Esto es un claro símbolo de la importancia que le dan los consumidores a la industria, por lo que no es exagerado decir que muchos ven a los juegos como un estilo de vida. Para estas personas (¡y para todo aquél que esté interesado!), *TheWaterLevel* ofrece la mejor selección de *merchandising* que se pueda encontrar en el país. Se hallan a la venta artículos de todo tipo, por lo que el administrador de stock deberá almacenar para cada uno un nombre que lo identifique, una imagen, una breve descripción del producto, el nombre de la multimedia de la que proviene, y, por supuesto, su precio.
 
-Es importante destacar que podría haber artículos de *merchandising* que no tengan relación con ningún juego (si provinieran, por ejemplo, de series de televisión o películas) y juegos que no tengan relación con ningún artículo. Sin embargo, cuando estas relaciones sí existan sería altamente conveniente poder acceder al *merchandising* de un videojuego desde la sección dedicada a los datos del mismo, y viceversa (acceder a un juego desde la sección de uno de sus artículos de *merchandising*). Se decidirá si esto es o no implementado lo antes posible en el proceso de desarrollo, pero por ahora sólo se lo propone como idea.
+Es importante destacar que podría haber artículos de *merchandising* que no tengan relación con ningún juego (si provinieran, por ejemplo, de series de televisión o películas) y juegos que no tengan relación con ningún artículo. Sin embargo, cuando estas relaciones sí existan sería altamente conveniente poder acceder al *merchandising* de un videojuego desde la sección dedicada a los datos del mismo, y viceversa (acceder a un juego desde la sección de uno de sus artículos de *merchandising*). Por este motivo, el administrador de stock proveerá exactamente esta función.
 
-Existe también la intención de establecer algunas categorías de *merchandising* (indumentaria, accesorios, adornos y figuras, y quizás algunas más).
+También se establecerán algunas categorías de *merchandising* (indumentaria, accesorios, adornos y figuras, y quizás algunas más).
 
 Los artículos de *merchandising* no se comprarán usados, por lo que todos los vendidos serán nuevos.
 
@@ -22,8 +22,6 @@ El usuario Adminsitrador de Empresa se tendrá permitida la creación de nuevos 
 Del mismo modo, podrá eliminar juegos o artículos si fuera necesario por cualquier motivo.
 
 ### Empleado
-El usuario empleado es aquél que está en contacto directo con los clientes de *TheWaterLevel*, por lo que se encarga de mantener permanentemente actualizados los datos de stock del administrador. Además, su interfaz de usuario debería facilitarle el acceso a *merchandising* de los juegos vendidos (y viceversa), a fin de que pueda ofrecerlos a los clientes más adecuados.
+El usuario empleado es aquél que está en contacto directo con los clientes de *TheWaterLevel*, por lo que se encarga de mantener permanentemente actualizados los datos de stock del administrador. Además, su interfaz de usuario debería facilitarle el acceso a *merchandising* de los juegos vendidos (y viceversa), a fin de que pueda ofrecerlos a los clientes a la hora de hacer una venta.
 
-Es probable que el usuario Administrador de Empresa pueda hacer las veces de Empleado de ser necesario, pero para mantener ordenada la carga de datos se prevé que acceda al sistema como Empleado cuando lo necesite (lo que tal vez implique que su interfaz le permita el rápido acceso a la de los Empleados).
-
-Es altamente factible que se agreguen otras capacidades al usuario Empleado para facilitar su trabajo, pero a esta altura del desarrollo aún no se las ha definido.
+Es probable que el usuario Administrador de Empresa pueda hacer las veces de Empleado de ser necesario, pero para mantener ordenada la carga de datos se prevé que acceda a la interfaz del Empleado cuando lo necesite (lo que implica que su interfaz le permitirá el rápido acceso a la de los Empleados).
