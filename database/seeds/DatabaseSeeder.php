@@ -10,7 +10,6 @@ class DatabaseSeeder extends Seeder {
 		$this->truncateTables([
 			'users',
 			'password_resets',
-			'failed_jobs',
 			'games',
 			'developers',
 			'consoles',
@@ -20,8 +19,7 @@ class DatabaseSeeder extends Seeder {
 
 		$this->call(UserSeeder::Class);
 		$this->call(GameSeeder::Class);
-		$this->call(MerchItemSeeder::Class);
-		//$this->call(CategoryOfMerchSeeder::Class);
+		$this->call(MerchSeeder::Class);
 	}
 
 	private function truncateTables(array $tables) {

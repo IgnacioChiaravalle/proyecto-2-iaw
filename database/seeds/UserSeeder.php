@@ -6,13 +6,13 @@ use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder {
 	public function run() {
-		$this->insert(['Ignacio Martín Chiaravalle', 'nachochiara@gmail.com', '123456789', 0, '123456789']);
-		$this->insert(['Nacho Chiara', 'nachochiara98@hotmail.com', 'nachochiara', 1, 'nachochiara']);
-		$this->insert(['Administrador', 'admin@admin', 'admin', 1, 'admin']);
-		$this->insert(['Empleado', 'empleado@empleado', 'empleado', 0, 'empleado']);
+		$this->insertIntoTable(['Ignacio Martín Chiaravalle', 'nachochiara@gmail.com', '123456789', 0, '123456789']);
+		$this->insertIntoTable(['Nacho Chiara', 'nachochiara98@hotmail.com', 'nachochiara', 1, 'nachochiara']);
+		$this->insertIntoTable(['Administrador', 'admin@admin', 'admin', 1, 'admin']);
+		$this->insertIntoTable(['Empleado', 'empleado@empleado', 'empleado', 0, 'empleado']);
 	}
 
-	private function insert(array $data) {
+	private function insertIntoTable(array $data) {
 		DB::table('users')->insert([
 			'name' => $data[0],
 			'email' => $data[1],

@@ -1,23 +1,32 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DeveloperSeeder extends Seeder {
 	public function run() {
-		$this->insert(['Bioshock Infinite', 'Irrational Games']);
-		$this->insert(['Bioshock Infinite', '2K']);
-		$this->insert(['The Last of Us', 'Naughty Dog']);
-		$this->insert(['Portal 2', 'Valve Corporation']);
-		$this->insert(['Deus Ex: Human Revolution', 'Eidos Montréal']);
-		$this->insert(['Deus Ex: Human Revolution', 'Square Enix']);
-		$this->insert(['Dragon Age: Origins', 'BioWare']);
-		$this->insert(['Mass Effect', 'BioWare']);
-		$this->insert(['FIFA 20', 'EA Sports']);
-		$this->insert(['Final Fantasy VII: Remake', 'Square Enix']);
-		$this->insert(['Sonic & All-Stars Racing Transformed', 'Sumo Digital']);
+		$this->insertIntoTable(['Bioshock Infinite', 'Irrational Games']);
+		$this->insertIntoTable(['Bioshock Infinite', '2K']);
+
+		$this->insertIntoTable(['The Last of Us', 'Naughty Dog']);
+		
+		$this->insertIntoTable(['Portal 2', 'Valve Corporation']);
+
+		$this->insertIntoTable(['Deus Ex: Human Revolution', 'Eidos Montréal']);
+		$this->insertIntoTable(['Deus Ex: Human Revolution', 'Square Enix']);
+
+		$this->insertIntoTable(['Dragon Age: Origins', 'BioWare']);
+
+		$this->insertIntoTable(['Mass Effect', 'BioWare']);
+
+		$this->insertIntoTable(['FIFA 20', 'EA Sports']);
+
+		$this->insertIntoTable(['Final Fantasy VII: Remake', 'Square Enix']);
+		
+		$this->insertIntoTable(['Sonic & All-Stars Racing Transformed', 'Sumo Digital']);
 	}
 
-	private function insert(array $data) {
+	private function insertIntoTable(array $data) {
 		DB::table('developers')->insert([
 			'game_name' => $data[0],
 			'dev_name' => $data[1]
