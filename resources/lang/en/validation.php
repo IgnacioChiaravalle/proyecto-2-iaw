@@ -41,7 +41,7 @@ return [
 	'distinct' => 'Hay un duplicado ya almacenado para el valor ingresado en el campo :attribute.',
 	'email' => 'El atributo :attribute debe ser una dirección válida de e-mail.',
 	'ends_with' => 'The :attribute must end with one of the following: :values.',
-	'exists' => 'The selected :attribute is invalid.',
+	'exists' => 'El :attribute ingresado es inválido.',
 	'file' => 'The :attribute must be a file.',
 	'filled' => 'The :attribute field must have a value.',
 	'gt' => [

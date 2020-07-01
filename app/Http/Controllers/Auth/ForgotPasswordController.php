@@ -72,13 +72,11 @@ class ForgotPasswordController extends Controller {
 	}
 
 	protected function resetPassword(Request $request) {
-		$validator = Validator::make($request->all(), [
+		$request->validate([
 			'email' => 'required|email|exists:users,email',
-			'password' => 'required|confirmed',
+			'password' => ['required', 'string', 'min:8', 'confirmed'],
 			'token' => 'required'
 		]);
-		if ($validator->fails())
-			return back()->with('message', "Por favor, asegurate de completar correctamente el formulario.");
 
 		$password = $request->password;
 		// Validate the token:

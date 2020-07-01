@@ -3,7 +3,7 @@
 <script src = "{{ url('/js/InputFieldClassHandler.js') }}" type = "text/javascript"></script>
 <script src = "{{ url('/js/SubmitEnabler.js') }}" type = "text/javascript"></script>
 <link rel = "stylesheet" type = "text/css" href = "{{ url('/css/Large Return Button Style.css') }}">
-<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/User Auth Styles/Password Recovery Style.css') }}"/>
+<link rel = "stylesheet" type = "text/css" href = "{{ url('/css/User Auth Styles/Request Password Recovery Style.css') }}"/>
 
 @section('content')
 @if (Session::has('message'))
@@ -23,7 +23,7 @@
 		<div >
 			<label for="email">Ingresá tu dirección de e-mail para que podamos enviarte el Link de Recuperación:</label>
 			<div>
-				<input id="email" type="email" class="default-field" value="Dirección de Correo Electrónico" name="email" value="{{ old('email') }}" required autocomplete="email" onselect = "clearFieldIfDefault(this); activateField(this); enable('submit-btn-restore-password')" onclick="clearFieldIfDefault(this); activateField(this); enable('submit-btn-restore-password')">
+				<input type="email" class="default-field" value="{{old('email') ? old('email') : 'Dirección de Correo Electrónico'}}" name="email" value="{{ old('email') }}" required autocomplete="email" onselect = "clearFieldIfDefault(this); activateField(this); enable('submit-btn-restore-password')" onclick="clearFieldIfDefault(this); activateField(this); enable('submit-btn-restore-password')">
 				@error('email')
 					<label class="invalid-feedback" role="alert">
 						<strong>{{ $message }}</strong>

@@ -26,9 +26,9 @@
 		<label id="description">Por favor, ingrese sus datos de usuario para continuar:</label><br>
 
 		<div>
-			<label for="email" class="col-md-4 col-form-label text-md-right">E-Mail:</label>
+			<label for="email">E-Mail:</label>
 			<div>
-				<input id="email" type="email" class="{{old('email') ? 'active-field' : 'default-field'}} form-control @error('email') is-invalid @enderror" name="email" value="{{old('email') ? old('email') : 'Dirección de Correo Electrónico'}}" required autocomplete="email" onselect = "clearFieldIfDefault(this); activateField(this); checkAllActive(2, 'submit-btn-login')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(2, 'submit-btn-login')">
+				<input type="email" class="{{old('email') ? 'active-field' : 'default-field'}} form-control" name="email" value="{{old('email') ? old('email') : 'Dirección de Correo Electrónico'}}" required autocomplete="email" onselect = "clearFieldIfDefault(this); activateField(this); checkAllActive(2, 'submit-btn-login')" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(2, 'submit-btn-login')">
 				@error('email')
 					<label class="invalid-feedback" role="alert">
 						<strong>{{ $message }}</strong>
@@ -38,9 +38,9 @@
 		</div>
 
 		<div>
-			<label for="password" class="col-md-4 col-form-label text-md-right">Contraseña:</label>
+			<label for="password">Contraseña:</label>
 			<div>
-				<input id="password" type="text" class="default-field form-control @error('password') is-invalid @enderror" value="Contraseña" name="password" required autocomplete="current-password" onselect = "clearFieldIfDefault(this); activateField(this); checkAllActive(2, 'submit-btn-login'); swapType(this)" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(2, 'submit-btn-login'); swapType(this)">
+				<input id="password" type="text" class="default-field form-control" value="Contraseña" name="password" required autocomplete="current-password" onselect = "clearFieldIfDefault(this); activateField(this); checkAllActive(2, 'submit-btn-login'); swapType(this)" onclick="clearFieldIfDefault(this); activateField(this); checkAllActive(2, 'submit-btn-login'); swapType(this)">
 				@error('password')
 					<label class="invalid-feedback" role="alert">
 						<strong>{{ $message }}</strong>
