@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\URL;
 
 class GameSeeder extends Seeder {
 	public function run() {
@@ -32,7 +33,7 @@ class GameSeeder extends Seeder {
 	}
 
 	private function getImageEncode($fileName) {
-		$url = "app/public/Seeder Images/Game Covers/$fileName";
+		$url = "Seeder Images/Game Covers/$fileName";
 		$contents = file_get_contents($url);
 		return base64_encode($contents);
 	}

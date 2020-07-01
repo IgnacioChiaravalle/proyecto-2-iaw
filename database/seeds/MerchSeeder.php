@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\URL;
 
 class MerchSeeder extends Seeder {
 	public function run() {
@@ -69,7 +70,7 @@ class MerchSeeder extends Seeder {
 	}
 
 	private function getImageEncode($fileName) {
-		$url = "app/public/Seeder Images/Merch Photos/$fileName";
+		$url = "Seeder Images/Merch Photos/$fileName";
 		$contents = file_get_contents($url);
 		return base64_encode($contents);
 	}
