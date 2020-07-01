@@ -1,16 +1,34 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
-class DatabaseSeeder extends Seeder
-{
-    /**
-     * Seed the application's database.
-     *
-     * @return void
-     */
-    public function run()
-    {
-        // $this->call(UserSeeder::class);
-    }
+
+class DatabaseSeeder extends Seeder {
+
+	public function run() {
+		$this->truncateTables([
+			'users',
+			'password_resets',
+			'failed_jobs',
+			'games',
+			'developers',
+			'consoles',
+			'merch_items',
+			'categories_of_merch'
+		]);
+
+		$this->call(UserSeeder::Class);
+		$this->call(GameSeeder::Class);
+		$this->call(MerchItemSeeder::Class);
+		//$this->call(CategoryOfMerchSeeder::Class);
+	}
+
+	private function truncateTables(array $tables) {
+		DB::statement('SET FOREIGN_KEY_CHECKS = 0;');
+		foreach ($tables as $table)
+			DB::table($table)->truncate();
+		DB::statement('SET FOREIGN_KEY_CHECKS = 1;');
+	}
+
 }
