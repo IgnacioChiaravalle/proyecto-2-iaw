@@ -62,5 +62,8 @@ La API permite obtener todos los datos de los artículos de *merchandising*, e i
 
 En el último caso, si {value} es negativo y remover esa cantidad de unidades haría que se tenga una cantidad negativa en la base de datos, **no se efectuará el cambio**.
 
+## Link del Proyecto Funcionando en la Plataforma Heroku:
+El proyecto está en funcionamiento en la plataforma Heroku, en la siguiente dirección: [Link de Heroku]
+
 ## Link del Video de Presentación del Proyecto
 El video de presentacion del proyecto se encuentra disponible en la siguiente dirección: [Link del Video]
