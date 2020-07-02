@@ -27,43 +27,46 @@ El usuario Empleado es aquél que está en contacto directo con los clientes de 
 Es probable que el usuario Administrador de Empresa pueda hacer las veces de Empleado de ser necesario, pero para mantener ordenada la carga de datos se prevé que acceda a la interfaz del Empleado cuando lo necesite (lo que implica que su interfaz le permitirá el rápido acceso a la de los Empleados).
 
 ## API
-Se desarrolló una API para tener acceso rápido a algunas de las funciones del usuario Empleado, sin la necesidad de que éste acceda directamente al sistema. Si bien se incluirá entre los archivos del proyecto un archivo con algunas consultas de ejemplo, se aprovechará esta sección para explicar el formato y función de cada una de las consultas posibles, de modo que, si así lo desea, el lector pueda testear las suyas propias. Es importante destacar que todas las URI válidas implementadas son del tipo GET.
+Se desarrolló una API para tener acceso rápido a algunas de las funciones del usuario Empleado, sin la necesidad de que éste acceda directamente al sistema. Si bien se incluirá entre los archivos del proyecto un archivo para Postman con algunas consultas de ejemplo, se aprovechará esta sección para explicar el formato y función de cada una de las consultas posibles, de modo que, si así lo desea, el lector pueda testear las suyas propias. Es importante destacar que todas las URI válidas implementadas son del tipo GET.
 
 Todas las consultas requieren, como medida de seguridad, incluir el api_token de un usuario que exista en la base de datos del administrador de stock. Pese a que hay numerosas formas de incluirlo en la herramienta Postman, se sugiere hacerlo en forma de *Header*, donde la clave (*KEY*) será "Authorization" y el valor (*VALUE*) será "Bearer {api_token}", reemplazando "{api_token}" por el api_token del usuario deseado. De este modo, la información enviada no será trivialmente visible en la URI de la consulta, garantizando una mayor seguridad y protección a los datos del usuario. Para más detalles sobre el api_token de usuario, se puede consultar el video de presentación del proyecto, para el cual se provee un *link* al final de este texto.
 
 ### Consulta de Datos de Usuario
 Una de las consultas más simples que pueden hacerse es aquella en la que se solicitan los datos de usuario **no ocultos** (es decir, todos menos su password y su api_token, que son datos privados y no deben poder recuperarse tan fácilmente). Para esto basta con incluir el api_token (como se explicó anteriormente, ya que éste le indicará a la API los datos de qué usuario debe retornar) en una consulta con la siguiente URI:
-* [Link de Heroku]/api/user
+* https://chiaravalle-iaw-proyecto2.herokuapp.com/api/user
 
 ### Consultas Sobre Videojuegos
-La API permite obtener todos los datos de los videojuegos, e incluso modificar su stock. Para esto, se debe comenzar la URI con *[Link de Heroku]/api/gamesforsale*, siguiéndola con la forma necesaria para la consulta deseada. A continuación se mostrará cuáles son las consultas sobre videojuegos válidas. Téngase en cuenta que los valores entre llaves ('{', '}') deberán ser reemplazados por el valor deseado.
+La API permite obtener todos los datos de los videojuegos, e incluso modificar su stock. Para esto, se debe comenzar la URI con *https://chiaravalle-iaw-proyecto2.herokuapp.com/api/gamesforsale*, siguiéndola con la forma necesaria para la consulta deseada. A continuación se mostrará cuáles son las consultas sobre videojuegos válidas. Téngase en cuenta que los valores entre llaves ('{', '}') deberán ser reemplazados por el valor deseado.
 
-* Obtener el listado completo de videojuegos en venta, con todos los datos de cada uno **excepto** la codificación de sus portadas: [Link de Heroku]/api/gamesforsale
-* Obtener todos los datos del videojuego con nombre {gameName}, **excepto** la codificación de sus portadas: [Link de Heroku]/api/gamesforsale/getgame/{gameName}
-* Obtener las codificaciones de las portadas del videojuego con nombre {gameName}: [Link de Heroku]/api/gamesforsale/getgamecovers/{gameName}
-* Obtener el listado completo de desarrolladores de videojuegos conocidos en la base de datos: [Link de Heroku]/api/gamesforsale/getdevslist
-* Obtener los desarrolladores del videojuego con nombre {gameName}: [Link de Heroku]/api/gamesforsale/getgamedevs/{gameName}
-* Obtener el listado completo de consolas de videojuegos conocidas en la base de datos: [Link de Heroku]/api/gamesforsale/getconsoleslist
-* Obtener el listado completo de consolas en las que está disponible el videojuego con nombre {gameName}, incluyendo la cantidad de copias nuevas y usadas del título en cada consola: [Link de Heroku]/api/gamesforsale/getgameconsoles/{gameName}
-* Obtener la cantidad de copias nuevas y usadas del videojuego con nombre {gameName} en la consola con nombre {consoleName}: [Link de Heroku]/api/gamesforsale/getgameconsolecopies/{gameName}/{consoleName}
-* Editar el stock del videojuego con nombre {gameName} en la consola con nombre {consoleName}, ingresando *new* para las copias nuevas o *used* para las usadas en el campo {newOrUsed}, y el valor en el cual se las quiera aumentar (valor positivo) o disminuir (valor negativo) en el campo {value}: [Link de Heroku]/api/gamesforsale/changegamestock/{gameName}/{consoleName}/{newOrUsed}/{value}
+* Obtener el listado completo de videojuegos en venta, con todos los datos de cada uno **excepto** la codificación de sus portadas: https://chiaravalle-iaw-proyecto2.herokuapp.com/api/gamesforsale
+* Obtener todos los datos del videojuego con nombre {gameName}, **excepto** la codificación de sus portadas: https://chiaravalle-iaw-proyecto2.herokuapp.com/api/gamesforsale/getgame/{gameName}
+* Obtener las codificaciones de las portadas del videojuego con nombre {gameName}: https://chiaravalle-iaw-proyecto2.herokuapp.com/api/gamesforsale/getgamecovers/{gameName}
+* Obtener el listado completo de desarrolladores de videojuegos conocidos en la base de datos: https://chiaravalle-iaw-proyecto2.herokuapp.com/api/gamesforsale/getdevslist
+* Obtener los desarrolladores del videojuego con nombre {gameName}: https://chiaravalle-iaw-proyecto2.herokuapp.com/api/gamesforsale/getgamedevs/{gameName}
+* Obtener el listado completo de consolas de videojuegos conocidas en la base de datos: https://chiaravalle-iaw-proyecto2.herokuapp.com/api/gamesforsale/getconsoleslist
+* Obtener el listado completo de consolas en las que está disponible el videojuego con nombre {gameName}, incluyendo la cantidad de copias nuevas y usadas del título en cada consola: https://chiaravalle-iaw-proyecto2.herokuapp.com/api/gamesforsale/getgameconsoles/{gameName}
+* Obtener la cantidad de copias nuevas y usadas del videojuego con nombre {gameName} en la consola con nombre {consoleName}: https://chiaravalle-iaw-proyecto2.herokuapp.com/api/gamesforsale/getgameconsolecopies/{gameName}/{consoleName}
+* Editar el stock del videojuego con nombre {gameName} en la consola con nombre {consoleName}, ingresando *new* para las copias nuevas o *used* para las usadas en el campo {newOrUsed}, y el valor en el cual se las quiera aumentar (valor positivo) o disminuir (valor negativo) en el campo {value}: https://chiaravalle-iaw-proyecto2.herokuapp.com/api/gamesforsale/changegamestock/{gameName}/{consoleName}/{newOrUsed}/{value}
 
 En el último caso, si {value} es negativo y remover esa cantidad de copias haría que se tenga una cantidad negativa en la base de datos, **no se efectuará el cambio**.
 
 ### Consultas Sobre Artículos de Merchandising
-La API permite obtener todos los datos de los artículos de *merchandising*, e incluso modificar su stock. Para esto, se debe comenzar la URI con *[Link de Heroku]/api/merchforsale*, siguiéndola con la forma necesaria para la consulta deseada. A continuación se mostrará cuáles son las consultas sobre artículos de *merchandising* válidas. Téngase en cuenta que los valores entre llaves ('{', '}') deberán ser reemplazados por el valor deseado.
+La API permite obtener todos los datos de los artículos de *merchandising*, e incluso modificar su stock. Para esto, se debe comenzar la URI con *https://chiaravalle-iaw-proyecto2.herokuapp.com/api/merchforsale*, siguiéndola con la forma necesaria para la consulta deseada. A continuación se mostrará cuáles son las consultas sobre artículos de *merchandising* válidas. Téngase en cuenta que los valores entre llaves ('{', '}') deberán ser reemplazados por el valor deseado.
 
-* Obtener el listado completo de artículos de *merchandising* en venta, con todos los datos de cada uno **excepto** la codificación de su foto: [Link de Heroku]/api/merchforsale
-* Obtener todos los datos del artículo de *merchandising* con nombre {merchName}, **excepto** la codificación de su foto: [Link de Heroku]/api/merchforsale/getmerch/{merchName}
-* Obtener las codificaciones de la foto del artículo de *merchandising* con nombre {merchName}: [Link de Heroku]/api/merchforsale/getmerchphoto/{merchName}
-* Obtener el listado completo de categorías de *merchandising* presentes en la base de datos: [Link de Heroku]/api/merchforsale/getcategorieslist
-* Obtener las categorías a las que pertenece el artículo de *merchandising* con nombre {merchName}: [Link de Heroku]/api/merchforsale/getmerchcategories/{merchName}
-* Editar el stock del artículo de *merchandising* con nombre {merchName}, ingresando el valor en el cual se lo quiera aumentar (valor positivo) o disminuir (valor negativo) en el campo {value}: [Link de Heroku]/api/merchforsale/changemerchstock/{merchName}/{value}
+* Obtener el listado completo de artículos de *merchandising* en venta, con todos los datos de cada uno **excepto** la codificación de sus fotos: https://chiaravalle-iaw-proyecto2.herokuapp.com/api/merchforsale
+* Obtener todos los datos del artículo de *merchandising* con nombre {merchName}, **excepto** la codificación de su foto: https://chiaravalle-iaw-proyecto2.herokuapp.com/api/merchforsale/getmerch/{merchName}
+* Obtener la codificación de la foto del artículo de *merchandising* con nombre {merchName}: https://chiaravalle-iaw-proyecto2.herokuapp.com/api/merchforsale/getmerchphoto/{merchName}
+* Obtener el listado completo de categorías de *merchandising* presentes en la base de datos: https://chiaravalle-iaw-proyecto2.herokuapp.com/api/merchforsale/getcategorieslist
+* Obtener las categorías a las que pertenece el artículo de *merchandising* con nombre {merchName}: https://chiaravalle-iaw-proyecto2.herokuapp.com/api/merchforsale/getmerchcategories/{merchName}
+* Editar el stock del artículo de *merchandising* con nombre {merchName}, ingresando el valor en el cual se lo quiera aumentar (valor positivo) o disminuir (valor negativo) en el campo {value}: https://chiaravalle-iaw-proyecto2.herokuapp.com/api/merchforsale/changemerchstock/{merchName}/{value}
 
 En el último caso, si {value} es negativo y remover esa cantidad de unidades haría que se tenga una cantidad negativa en la base de datos, **no se efectuará el cambio**.
 
-## Link del Proyecto Funcionando en la Plataforma Heroku:
-El proyecto está en funcionamiento en la plataforma Heroku, en la siguiente dirección: [Link de Heroku]
+## Archivo de Consultas para Postman
+El archivo se encuentra disponible en la carpeta principal del repositorio, con el nombre **Postman Queries for API - Proyecto 2 - IAW - Chiaravalle**.
+
+## Link del Proyecto Funcionando en la Plataforma Heroku
+El proyecto está en funcionamiento en la plataforma Heroku, en la siguiente dirección: [Link para Heroku](https://chiaravalle-iaw-proyecto2.herokuapp.com/)
 
 ## Link del Video de Presentación del Proyecto
 El video de presentacion del proyecto se encuentra disponible en la siguiente dirección: [Link del Video]

@@ -1,0 +1,556 @@
+{
+	"info": {
+		"_postman_id": "5b56347b-3523-4893-b0df-395451541124",
+		"name": "IAW - Proyecto 2 - Chiaravalle",
+		"description": "Colección de prueba de la API REST desarrollada para el Proyecto 2 de Ingeniería de Aplicaciones Web, por Ignacio Martín Chiaravalle (L.U.: 116.868).",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Games",
+			"item": [
+				{
+					"name": "Games For Sale",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 123456789",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://chiaravalle-iaw-proyecto2.herokuapp.com/api/gamesforsale/",
+							"protocol": "https",
+							"host": [
+								"chiaravalle-iaw-proyecto2",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"gamesforsale",
+								""
+							]
+						},
+						"description": "Obtiene el listado completo de videojuegos en venta, con todos los datos de cada uno **excepto** la codificación de sus portadas."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Game",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer nachochiara",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://chiaravalle-iaw-proyecto2.herokuapp.com/api/gamesforsale/getgame/Bioshock Infinite",
+							"protocol": "https",
+							"host": [
+								"chiaravalle-iaw-proyecto2",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"gamesforsale",
+								"getgame",
+								"Bioshock Infinite"
+							]
+						},
+						"description": " Obtiene todos los datos de un videojuego, **excepto** la codificación de sus portadas."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Game Covers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer administrador",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://chiaravalle-iaw-proyecto2.herokuapp.com/api/gamesforsale/getgamecovers/Bioshock Infinite",
+							"protocol": "https",
+							"host": [
+								"chiaravalle-iaw-proyecto2",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"gamesforsale",
+								"getgamecovers",
+								"Bioshock Infinite"
+							]
+						},
+						"description": "Obtiene las codificaciones de las portadas de un videojuego."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Devs List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer empleado",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://chiaravalle-iaw-proyecto2.herokuapp.com/api/gamesforsale/getdevslist",
+							"protocol": "https",
+							"host": [
+								"chiaravalle-iaw-proyecto2",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"gamesforsale",
+								"getdevslist"
+							]
+						},
+						"description": "Obtiene el listado completo de desarrolladores de videojuegos conocidos en la base de datos."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Game Devs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 123456789",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://chiaravalle-iaw-proyecto2.herokuapp.com/api/gamesforsale/getgamedevs/Bioshock Infinite",
+							"protocol": "https",
+							"host": [
+								"chiaravalle-iaw-proyecto2",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"gamesforsale",
+								"getgamedevs",
+								"Bioshock Infinite"
+							]
+						},
+						"description": "Obtiene los desarrolladores de un videojuego."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Consoles List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer nachochiara",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://chiaravalle-iaw-proyecto2.herokuapp.com/api/gamesforsale/getconsoleslist",
+							"protocol": "https",
+							"host": [
+								"chiaravalle-iaw-proyecto2",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"gamesforsale",
+								"getconsoleslist"
+							]
+						},
+						"description": "Obtiene el listado completo de consolas de videojuegos conocidas en la base de datos."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Game Consoles",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer administrador",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://chiaravalle-iaw-proyecto2.herokuapp.com/api/gamesforsale/getgameconsoles/Bioshock Infinite",
+							"protocol": "https",
+							"host": [
+								"chiaravalle-iaw-proyecto2",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"gamesforsale",
+								"getgameconsoles",
+								"Bioshock Infinite"
+							]
+						},
+						"description": "Obtiene el listado completo de consolas en las que está disponible un videojuego, incluyendo la cantidad de copias nuevas y usadas del título en cada consola."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Game Console Copies",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer empleado",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://chiaravalle-iaw-proyecto2.herokuapp.com/api/gamesforsale/getgameconsolecopies/Bioshock Infinite/PS3",
+							"protocol": "https",
+							"host": [
+								"chiaravalle-iaw-proyecto2",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"gamesforsale",
+								"getgameconsolecopies",
+								"Bioshock Infinite",
+								"PS3"
+							]
+						},
+						"description": "Obtiene la cantidad de copias nuevas y usadas de un videojuego en una consola determinada."
+					},
+					"response": []
+				},
+				{
+					"name": "Change Game Stock",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 123456789",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://chiaravalle-iaw-proyecto2.herokuapp.com/api/gamesforsale/changegamestock/Bioshock Infinite/Xbox 360/new/8",
+							"protocol": "https",
+							"host": [
+								"chiaravalle-iaw-proyecto2",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"gamesforsale",
+								"changegamestock",
+								"Bioshock Infinite",
+								"Xbox 360",
+								"new",
+								"8"
+							]
+						},
+						"description": "Edita el stock de un videojuego en una consola determinada. Se usa la palabra *new* para editar la cantidad de copias nuevas y *used* para las usadas. El stock se edita en base al valor ingresado, y aumenta para valores positivos y se disminuye para valores negativos.\r\nSi se usa un valor negativo menor que produciría una cantidad de copias negativa, el cambio **no se efectúa**."
+					},
+					"response": []
+				}
+			],
+			"description": "URIs para los videojuegos.",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "4801c382-d05c-47da-ab76-2fc1b80137c0",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "1e27eb89-b9e3-43de-bd48-b84190904c4b",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Merch",
+			"item": [
+				{
+					"name": "Merch For Sale",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 123456789",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://chiaravalle-iaw-proyecto2.herokuapp.com/api/merchforsale",
+							"protocol": "https",
+							"host": [
+								"chiaravalle-iaw-proyecto2",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"merchforsale"
+							]
+						},
+						"description": "Obtiene el listado completo de artículos de *merchandising* en venta, con todos los datos de cada uno **excepto** la codificación de sus fotos."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Merch",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer nachochiara",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://chiaravalle-iaw-proyecto2.herokuapp.com/api/merchforsale/getmerch/Booker DeWitt Funko POP",
+							"protocol": "https",
+							"host": [
+								"chiaravalle-iaw-proyecto2",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"merchforsale",
+								"getmerch",
+								"Booker DeWitt Funko POP"
+							]
+						},
+						"description": "Obtiene todos los datos de un artículo de *merchandising*, **excepto** la codificación de su foto."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Merch Photo",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer administrador",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://chiaravalle-iaw-proyecto2.herokuapp.com/api/merchforsale/getmerchphoto/Booker DeWitt Funko POP",
+							"protocol": "https",
+							"host": [
+								"chiaravalle-iaw-proyecto2",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"merchforsale",
+								"getmerchphoto",
+								"Booker DeWitt Funko POP"
+							]
+						},
+						"description": "Obtiene la codificación de la foto del artículo de *merchandising*."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Categories List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer empleado",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://chiaravalle-iaw-proyecto2.herokuapp.com/api/merchforsale/getcategorieslist",
+							"protocol": "https",
+							"host": [
+								"chiaravalle-iaw-proyecto2",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"merchforsale",
+								"getcategorieslist"
+							]
+						},
+						"description": "Obtiene el listado completo de categorías de *merchandising* presentes en la base de datos."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Merch Categories",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 123456789",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://chiaravalle-iaw-proyecto2.herokuapp.com/api/merchforsale/getmerchcategories/Booker DeWitt Funko POP",
+							"protocol": "https",
+							"host": [
+								"chiaravalle-iaw-proyecto2",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"merchforsale",
+								"getmerchcategories",
+								"Booker DeWitt Funko POP"
+							]
+						},
+						"description": "Obtiene las categorías a las que pertenece un artículo de *merchandising*."
+					},
+					"response": []
+				},
+				{
+					"name": "Change Merch Stock",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer nachochiara",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://chiaravalle-iaw-proyecto2.herokuapp.com/api/merchforsale/changemerchstock/Booker DeWitt Funko POP/-5",
+							"protocol": "https",
+							"host": [
+								"chiaravalle-iaw-proyecto2",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"merchforsale",
+								"changemerchstock",
+								"Booker DeWitt Funko POP",
+								"-5"
+							]
+						},
+						"description": "Edita el stock de un artículo de *merchandising* en base al valor ingresado, aumentándolo para valores positivos y disminuyéndolo para valores negativos.\r\nSi se usa un valor negativo menor que produciría una cantidad de unidades negativa, el cambio **no se efectúa**."
+					},
+					"response": []
+				}
+			],
+			"description": "URIs para los artículos de *merchandising*.",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 123456789",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://chiaravalle-iaw-proyecto2.herokuapp.com/api/user",
+							"protocol": "https",
+							"host": [
+								"chiaravalle-iaw-proyecto2",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						},
+						"description": "Obtiene los datos de usuario **no ocultos** (es decir, todos menos el password y el api_token, que son datos privados y no deben poder recuperarse tan fácilmente) del usuario cuyo api_token se usa para ejecutar la consulta."
+					},
+					"response": []
+				}
+			],
+			"description": "URI para los usuarios.",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "0f1a6510-178e-4be7-8b95-4499b759f522",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "6bdc979f-2e2a-4d20-b14f-aef54b7b4397",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"auth": {
+		"type": "bearer"
+	},
+	"protocolProfileBehavior": {}
+}
