@@ -21,10 +21,10 @@ class FullGameDataController extends Controller {
 		$consolesArray = $gFC->getConsolesArray($gameName);
 		try {
 			MerchItem::where('origin_media', $gameName)->firstOrFail();
-			return View::make('employeeuser/games/fullgamedata')->with('game', $game)->with('devs', $devsArray)->with('consoles', $consolesArray)->with('found', true);
+			return View::make('employeeuser.games.fullgamedata')->with('game', $game)->with('devs', $devsArray)->with('consoles', $consolesArray)->with('found', true);
 		}
 		catch (ModelNotFoundException $ex) {
-			return View::make('employeeuser/games/fullgamedata')->with('game', $game)->with('devs', $devsArray)->with('consoles', $consolesArray)->with('found', false);
+			return View::make('employeeuser.games.fullgamedata')->with('game', $game)->with('devs', $devsArray)->with('consoles', $consolesArray)->with('found', false);
 		}
 	}
 }

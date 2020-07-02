@@ -51,6 +51,6 @@ class GameFilterController extends Controller {
 		$gFC = new GamesFinderController;
 		foreach($gamesOfFilterModel as $game)
 			array_push($gameDevsConsoles, $gFC->getGameInfo($game));
-		return View::make('employeeuser/games/stockgames')->with('gameDevsConsoles', $gameDevsConsoles);
+		return View::make('employeeuser.games.stockgames')->with('gameDevsConsoles', $gameDevsConsoles);
 	}
 }

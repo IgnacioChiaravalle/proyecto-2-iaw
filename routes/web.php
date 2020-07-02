@@ -15,34 +15,34 @@ use Illuminate\Support\Facades\Route;
 
 //LOGIN, REGISTER AND PASSWORD RECOVERY:
 Route::get('/', function () {
-	return view('auth\login');
+	return view('auth.login');
 });
 Route::get('/inicio', function () {
-	return view('auth\login');
+	return view('auth.login');
 });
 Route::get('/home', function () {
-	return view('auth\login');
+	return view('auth.login');
 });
 Route::get('/welcome', function () {
-	return view('auth\login');
+	return view('auth.login');
 });
 Route::get('/login', function () {
-	return view('auth\login');
+	return view('auth.login');
 });
 
 Route::get('/register', function () {
-	return view('auth\register');
+	return view('auth.register');
 });
 
 Route::get('/requestpasswordreset', function () {
-	return view('auth\passwords\email');
+	return view('auth.passwords.email');
 });
 
 Route::get('/password/reset/{tokenFirstHalf}/{tokenSecondHalf}/{email}', function () {
-	return view('auth\passwords\reset')->with('token', "{tokenFirstHalf} . '/' . {tokenSecondHalf}");
+	return view('auth.passwords.reset')->with('token', "{tokenFirstHalf} . '/' . {tokenSecondHalf}");
 });
 Route::get('/password/reset/{token}/{email}', function () { //Written twice because sometimes the token is recovered with a '/' in the middle.
-	return view('auth\passwords\reset')->with('token', "{token}");
+	return view('auth.passwords.reset')->with('token', "{token}");
 });
 
 Route::post('forgotpassword', 'Auth\ForgotPasswordController@passwordResetEmail');
@@ -52,52 +52,52 @@ Route::post('resetpassword', 'Auth\ForgotPasswordController@resetPassword');
 
 //ADMIN - SITE:
 Route::get('/adminsite', function () {
-	return view('adminuser\adminsite');
+	return view('adminuser.adminsite');
 })->middleware('adminAuth');
 
 //ADMIN - GAMES:
 Route::get('/addgame', function () {
-	return view('adminuser\games\addgame');
+	return view('adminuser.games.addgame');
 })->middleware('adminAuth');
 Route::post('addgame', 'Admin\AddGameController@index')->middleware('adminAuth');
 
 Route::get('/editgame', function () {
-	return view('adminuser\games\editgame');
+	return view('adminuser.games.editgame');
 })->middleware('adminAuth');
 Route::post('editgame', 'Admin\EditGameController@index')->middleware('adminAuth');
 
 Route::get('/removegame', function () {
-	return view('adminuser\games\removegame');
+	return view('adminuser.games.removegame');
 })->middleware('adminAuth');
 Route::post('removegame', 'Admin\RemoveGameController@index')->middleware('adminAuth');
 
 //ADMIN - MERCH:
 Route::get('/addmerch', function () {
-	return view('adminuser\merch\addmerch');
+	return view('adminuser.merch.addmerch');
 })->middleware('adminAuth');
 Route::post('addmerch', 'Admin\AddMerchItemController@index')->middleware('adminAuth');
 
 Route::get('/editmerch', function () {
-	return view('adminuser\merch\editmerch');
+	return view('adminuser.merch.editmerch');
 })->middleware('adminAuth');
 Route::post('editmerch', 'Admin\EditMerchItemController@index')->middleware('adminAuth');
 
 Route::get('/removemerch', function () {
-	return view('adminuser\merch\removemerch');
+	return view('adminuser.merch.removemerch');
 })->middleware('adminAuth');
 Route::post('removemerch', 'Admin\RemoveMerchItemController@index')->middleware('adminAuth');
 
 
 //EMPLOYEE - SITE:
 Route::get('/employeesite', function () {
-	return view('employeeuser\employeesite');
+	return view('employeeuser.employeesite');
 })->middleware('auth');
 
 //EMPLOYEE - GAMES (WITH OR WITHOUT FILTERS):
 Route::get('stockgames', 'Employee\GamesFinderController@getAllGames')->middleware('auth');
 Route::post('searchgame', 'Employee\GamesFinderController@getGame')->middleware('auth');
 Route::get('searchgame', function () {
-	return view('employeeuser\games\stockgames');
+	return view('employeeuser.games.stockgames');
 })->middleware('auth');
 
 Route::get('stockgames/getfullgamedata/{gameName}', 'Employee\FullGameDataController@getFullGameData')->middleware('auth');
@@ -114,7 +114,7 @@ Route::get('changegamestock/{gameName}/{consoleName}/{newOrUsed}/{value}', 'Empl
 Route::get('stockmerch', 'Employee\MerchFinderController@getAllMerch')->middleware('auth');
 Route::post('searchmerch', 'Employee\MerchFinderController@getMerchItem')->middleware('auth');
 Route::get('searchmerch', function () {
-	return view('employeeuser\merch\stockmerch');
+	return view('employeeuser.merch.stockmerch');
 })->middleware('auth');
 
 Route::get('stockmerch/getfullmerchdata/{itemName}', 'Employee\FullMerchDataController@getFullMerchData')->middleware('auth');

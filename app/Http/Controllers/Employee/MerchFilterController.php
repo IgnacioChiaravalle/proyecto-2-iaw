@@ -38,6 +38,6 @@ class MerchFilterController extends Controller {
 		$mFC = new MerchFinderController;
 		foreach($itemsOfFilterModel as $item)
 			array_push($itemCategories, $mFC->getMerchInfo($item));
-		return View::make('employeeuser/merch/stockmerch')->with('itemCategories', $itemCategories);
+		return View::make('employeeuser.merch.stockmerch')->with('itemCategories', $itemCategories);
 	}
 }

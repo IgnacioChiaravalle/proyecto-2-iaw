@@ -20,10 +20,10 @@ class FullMerchDataController extends Controller {
 		$categoriesArray = $mFC->getCategoriesArray($itemName);
 		try {
 			Game::where('name', $merchItem->origin_media)->firstOrFail(); //Check if there is a game in the database that corresponds to this merch item. If so, there should be a link that takes the user to it's website.
-			return View::make('employeeuser/merch/fullmerchdata')->with('merchItem', $merchItem)->with('categories', $categoriesArray)->with('found', true);	
+			return View::make('employeeuser.merch.fullmerchdata')->with('merchItem', $merchItem)->with('categories', $categoriesArray)->with('found', true);	
 		}
 		catch (ModelNotFoundException $ex) {
-			return View::make('employeeuser/merch/fullmerchdata')->with('merchItem', $merchItem)->with('categories', $categoriesArray)->with('found', false);
+			return View::make('employeeuser.merch.fullmerchdata')->with('merchItem', $merchItem)->with('categories', $categoriesArray)->with('found', false);
 		}
 	}
 }
