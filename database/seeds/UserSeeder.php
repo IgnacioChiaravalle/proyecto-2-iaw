@@ -8,7 +8,7 @@ class UserSeeder extends Seeder {
 	public function run() {
 		$this->insertIntoTable(['Ignacio Martín Chiaravalle', 'nachochiara@gmail.com', '123456789', 0, '123456789']);
 		$this->insertIntoTable(['Nacho Chiara', 'nachochiara98@hotmail.com', 'nachochiara', 1, 'nachochiara']);
-		$this->insertIntoTable(['Administrador', 'admin@admin', 'admin', 1, 'admin']);
+		$this->insertIntoTable(['Administrador', 'admin@admin', 'administrador', 1, 'administrador']);
 		$this->insertIntoTable(['Empleado', 'empleado@empleado', 'empleado', 0, 'empleado']);
 	}
 
