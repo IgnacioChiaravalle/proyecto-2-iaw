@@ -69,4 +69,4 @@ El archivo se encuentra disponible en la carpeta principal del repositorio, con 
 El proyecto está en funcionamiento en la plataforma Heroku, en la siguiente dirección: [Link para Heroku](https://chiaravalle-iaw-proyecto2.herokuapp.com/)
 
 ## Link del Video de Presentación del Proyecto
-El video de presentacion del proyecto se encuentra disponible en la siguiente dirección: [Link del Video]
+El video de presentacion del proyecto se encuentra disponible en la siguiente dirección: [Link del Video](https://youtu.be/MwfTyxMQqfU)
