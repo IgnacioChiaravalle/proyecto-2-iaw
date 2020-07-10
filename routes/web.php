@@ -129,3 +129,9 @@ Route::get('changemerchstock/{itemName}/{value}', 'Employee\StockMerchController
 Auth::routes();
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+
+//SPA:
+Route::get('/spa', function () {
+	return view('spa');
+});
