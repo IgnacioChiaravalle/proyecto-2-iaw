@@ -1,79 +1,72 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+# Administrador de Stock de *TheWaterLevel*
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+En este proyecto se desarrolló un administrador de stock para la empresa *TheWaterLevel*: una tienda de videojuegos y artículos de *merchandising* de los mismos, que además de vender juegos nuevos compra juegos usados y los revende. A continuación, se describirá qué datos deberá almacenar el administrador y qué usuarios podrán utilizarlo. Luego, se dará una explicación del uso de la API desarrollada para el proyecto, que permite ejecutar algunas consultas y actualizaciones sobre su base de datos.
 
-## About Laravel
+## Datos a Almacenar
+### VideoJuegos
+Para cada juego será fundamental almacenar su nombre, sus compañías desarrolladoras, su año de lanzamiento, su *rating* del organismo ESRB (si está disponible), y una foto de su portada, pudiéndose agregar también en forma opcional una de su contraportada. En *TheWaterLevel* es prioridad que los jugadores puedan aprovechar al máximo sus consolas, por lo que para cada juego se almacenará, además, el listado de consolas en las que está disponible, y cuántas copias (nuevas y usadas) del título se tienen para cada consola. Por supuesto, un atributo que resulta fundamental para la compañía es el coste del videojuego tanto nuevo como usado, por lo que éste deberá ser guardado obligatoriamente.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### *Merchandising*
+En *TheWaterLevel* es bien sabido que, para muchos, los videojuegos van más allá de un simple pasatiempo: hay quienes hasta se ganan la vida jugándolos y debatiendo sobre ellos. Esto es un claro símbolo de la importancia que le dan los consumidores a la industria, por lo que no es exagerado decir que muchos ven a los juegos como un estilo de vida. Para estas personas (¡y para todo aquél que esté interesado!), *TheWaterLevel* ofrece la mejor selección de *merchandising* que se pueda encontrar en el país. Se hallan a la venta artículos de todo tipo, por lo que el administrador de stock deberá almacenar para cada uno un nombre que lo identifique, una imagen, una breve descripción del producto, el nombre de la multimedia de la que proviene, y, por supuesto, su precio.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Es importante destacar que podría haber artículos de *merchandising* que no tengan relación con ningún juego (si provinieran, por ejemplo, de series de televisión, películas, o bandas musicales, pues nuestro *merchandising* no conoce los límites de la creatividad) y juegos que no tengan relación con ningún artículo. Sin embargo, cuando estas relaciones sí existan sería altamente conveniente poder acceder al *merchandising* de un videojuego desde la sección dedicada a los datos del mismo, y viceversa (acceder a un juego desde la sección de uno de sus artículos de *merchandising*). Por este motivo, el administrador de stock proveerá exactamente esta función.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+También se establecerán algunas categorías de *merchandising* (indumentaria, accesorios, adornos y figuras, y quizás algunas más).
 
-## Learning Laravel
+Los artículos de *merchandising* no se comprarán usados, por lo que todos los vendidos serán nuevos.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Usuarios
+### Administrador de Empresa
+El usuario Adminsitrador de Empresa se tendrá permitida la creación de nuevos juegos para el stock de la tienda. Es decir, podrá definir nuevos juegos que antes no estuvieran en la base de datos, asignándoles sus precios y demás atributos; y podrá hacer lo correspondiente con los artículos de *merchandising*. Además, podrá editar los atributos de todos los productos a la venta.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Del mismo modo, podrá eliminar juegos o artículos si fuera necesario por cualquier motivo.
 
-## Laravel Sponsors
+### Empleado
+El usuario Empleado es aquél que está en contacto directo con los clientes de *TheWaterLevel*, por lo que se encarga de mantener permanentemente actualizados los datos de stock del administrador. Además, su interfaz de usuario debería facilitarle el acceso a *merchandising* de los juegos vendidos (y viceversa), a fin de que pueda ofrecerlos a los clientes a la hora de hacer una venta.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Es probable que el usuario Administrador de Empresa pueda hacer las veces de Empleado de ser necesario, pero para mantener ordenada la carga de datos se prevé que acceda a la interfaz del Empleado cuando lo necesite (lo que implica que su interfaz le permitirá el rápido acceso a la de los Empleados).
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
-- [云软科技](http://www.yunruan.ltd/)
+## API
+Se desarrolló una API para tener acceso rápido a algunas de las funciones del usuario Empleado, sin la necesidad de que éste acceda directamente al sistema. Si bien se incluirá entre los archivos del proyecto un archivo para Postman con algunas consultas de ejemplo, se aprovechará esta sección para explicar el formato y función de cada una de las consultas posibles, de modo que, si así lo desea, el lector pueda testear las suyas propias. Es importante destacar que todas las URI válidas implementadas son del tipo GET.
 
-## Contributing
+Todas las consultas requieren, como medida de seguridad, incluir el api_token de un usuario que exista en la base de datos del administrador de stock. Pese a que hay numerosas formas de incluirlo en la herramienta Postman, se sugiere hacerlo en forma de *Header*, donde la clave (*KEY*) será "Authorization" y el valor (*VALUE*) será "Bearer {api_token}", reemplazando "{api_token}" por el api_token del usuario deseado. De este modo, la información enviada no será trivialmente visible en la URI de la consulta, garantizando una mayor seguridad y protección a los datos del usuario. Para más detalles sobre el api_token de usuario, se puede consultar el video de presentación del proyecto, para el cual se provee un *link* al final de este texto.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Consulta de Datos de Usuario
+Una de las consultas más simples que pueden hacerse es aquella en la que se solicitan los datos de usuario **no ocultos** (es decir, todos menos su password y su api_token, que son datos privados y no deben poder recuperarse tan fácilmente). Para esto basta con incluir el api_token (como se explicó anteriormente, ya que éste le indicará a la API los datos de qué usuario debe retornar) en una consulta con la siguiente URI:
+* https://chiaravalle-iaw-proyecto2.herokuapp.com/api/user
 
-## Code of Conduct
+### Consultas Sobre Videojuegos
+La API permite obtener todos los datos de los videojuegos, e incluso modificar su stock. Para esto, se debe comenzar la URI con *https://chiaravalle-iaw-proyecto2.herokuapp.com/api/gamesforsale*, siguiéndola con la forma necesaria para la consulta deseada. A continuación se mostrará cuáles son las consultas sobre videojuegos válidas. Téngase en cuenta que los valores entre llaves ('{', '}') deberán ser reemplazados por el valor deseado.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+* Obtener el listado completo de videojuegos en venta, con todos los datos de cada uno **excepto** la codificación de sus portadas: https://chiaravalle-iaw-proyecto2.herokuapp.com/api/gamesforsale
+* Obtener todos los datos del videojuego con nombre {gameName}, **excepto** la codificación de sus portadas: https://chiaravalle-iaw-proyecto2.herokuapp.com/api/gamesforsale/getgame/{gameName}
+* Obtener las codificaciones de las portadas del videojuego con nombre {gameName}: https://chiaravalle-iaw-proyecto2.herokuapp.com/api/gamesforsale/getgamecovers/{gameName}
+* Obtener el listado completo de desarrolladores de videojuegos conocidos en la base de datos: https://chiaravalle-iaw-proyecto2.herokuapp.com/api/gamesforsale/getdevslist
+* Obtener los desarrolladores del videojuego con nombre {gameName}: https://chiaravalle-iaw-proyecto2.herokuapp.com/api/gamesforsale/getgamedevs/{gameName}
+* Obtener el listado completo de consolas de videojuegos conocidas en la base de datos: https://chiaravalle-iaw-proyecto2.herokuapp.com/api/gamesforsale/getconsoleslist
+* Obtener el listado completo de consolas en las que está disponible el videojuego con nombre {gameName}, incluyendo la cantidad de copias nuevas y usadas del título en cada consola: https://chiaravalle-iaw-proyecto2.herokuapp.com/api/gamesforsale/getgameconsoles/{gameName}
+* Obtener la cantidad de copias nuevas y usadas del videojuego con nombre {gameName} en la consola con nombre {consoleName}: https://chiaravalle-iaw-proyecto2.herokuapp.com/api/gamesforsale/getgameconsolecopies/{gameName}/{consoleName}
+* Editar el stock del videojuego con nombre {gameName} en la consola con nombre {consoleName}, ingresando *new* para las copias nuevas o *used* para las usadas en el campo {newOrUsed}, y el valor en el cual se las quiera aumentar (valor positivo) o disminuir (valor negativo) en el campo {value}: https://chiaravalle-iaw-proyecto2.herokuapp.com/api/gamesforsale/changegamestock/{gameName}/{consoleName}/{newOrUsed}/{value}
 
-## Security Vulnerabilities
+En el último caso, si {value} es negativo y remover esa cantidad de copias haría que se tenga una cantidad negativa en la base de datos, **no se efectuará el cambio**.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Consultas Sobre Artículos de Merchandising
+La API permite obtener todos los datos de los artículos de *merchandising*, e incluso modificar su stock. Para esto, se debe comenzar la URI con *https://chiaravalle-iaw-proyecto2.herokuapp.com/api/merchforsale*, siguiéndola con la forma necesaria para la consulta deseada. A continuación se mostrará cuáles son las consultas sobre artículos de *merchandising* válidas. Téngase en cuenta que los valores entre llaves ('{', '}') deberán ser reemplazados por el valor deseado.
 
-## License
+* Obtener el listado completo de artículos de *merchandising* en venta, con todos los datos de cada uno **excepto** la codificación de sus fotos: https://chiaravalle-iaw-proyecto2.herokuapp.com/api/merchforsale
+* Obtener todos los datos del artículo de *merchandising* con nombre {merchName}, **excepto** la codificación de su foto: https://chiaravalle-iaw-proyecto2.herokuapp.com/api/merchforsale/getmerch/{merchName}
+* Obtener la codificación de la foto del artículo de *merchandising* con nombre {merchName}: https://chiaravalle-iaw-proyecto2.herokuapp.com/api/merchforsale/getmerchphoto/{merchName}
+* Obtener el listado completo de categorías de *merchandising* presentes en la base de datos: https://chiaravalle-iaw-proyecto2.herokuapp.com/api/merchforsale/getcategorieslist
+* Obtener las categorías a las que pertenece el artículo de *merchandising* con nombre {merchName}: https://chiaravalle-iaw-proyecto2.herokuapp.com/api/merchforsale/getmerchcategories/{merchName}
+* Editar el stock del artículo de *merchandising* con nombre {merchName}, ingresando el valor en el cual se lo quiera aumentar (valor positivo) o disminuir (valor negativo) en el campo {value}: https://chiaravalle-iaw-proyecto2.herokuapp.com/api/merchforsale/changemerchstock/{merchName}/{value}
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+En el último caso, si {value} es negativo y remover esa cantidad de unidades haría que se tenga una cantidad negativa en la base de datos, **no se efectuará el cambio**.
+
+## Archivo de Consultas para Postman
+El archivo se encuentra disponible en la carpeta principal del repositorio, con el nombre **Postman Queries for API - Proyecto 2 - IAW - Chiaravalle**.
+
+## Link del Proyecto Funcionando en la Plataforma Heroku
+El proyecto está en funcionamiento en la plataforma Heroku, en la siguiente dirección: [Link para Heroku](https://chiaravalle-iaw-proyecto2.herokuapp.com/)
+
+## Link del Video de Presentación del Proyecto
+El video de presentacion del proyecto se encuentra disponible en la siguiente dirección: [Link del Video](https://youtu.be/MwfTyxMQqfU)

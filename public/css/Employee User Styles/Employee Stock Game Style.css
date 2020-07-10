@@ -1,0 +1,72 @@
+label.search-label {
+	font-size: 150%;
+	font-family: LuckiestGuy;
+	color: rgb(149, 248, 103);
+	text-shadow: -1px -1px 2px black, 1px -1px 2px black, -1px 1px 2px black, 1px 1px 2px black;
+}
+input {
+	font-size: 129%;
+	font-family: LondrinaSolid;
+}
+	input.default-field {
+		background-color: rgb(188, 168, 221);
+	}
+	input.active-field {
+		background-color: rgb(224, 149, 149);
+		color: rgb(10, 37, 112);
+	}
+
+button.submit {
+	font-size: 150%;
+	font-family: PermanentMarker;
+}
+	button.enabled-submit {
+		border: 5px outset rgb(23, 59, 221);
+		background-color: rgb(77, 241, 159);
+		color: rgb(11, 18, 122);
+	}
+		button.enabled-submit:hover, button.enabled-submit:focus {
+			border-color: rgb(184, 149, 53);
+			background-color: rgb(91, 23, 136);
+			color: rgb(241, 229, 159);
+		}
+
+
+table.main-table {
+	background-color: rgb(184, 137, 20);
+	border-color: goldenrod;
+}
+table.inner-table {
+	width: 100%;
+	margin: 0%;
+}
+table.sub-row:hover {
+	background-color: rgb(223, 151, 84);
+}
+
+tr.table-header-row {
+	background-color: rgb(6, 6, 92);
+	font-size: 175%;
+	font-family: OdibeeSans;
+	color: rgb(235, 194, 59);
+	text-shadow: -1px -1px 2px black, 1px -1px 2px black, -1px 1px 2px black, 1px 1px 2px black;
+}
+
+tr.table-inner-row {
+	background-color: rgb(149, 215, 226);
+	font-size: 110%;
+	font-family: Orbitron;
+	color: rgb(33, 11, 75);
+	text-shadow: -1px -1px 2px rgba(115, 86, 168, 0.24), 1px -1px 2px rgba(115, 86, 168, 0.24), -1px 1px 2px rgba(115, 86, 168, 0.24), 1px 1px 2px rgba(115, 86, 168, 0.24);
+}
+	tr.table-inner-row:hover {
+		background-color: rgb(228, 184, 144);
+	}
+
+td.attribute:hover {
+	background-color: rgb(223, 151, 84);
+}
+
+button.stock-handler {
+	color: rgb(133, 25, 175);
+}

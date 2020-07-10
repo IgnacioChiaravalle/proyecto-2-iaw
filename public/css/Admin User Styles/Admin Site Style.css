@@ -1,0 +1,78 @@
+div.option-set{
+	margin-top: 1.5%;
+	margin-bottom: 5%;
+}
+	p {
+		margin-left: 6%;
+		font-size: 225%;
+		font-weight: bold;
+		font-family: MuseoModerno;
+		color: gold;
+		text-shadow: -1px -1px 2px rgb(34, 73, 80), 1px -1px 2px rgb(34, 73, 80), -1px 1px 2px rgb(34, 73, 80), 1px 1px 2px rgb(34, 73, 80);
+	}
+
+	div.links{
+		display: flex;
+		margin-top: 1%;
+		margin-bottom: 1%;
+		margin-left: 10%;
+		width: 80%;
+	}
+		a.crud {
+			width: 20%;
+			border: 3px;
+			border-radius: 10%/20%;
+			padding-top: 2%;
+			padding-bottom: 2%;
+			text-align: center;
+			text-decoration: none;
+			font-size: 200%;
+			animation: expandFromCenter 1500ms;
+		}
+			a.crud:hover {
+				font-weight: bold;
+			}
+
+			a.add {
+				margin-left: 0%;
+				padding-top: 2.5%;
+				font-family: ArcadeClassic;
+				border-style: solid;
+				border-color: rgb(79, 201, 140);
+				background-color: rgb(69, 20, 109);
+				color: greenyellow;
+			}
+				a.add:hover {
+					border-color: rgb(47, 6, 82);
+					background-color: greenyellow;
+					color: rgb(69, 20, 109);
+				}
+
+			a.edit {
+				margin-left: auto;
+				margin-right: auto;
+				font-family: ArchitectsDaughter;
+				border-style: dashed;
+				border-color: rgb(207, 221, 76);
+				background-color: rgb(116, 29, 29);
+				color: yellow;
+			}
+				a.edit:hover {
+					border-color: rgb(100, 12, 12);
+					background-color: yellow;
+					color: rgb(116, 29, 29);
+				}
+
+			a.remove {
+				margin-right: 0%;
+				font-family: AllertaStencil;
+				border-style: solid;
+				border-color: rgb(133, 6, 6);
+				background-color: rgb(4, 18, 43);
+				color: rgb(231, 24, 24);
+			}
+				a.remove:hover {
+					border-color: rgb(2, 18, 44);
+					background-color: rgb(231, 24, 24);
+					color: rgb(4, 18, 43);
+				}

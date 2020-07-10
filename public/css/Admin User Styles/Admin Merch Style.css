@@ -1,0 +1,47 @@
+div.image-selection {
+	width: 75%;
+}
+
+label {
+	font-size: 110%;
+	font-family: AllertaStencil;
+	color: gold;
+	text-shadow: -1px -1px 2px black, 1px -1px 2px black, -1px 1px 2px black, 1px 1px 2px black;
+}
+
+input {
+	font-family: ArchitectsDaughter;
+}
+	input.default-field {
+		background-color: rgb(177, 196, 221);
+	}
+	input.active-field {
+		background-color: rgb(162, 226, 162);
+		color: rgb(87, 27, 8);
+	}
+
+input.image-selector {
+	width: 99.25%;
+	padding-top: 0.5%;
+	padding-bottom: 0.5%;
+	padding-left: 1%;
+	padding-right: 1%;
+	border-radius: 1.25%/20%;
+	cursor: pointer;
+}
+
+button {
+	padding-bottom: 0.5%;
+	font-size: 260%;
+	font-family: Notable;
+}
+	button.enabled-submit {
+		border: 5px outset rgb(179, 39, 20);
+		background-color: rgb(124, 218, 218);
+		color: rgb(151, 21, 21);
+	}
+		button.enabled-submit:hover, button.enabled-submit:focus {
+			border-color: rgb(189, 165, 31);
+			background-color: rgb(58, 26, 92);
+			color: gold;
+		}

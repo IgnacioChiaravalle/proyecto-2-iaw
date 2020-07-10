@@ -1,0 +1,53 @@
+a.logout-btn {
+	/* Display */
+	display: inline-block;
+	width: 10%;
+	position: absolute;
+	margin-left: 88%;
+	padding-top: 0.5%;
+	padding-bottom: 0.5%;
+	padding-left: 0.3%;
+	padding-right: 0.3%;
+
+	/* Font */
+	font-size: 100%;
+	font-style: italic;
+	font-family: ChakraPetch;
+
+	/* Text */
+	vertical-align: middle;
+	text-align: center;
+	text-decoration: none;
+
+	/* Background */
+	background-color: midnightblue;
+
+	/* Border */
+	border: 3px outset rgb(228, 189, 131);
+	border-radius: 20%/50%;
+
+	/* Transition */
+	transition: transform .35s ease-in-out;
+}
+	a.logout-btn:hover {
+		/* Font & Text */
+		font-style: normal;
+
+		/* Background */
+		background-color: rgb(71, 17, 102);
+
+		/* Border */
+		border: 3px solid rgb(64, 235, 183);
+
+		/* Transition */
+		transform: scale(1.05);
+	}
+
+label.username-label {
+	color: navajowhite;
+	cursor: pointer;
+}
+label.logout-label {
+	color: orangered;
+	cursor: pointer;
+}

@@ -1,0 +1,13 @@
+img.return-btn {
+	width: 5%;
+	height: 10%;
+	position: absolute;
+	margin-left: 0.5%;
+	border: 5px inset rgb(132, 18, 185);
+	border-radius: 10%/10%;
+	transition: transform .35s ease-in-out;
+}
+	img.return-btn:hover {
+		border: 5px solid rgb(171, 45, 230);
+		transform: scale(1.05);
+	}

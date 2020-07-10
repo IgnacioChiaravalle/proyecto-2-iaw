@@ -1,0 +1,9 @@
+label.invalid-feedback {
+	display: block;
+	color: rgb(218, 49, 49);
+	font-family: OdibeeSans;
+	font-size: 150%;
+	font-weight: normal;
+	text-shadow: -1px -1px 2px black, 1px -1px 2px black, -1px 1px 2px black, 1px 1px 2px black;
+	line-height: 125%;
+}
