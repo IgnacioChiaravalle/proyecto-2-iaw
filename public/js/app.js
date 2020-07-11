@@ -1924,9 +1924,44 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      games: null
+    };
+  },
   mounted: function mounted() {
-    console.log('Component mounted.');
+    this.getGames();
+  },
+  methods: {
+    getGames: function getGames() {
+      var _this = this;
+
+      axios.get('https://chiaravalle-iaw-proyecto2.herokuapp.com/api/gamesforsale', {
+        headers: {
+          'Authorization': 'Bearer administrador'
+        }
+      }).then(function (response) {
+        _this.games = response.data;
+      })["catch"](function (e) {
+        return console.log(e);
+      });
+    }
   }
 });
 
@@ -37524,26 +37559,50 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("div", [_vm._v("Example Component")]),
+    _vm._v(" "),
+    _c("div", [_vm._v("\n\t\tI'm an example component.\n\t")]),
+    _vm._v(" "),
+    _c("table", [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "tbody",
+        _vm._l(_vm.games, function(game) {
+          return _c("tr", { key: game.name }, [
+            _c("td", [_vm._v(_vm._s(game.name))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(game.release_year))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(game.esrb_rating))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(game.price_new))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(game.price_used))])
+          ])
+        }),
+        0
+      )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _vm._v("Example Component - Testing")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _vm._v("\n\t\t\t\t\tI'm an example component.\n\t\t\t\t")
-            ])
-          ])
-        ])
+    return _c("thead", [
+      _c("tr", [
+        _c("td", [_vm._v("Nombre del Juego ")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("Año de Lanzamiento")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("Rating ESRB")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("Precio Nuevo")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("Precio Usado")])
       ])
     ])
   }
