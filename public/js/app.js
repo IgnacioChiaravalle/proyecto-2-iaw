@@ -1939,25 +1939,69 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      games: null
+      games: null,
+      merch: null,
+      notShown: ""
     };
   },
   mounted: function mounted() {
-    this.getGames();
+    this.showItems('games');
   },
   methods: {
-    getGames: function getGames() {
+    showItems: function showItems(itemType) {
+      if (this.games == null || this.merch == null) this.getItems(itemType);
+      if (itemType == 'games') this.notShown = "Merchandising";else this.notShown = "Juegos";
+    },
+    getItems: function getItems(itemType) {
       var _this = this;
 
-      axios.get('https://chiaravalle-iaw-proyecto2.herokuapp.com/api/gamesforsale', {
+      axios.get('https://chiaravalle-iaw-proyecto2.herokuapp.com/api/' + itemType + 'forsale', {
         headers: {
           'Authorization': 'Bearer administrador'
         }
       }).then(function (response) {
-        _this.games = response.data;
+        if (itemType == 'games') {
+          _this.notShown = "Merchandising";
+          _this.games = response.data;
+        } else {
+          _this.notShown = "Juegos";
+          _this.merch = response.data;
+        }
       })["catch"](function (e) {
         return console.log(e);
       });
@@ -37564,27 +37608,63 @@ var render = function() {
     _vm._v(" "),
     _c("div", [_vm._v("\n\t\tI'm an example component.\n\t")]),
     _vm._v(" "),
-    _c("table", [
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "tbody",
-        _vm._l(_vm.games, function(game) {
-          return _c("tr", { key: game.name }, [
-            _c("td", [_vm._v(_vm._s(game.name))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(game.release_year))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(game.esrb_rating))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(game.price_new))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(game.price_used))])
-          ])
-        }),
-        0
-      )
-    ])
+    _vm.notShown == "Merchandising"
+      ? _c("table", [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "tbody",
+            _vm._l(_vm.games, function(game) {
+              return _c("tr", { key: game.name }, [
+                _c("td", [_vm._v(_vm._s(game.name))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(game.release_year))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(game.esrb_rating))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(game.price_new))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(game.price_used))])
+              ])
+            }),
+            0
+          )
+        ])
+      : _c("table", [
+          _vm._m(1),
+          _vm._v(" "),
+          _c(
+            "tbody",
+            _vm._l(_vm.merch, function(item) {
+              return _c("tr", { key: item.name }, [
+                _c("td", [_vm._v(_vm._s(item.name))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(item.description))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(item.origin_media))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(item.stock))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(item.price))])
+              ])
+            }),
+            0
+          )
+        ]),
+    _vm._v(" "),
+    _c(
+      "button",
+      {
+        on: {
+          click: function($event) {
+            return _vm.showItems(
+              _vm.notShown == "Merchandising" ? "merch" : "games"
+            )
+          }
+        }
+      },
+      [_vm._v("Ver " + _vm._s(_vm.notShown))]
+    )
   ])
 }
 var staticRenderFns = [
@@ -37594,7 +37674,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
-        _c("td", [_vm._v("Nombre del Juego ")]),
+        _c("td", [_vm._v("Nombre del Juego")]),
         _vm._v(" "),
         _c("td", [_vm._v("Año de Lanzamiento")]),
         _vm._v(" "),
@@ -37603,6 +37683,24 @@ var staticRenderFns = [
         _c("td", [_vm._v("Precio Nuevo")]),
         _vm._v(" "),
         _c("td", [_vm._v("Precio Usado")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("td", [_vm._v("Nombre del"), _c("br"), _vm._v("Artículo")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("Descripción")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("Multimedia de"), _c("br"), _vm._v("origen")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("Unidades"), _c("br"), _vm._v("Disponibles")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("Precio"), _c("br"), _vm._v("Unitario")])
       ])
     ])
   }
