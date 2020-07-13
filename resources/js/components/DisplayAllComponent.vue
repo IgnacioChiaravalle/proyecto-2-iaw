@@ -1,9 +1,12 @@
 <template>
 	<div>
-		<div>Example Component</div>
 
 		<div>
-			I'm an example component.
+			<h1>Display All Component</h1>
+		</div>
+
+		<div>
+			<h2>I'm an example component.</h2>
 		</div>
 
 		<table v-if="notShown == 'Merchandising'">
@@ -17,7 +20,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr v-for="game in games" :key="game.name">
+				<tr v-for="game in games" :key="game.name" @click="updateInfo('game', game.name)">
 					<td>{{ game.name }}</td>
 					<td>{{ game.release_year }}</td>
 					<td>{{ game.esrb_rating }}</td>
@@ -38,43 +41,29 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr v-for="item in merch" :key="item.name">
-					<td>{{ item.name }}</td>
-					<td>{{ item.description }}</td>
-					<td>{{ item.origin_media }}</td>
-					<td>{{ item.stock }}</td>
-					<td>{{ item.price }}</td>
+				<tr v-for="merch in merchItems" :key="merch.name" @click="updateInfo('merch', merch.name)">
+					<td>{{ merch.name }}</td>
+					<td>{{ merch.description }}</td>
+					<td>{{ merch.origin_media }}</td>
+					<td>{{ merch.stock }}</td>
+					<td>{{ merch.price }}</td>
 				</tr>
 			</tbody>
 		</table>
 
 		<button @click="showItems(notShown == 'Merchandising' ? 'merch' : 'games')">Ver {{notShown}}</button>
-		<!--
-			IDEA:
-			On hover for a game in the table, show covers using another Component.
-			Rename API methods so that they match corrections.
-			Correct or remove update stock options from API, as they were done in a GET and that's not right.
-		-->
-
-
+		
 	</div>
 </template>
 
 <script>
 	export default {
-		data() {
-			return {
-				games: null,
-				merch: null,
-				notShown: ""
-			}
-		},
 		mounted() {
 			this.showItems('games');
 		},
 		methods: {
 			showItems(itemType) {
-				if (this.games == null || this.merch == null)
+				if (this.games == null || this.merchItems == null)
 					this.getItems(itemType);
 
 				if (itemType == 'games')
@@ -98,10 +87,15 @@
 						}
 						else {
 							this.notShown = "Juegos"
-							this.merch = response.data;
+							this.merchItems = response.data;
 						}
 					})
 					.catch(e => console.log(e))
+			},
+
+			updateInfo(itemType, itemName){
+				console.log(itemType, itemName)
+				this.$emit('update-selected', itemType, itemName)
 			}
 		}
 	}

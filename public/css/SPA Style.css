@@ -5,3 +5,8 @@ body {
 div {
 	color: white;
 }
+
+table {
+	text-align: center;
+	background-color: teal;
+}

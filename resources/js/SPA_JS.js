@@ -19,7 +19,8 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('display-all-component', require('./components/DisplayAllComponent.vue').default);
+Vue.component('selected-item-component', require('./components/SelectedItemComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -27,6 +28,20 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
-	el: '#app',
+const displayAll = new Vue({
+	el: '#display-all'
+});
+const selectedItem = new Vue({
+	el: '#selected-item',
+	data: {
+		itemType: "game",
+		itemName: "null"
+	},
+	methods: {
+		updateSelected(itemType, itemName) {
+			consol.log("hi")
+			this.itemType = itemType
+			this.itemName = itemName
+		}
+	}
 });
