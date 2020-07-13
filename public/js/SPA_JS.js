@@ -1967,6 +1967,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      games: null,
+      merchItems: null,
+      notShown: ""
+    };
+  },
   mounted: function mounted() {
     this.showItems('games');
   },
@@ -2032,14 +2039,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: {
-    itemType: {
-      type: String,
-      required: true
-    },
-    itemName: {
-      type: String,
-      required: true
+  data: function data() {
+    return {
+      itemType: "game",
+      itemName: "null"
+    };
+  },
+  methods: {
+    searchSelectedData: function searchSelectedData(itemType, itemName) {
+      console.log("hi");
+      this.itemType = itemType;
+      this.itemName = itemName;
     }
   }
 });
@@ -50023,19 +50033,10 @@ Vue.component('selected-item-component', __webpack_require__(/*! ./components/Se
  */
 
 var displayAll = new Vue({
-  el: '#display-all'
-});
-var selectedItem = new Vue({
-  el: '#selected-item',
-  data: {
-    itemType: "game",
-    itemName: "null"
-  },
+  el: '#display-all',
   methods: {
     updateSelected: function updateSelected(itemType, itemName) {
-      consol.log("hi");
-      this.itemType = itemType;
-      this.itemName = itemName;
+      this.$refs.selected.searchSelectedData(itemType, itemName);
     }
   }
 });

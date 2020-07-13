@@ -58,6 +58,14 @@
 
 <script>
 	export default {
+		
+		data() {
+			return {
+				games: null,
+				merchItems: null,
+				notShown: ""
+			}
+		},
 		mounted() {
 			this.showItems('games');
 		},

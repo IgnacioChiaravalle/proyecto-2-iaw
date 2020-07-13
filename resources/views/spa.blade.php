@@ -10,10 +10,8 @@
 <body>
 
 	<div id="display-all">
-		<display-all-component></display-all-component>
-	</div>
-	<div id="selected-item">
-		<selected-item-component :item-type="itemType" :item-name="itemName" v-on:update-selected="updateSelected"></selected-item-component>
+		<display-all-component @update-selected="updateSelected"></display-all-component>
+		<selected-item-component ref="selected"></selected-item-component>
 	</div>
 
 

@@ -29,19 +29,11 @@ Vue.component('selected-item-component', require('./components/SelectedItemCompo
  */
 
 const displayAll = new Vue({
-	el: '#display-all'
-});
-const selectedItem = new Vue({
-	el: '#selected-item',
-	data: {
-		itemType: "game",
-		itemName: "null"
-	},
+	el: '#display-all',
 	methods: {
 		updateSelected(itemType, itemName) {
-			consol.log("hi")
-			this.itemType = itemType
-			this.itemName = itemName
+			this.$refs.selected.searchSelectedData(itemType, itemName)
 		}
 	}
 });
+

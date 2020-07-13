@@ -19,14 +19,17 @@
 
 <script>
 	export default {
-		props: {
-			itemType: {
-				type: String,
-				required: true
-			},
-			itemName: {
-				type: String,
-				required: true
+		data() {
+			return {
+				itemType: "game",
+				itemName: "null"
+			}
+		},
+		methods: {
+			searchSelectedData(itemType, itemName) {
+				console.log("hi")
+				this.itemType = itemType
+				this.itemName = itemName
 			}
 		}
 	}
