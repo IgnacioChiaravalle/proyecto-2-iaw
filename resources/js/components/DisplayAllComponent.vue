@@ -95,14 +95,13 @@
 						}
 						else {
 							this.notShown = "Juegos"
-							this.merchItems = response.data;
+							this.merchItems = response.data
 						}
 					})
-					.catch(e => console.log(e))
+					.catch(e => console.log("Error finding " + itemType + ":\n" + e))
 			},
 
-			updateInfo(itemType, itemName){
-				console.log(itemType, itemName)
+			updateInfo(itemType, itemName) {
 				this.$emit('update-selected', itemType, itemName)
 			}
 		}
