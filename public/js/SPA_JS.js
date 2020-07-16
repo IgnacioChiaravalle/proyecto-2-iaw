@@ -2086,7 +2086,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2164,8 +2163,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 11:
                 bothCovers = _context2.sent;
-                _this2.cover = bothCovers.cover;
-                _this2.countercover = bothCovers.counter_cover;
+                _this2.cover = "data:image/*;base64," + bothCovers.cover;
+                _this2.countercover = bothCovers.counter_cover != null && bothCovers.counter_cover != "" ? "data:image/*;base64," + bothCovers.counter_cover : null;
 
               case 14:
               case "end":
@@ -2179,7 +2178,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
-        var URI, photo64;
+        var URI, photoJSON;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
@@ -2195,8 +2194,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _this3.executeAPIQuery(URI, "Photo");
 
               case 7:
-                photo64 = _context3.sent;
-                _this3.photo = 'data:image/*;base64,' + photo64;
+                photoJSON = _context3.sent;
+                _this3.photo = "data:image/*;base64," + photoJSON.photo;
 
               case 9:
               case "end":
@@ -31540,7 +31539,9 @@ var render = function() {
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(game.release_year))]),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(game.esrb_rating))]),
+                  game.esrb_rating != null
+                    ? _c("td", [_vm._v(_vm._s(game.esrb_rating))])
+                    : _c("td", [_vm._v("No Disponible")]),
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(game.price_new))]),
                   _vm._v(" "),
@@ -31714,30 +31715,25 @@ var render = function() {
             _vm._m(2),
             _vm._v(" "),
             _c("img", {
-              attrs: {
-                name: "cover",
-                src: "data:image/*;base64, :cover",
-                alt: "Portada del Juego"
-              }
+              attrs: { name: "cover", src: _vm.cover, alt: "Portada del Juego" }
             }),
             _vm._v(" "),
-            _vm._m(3),
+            _vm.countercover != null
+              ? _c("label", { attrs: { for: "countercover" } }, [
+                  _vm._v("Contraportada:"),
+                  _c("br")
+                ])
+              : _vm._e(),
             _vm._v(" "),
             _vm.countercover != null
               ? _c("img", {
                   attrs: {
                     name: "countercover",
-                    src: "data:image/*;base64, :countercover",
+                    src: _vm.countercover,
                     alt: "Contraportada del Juego"
                   }
                 })
-              : _c("img", {
-                  attrs: {
-                    name: "countercover",
-                    src: "",
-                    alt: "Contraportada del Juego"
-                  }
-                })
+              : _vm._e()
           ])
         ])
       : _vm._e(),
@@ -31782,15 +31778,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", { attrs: { for: "cover" } }, [
       _vm._v("Portada:"),
-      _c("br")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", { attrs: { for: "countercover" } }, [
-      _vm._v("Contraportada:"),
       _c("br")
     ])
   }

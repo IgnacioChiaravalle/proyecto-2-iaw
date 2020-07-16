@@ -23,7 +23,7 @@
 				<tr v-for="game in games" :key="game.name" @click="updateInfo('game', game.name)">
 					<td>{{ game.name }}</td>
 					<td>{{ game.release_year }}</td>
-					<td>{{ game.esrb_rating }}</td>
+					<td v-if="game.esrb_rating != null" >{{ game.esrb_rating }}</td> <td v-else >No Disponible</td>
 					<td>{{ game.price_new }}</td>
 					<td>{{ game.price_used }}</td>
 				</tr>

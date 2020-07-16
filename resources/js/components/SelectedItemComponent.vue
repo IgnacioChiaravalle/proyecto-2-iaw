@@ -26,11 +26,10 @@
 			</ul>
 			<div class="covers-div">
 				<label for="cover">Portada:<br></label>
-				<img name="cover" src="data:image/*;base64, :cover" alt="Portada del Juego">
+				<img name="cover" v-bind:src="cover" alt="Portada del Juego">
 
-				<label for="countercover">Contraportada:<br></label>
-				<img v-if="countercover != null" name="countercover" src="data:image/*;base64, :countercover" alt="Contraportada del Juego">
-				<img v-else name="countercover" src="" alt="Contraportada del Juego">
+				<label v-if="countercover != null" for="countercover">Contraportada:<br></label>
+				<img v-if="countercover != null" name="countercover" v-bind:src="countercover" alt="Contraportada del Juego">
 			</div>
 		</div>
 
@@ -77,15 +76,15 @@
 				this.consoles = await this.executeAPIQuery(URI, "Consoles")
 				URI = 'https://chiaravalle-iaw-proyecto2.herokuapp.com/api/gamesforsale/getgamecovers/' + itemName
 				var bothCovers = await this.executeAPIQuery(URI, "Covers")
-				this.cover = bothCovers.cover
-				this.countercover = bothCovers.counter_cover
+				this.cover = "data:image/*;base64," + bothCovers.cover
+				this.countercover = bothCovers.counter_cover != null && bothCovers.counter_cover != "" ? "data:image/*;base64," + bothCovers.counter_cover : null
 			},
 			async searchMerchData(itemName) {
 				var URI = 'https://chiaravalle-iaw-proyecto2.herokuapp.com/api/merchforsale/getmerchcategories/' + itemName
 				this.categories = await this.executeAPIQuery(URI, "Categories")
 				URI = 'https://chiaravalle-iaw-proyecto2.herokuapp.com/api/merchforsale/getmerchphoto/' + itemName
-				var photo64 = await this.executeAPIQuery(URI, "Photo")
-				this.photo = 'data:image/*;base64,' + photo64
+				var photoJSON = await this.executeAPIQuery(URI, "Photo")
+				this.photo = "data:image/*;base64," + photoJSON.photo
 			},
 
 			async executeAPIQuery(URI, searched) {
