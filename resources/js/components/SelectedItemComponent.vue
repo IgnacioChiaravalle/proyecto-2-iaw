@@ -29,7 +29,7 @@
 				<img name="cover" src="data:image/*;base64, :cover" alt="Portada del Juego">
 
 				<label for="countercover">Contraportada:<br></label>
-				<img v-if="counter_cover != null" name="countercover" src="data:image/*;base64, :countercover" alt="Contraportada del Juego">
+				<img v-if="countercover != null" name="countercover" src="data:image/*;base64, :countercover" alt="Contraportada del Juego">
 				<img v-else name="countercover" src="" alt="Contraportada del Juego">
 			</div>
 		</div>
@@ -40,7 +40,7 @@
 				<li v-for="category in categories" :key="category.category_name">{{category.category_name}}</li>
 			</ul>
 			<div class="photo-div">
-				<img src="data:image/*;base64, :photo" alt="Foto del Artículo">
+				<img v-bind:src="photo" alt="Foto del Artículo">
 			</div>		
 		</div>
 		
@@ -62,34 +62,35 @@
 			}
 		},
 		methods: {
-			searchSelectedData(itemType, itemName) {
+			async searchSelectedData(itemType, itemName) {
 				if (itemType == "game")
-					this.searchGameData(itemName)
+					await this.searchGameData(itemName)
 				else
-					this.searchMerchData(itemName)
+					await this.searchMerchData(itemName)
 				this.itemName = itemName
 				this.itemType = itemType
 			},
-			searchGameData(itemName) {
+			async searchGameData(itemName) {
 				var URI = 'https://chiaravalle-iaw-proyecto2.herokuapp.com/api/gamesforsale/getgamedevs/' + itemName
-				this.devs = this.executeAPIQuery(URI, "Developers")
+				this.devs = await this.executeAPIQuery(URI, "Developers")
 				URI = 'https://chiaravalle-iaw-proyecto2.herokuapp.com/api/gamesforsale/getgameconsoles/' + itemName
-				this.consoles = this.executeAPIQuery(URI, "Consoles")
+				this.consoles = await this.executeAPIQuery(URI, "Consoles")
 				URI = 'https://chiaravalle-iaw-proyecto2.herokuapp.com/api/gamesforsale/getgamecovers/' + itemName
-				var bothCovers = this.executeAPIQuery(URI, "Covers")
+				var bothCovers = await this.executeAPIQuery(URI, "Covers")
 				this.cover = bothCovers.cover
 				this.countercover = bothCovers.counter_cover
 			},
-			searchMerchData(itemName) {
+			async searchMerchData(itemName) {
 				var URI = 'https://chiaravalle-iaw-proyecto2.herokuapp.com/api/merchforsale/getmerchcategories/' + itemName
-				this.categories = this.executeAPIQuery(URI, "Categories")
+				this.categories = await this.executeAPIQuery(URI, "Categories")
 				URI = 'https://chiaravalle-iaw-proyecto2.herokuapp.com/api/merchforsale/getmerchphoto/' + itemName
-				this.photo = this.executeAPIQuery(URI, "Photo")
+				var photo64 = await this.executeAPIQuery(URI, "Photo")
+				this.photo = 'data:image/*;base64,' + photo64
 			},
 
-			executeAPIQuery(URI, searched) {
+			async executeAPIQuery(URI, searched) {
 				var toReturn = null
-				axios
+				await axios
 					.get(URI, {
 						headers: {'Authorization': 'Bearer administrador'}
 					})
