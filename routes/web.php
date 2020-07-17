@@ -132,6 +132,6 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 
 //SPA:
-Route::get('/spa', function () {
+Route::get('/stockreviewer', function () {
 	return view('spa');
 });
