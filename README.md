@@ -72,6 +72,9 @@ El proyecto está en funcionamiento en la plataforma Heroku, en la siguiente dir
 El video de presentacion del proyecto se encuentra disponible en la siguiente dirección: [Link del Video](https://youtu.be/MwfTyxMQqfU)
 
 
+---
+
+
 # Revisor de Stock de *TheWaterLevel*
 Como continuación del proyecto, se desarrolló un revisor de stock para la empresa. El mismo consiste de una *Single Page Application* que permite ejecutar la mayoría de las funciones de la API desarrollada previamente a través de una interfaz amigable al usuario, obteniendo así información referida al stock sin la posibilidad de hacerle modificaciones (es, después de todo, un *revisor* de stock, y su objetivo no es suplantar al sistema desarrollado sino brindar un rápido acceso a los datos importantes por si sólo se necesitase consultarlos).
 
