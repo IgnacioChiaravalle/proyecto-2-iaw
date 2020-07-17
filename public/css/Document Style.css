@@ -11,6 +11,10 @@
 	src: url(Fonts/ArchitectsDaughter_Font.ttf);
 }
 @font-face {
+	font-family: Audiowide;
+	src: url(Fonts/Audiowide_Font.ttf);
+}
+@font-face {
 	font-family: Bungee;
 	src: url(Fonts/Bungee_Font.ttf);
 }
@@ -47,8 +51,16 @@
 	src: url(Fonts/PermanentMarker_Font.ttf);
 }
 @font-face {
+	font-family: Quantico;
+	src: url(Fonts/Quantico_Font.ttf);
+}
+@font-face {
 	font-family: RockSalt;
 	src: url(Fonts/RockSalt_Font.ttf);
+}
+@font-face {
+	font-family: SedgwickAveDisplay;
+	src: url(Fonts/SedgwickAveDisplay_Font.ttf);
 }
 @font-face {
 	font-family: Staatliches;

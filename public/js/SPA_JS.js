@@ -1911,6 +1911,44 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/APITokenComponent.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/APITokenComponent.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      api_token: ""
+    };
+  },
+  methods: {
+    confirmToken: function confirmToken() {
+      this.$emit('token-confirmed', this.api_token);
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DisplayAllComponent.vue?vue&type=script&lang=js&":
 /*!******************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/DisplayAllComponent.vue?vue&type=script&lang=js& ***!
@@ -1970,20 +2008,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["api_token"],
   data: function data() {
     return {
       games: null,
       merchItems: null,
-      notShown: ""
+      notShown: "",
+      selectedRow: null
     };
   },
   mounted: function mounted() {
@@ -1999,7 +2031,7 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('https://chiaravalle-iaw-proyecto2.herokuapp.com/api/' + itemType + 'forsale', {
         headers: {
-          'Authorization': 'Bearer administrador'
+          'Authorization': 'Bearer ' + this.api_token
         }
       }).then(function (response) {
         if (itemType == 'games') {
@@ -2014,6 +2046,9 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     updateInfo: function updateInfo(itemType, itemName) {
+      if (this.selectedRow != null) this.selectedRow.classList.remove("selected");
+      this.selectedRow = document.getElementById(itemName);
+      this.selectedRow.classList.add("selected");
       this.$emit('update-selected', itemType, itemName);
     }
   }
@@ -2085,8 +2120,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
+var API_URI = "https://chiaravalle-iaw-proyecto2.herokuapp.com/api/";
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["api_token"],
   data: function data() {
     return {
       itemType: "game",
@@ -2145,19 +2181,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                URI = 'https://chiaravalle-iaw-proyecto2.herokuapp.com/api/gamesforsale/getgamedevs/' + itemName;
+                URI = API_URI + "gamesforsale/getgamedevs/" + itemName;
                 _context2.next = 3;
                 return _this2.executeAPIQuery(URI, "Developers");
 
               case 3:
                 _this2.devs = _context2.sent;
-                URI = 'https://chiaravalle-iaw-proyecto2.herokuapp.com/api/gamesforsale/getgameconsoles/' + itemName;
+                URI = API_URI + "gamesforsale/getgameconsoles/" + itemName;
                 _context2.next = 7;
                 return _this2.executeAPIQuery(URI, "Consoles");
 
               case 7:
                 _this2.consoles = _context2.sent;
-                URI = 'https://chiaravalle-iaw-proyecto2.herokuapp.com/api/gamesforsale/getgamecovers/' + itemName;
+                URI = API_URI + "gamesforsale/getgamecovers/" + itemName;
                 _context2.next = 11;
                 return _this2.executeAPIQuery(URI, "Covers");
 
@@ -2183,13 +2219,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                URI = 'https://chiaravalle-iaw-proyecto2.herokuapp.com/api/merchforsale/getmerchcategories/' + itemName;
+                URI = API_URI + "merchforsale/getmerchcategories/" + itemName;
                 _context3.next = 3;
                 return _this3.executeAPIQuery(URI, "Categories");
 
               case 3:
                 _this3.categories = _context3.sent;
-                URI = 'https://chiaravalle-iaw-proyecto2.herokuapp.com/api/merchforsale/getmerchphoto/' + itemName;
+                URI = API_URI + "merchforsale/getmerchphoto/" + itemName;
                 _context3.next = 7;
                 return _this3.executeAPIQuery(URI, "Photo");
 
@@ -2206,6 +2242,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     executeAPIQuery: function executeAPIQuery(URI, searched) {
+      var _this4 = this;
+
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
         var toReturn;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
@@ -2216,7 +2254,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context4.next = 3;
                 return axios.get(URI, {
                   headers: {
-                    'Authorization': 'Bearer administrador'
+                    'Authorization': 'Bearer ' + _this4.api_token
                   }
                 }).then(function (response) {
                   toReturn = response.data;
@@ -31497,6 +31535,106 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/APITokenComponent.vue?vue&type=template&id=ed5a143a&":
+/*!********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/APITokenComponent.vue?vue&type=template&id=ed5a143a& ***!
+  \********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "token-validation" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.api_token,
+            expression: "api_token"
+          }
+        ],
+        staticClass: "token-input",
+        attrs: {
+          type: "password",
+          name: "token-input",
+          placeholder: "Token para la API"
+        },
+        domProps: { value: _vm.api_token },
+        on: {
+          keyup: function($event) {
+            if (
+              !$event.type.indexOf("key") &&
+              _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+            ) {
+              return null
+            }
+            return _vm.confirmToken()
+          },
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.api_token = $event.target.value
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "token-button",
+          attrs: { id: "submit-btn-SPA" },
+          on: {
+            click: function($event) {
+              return _vm.confirmToken()
+            }
+          }
+        },
+        [_vm._v("Confirmar")]
+      )
+    ]),
+    _vm._v(" "),
+    _vm._m(1)
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      { staticClass: "token-label", attrs: { for: "token-input" } },
+      [_vm._v("Ingrese su Token para la API:"), _c("br")]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h1", [
+      _vm._v("¡¡Bienvenido al Revisor de Stock de"),
+      _c("br"),
+      _vm._v("The Water Level!!")
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DisplayAllComponent.vue?vue&type=template&id=29cf1dba&":
 /*!**********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/DisplayAllComponent.vue?vue&type=template&id=29cf1dba& ***!
@@ -31513,21 +31651,35 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._m(0),
-    _vm._v(" "),
-    _vm._m(1),
+    _c(
+      "button",
+      {
+        staticClass: "swap-table-button",
+        on: {
+          click: function($event) {
+            return _vm.showItems(
+              _vm.notShown == "Merchandising" ? "merch" : "games"
+            )
+          }
+        }
+      },
+      [_vm._v("Ver"), _c("br"), _vm._v(_vm._s(_vm.notShown))]
+    ),
     _vm._v(" "),
     _vm.notShown == "Merchandising"
-      ? _c("table", [
-          _vm._m(2),
+      ? _c("table", { staticClass: "table-game" }, [
+          _vm._m(0),
           _vm._v(" "),
           _c(
             "tbody",
+            { staticClass: "tbody-game" },
             _vm._l(_vm.games, function(game) {
               return _c(
                 "tr",
                 {
                   key: game.name,
+                  staticClass: "tr-body tr-body-game",
+                  attrs: { id: game.name },
                   on: {
                     click: function($event) {
                       return _vm.updateInfo("game", game.name)
@@ -31552,16 +31704,19 @@ var render = function() {
             0
           )
         ])
-      : _c("table", [
-          _vm._m(3),
+      : _c("table", { staticClass: "table-merch" }, [
+          _vm._m(1),
           _vm._v(" "),
           _c(
             "tbody",
+            { staticClass: "tbody-merch" },
             _vm._l(_vm.merchItems, function(merch) {
               return _c(
                 "tr",
                 {
                   key: merch.name,
+                  staticClass: "tr-body tr-body-merch",
+                  attrs: { id: merch.name },
                   on: {
                     click: function($event) {
                       return _vm.updateInfo("merch", merch.name)
@@ -31583,21 +31738,7 @@ var render = function() {
             }),
             0
           )
-        ]),
-    _vm._v(" "),
-    _c(
-      "button",
-      {
-        on: {
-          click: function($event) {
-            return _vm.showItems(
-              _vm.notShown == "Merchandising" ? "merch" : "games"
-            )
-          }
-        }
-      },
-      [_vm._v("Ver " + _vm._s(_vm.notShown))]
-    )
+        ])
   ])
 }
 var staticRenderFns = [
@@ -31605,29 +31746,17 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [_c("h1", [_vm._v("Display All Component")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [_c("h2", [_vm._v("I'm an example component.")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("td", [_vm._v("Nombre del Juego")]),
+    return _c("thead", { staticClass: "thead-game" }, [
+      _c("tr", { staticClass: "tr-head-game" }, [
+        _c("td", [_vm._v("Nombre del"), _c("br"), _vm._v("Juego")]),
         _vm._v(" "),
-        _c("td", [_vm._v("Año de Lanzamiento")]),
+        _c("td", [_vm._v("Año de"), _c("br"), _vm._v("Lanzamiento")]),
         _vm._v(" "),
-        _c("td", [_vm._v("Rating ESRB")]),
+        _c("td", [_vm._v("Rating"), _c("br"), _vm._v("ESRB")]),
         _vm._v(" "),
-        _c("td", [_vm._v("Precio Nuevo")]),
+        _c("td", [_vm._v("Precio"), _c("br"), _vm._v("Nuevo")]),
         _vm._v(" "),
-        _c("td", [_vm._v("Precio Usado")])
+        _c("td", [_vm._v("Precio"), _c("br"), _vm._v("Usado")])
       ])
     ])
   },
@@ -31635,17 +31764,33 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("td", [_vm._v("Nombre del"), _c("br"), _vm._v("Artículo")]),
+    return _c("thead", { staticClass: "thead-merch" }, [
+      _c("tr", { staticClass: "tr-head-merch" }, [
+        _c("td", { staticClass: "td-head-merch" }, [
+          _vm._v("Nombre del"),
+          _c("br"),
+          _vm._v("Artículo")
+        ]),
         _vm._v(" "),
-        _c("td", [_vm._v("Descripción")]),
+        _c("td", { staticClass: "td-head-merch" }, [_vm._v("Descripción")]),
         _vm._v(" "),
-        _c("td", [_vm._v("Multimedia de"), _c("br"), _vm._v("origen")]),
+        _c("td", { staticClass: "td-head-merch" }, [
+          _vm._v("Multimedia de"),
+          _c("br"),
+          _vm._v("origen")
+        ]),
         _vm._v(" "),
-        _c("td", [_vm._v("Unidades"), _c("br"), _vm._v("Disponibles")]),
+        _c("td", { staticClass: "td-head-merch" }, [
+          _vm._v("Unidades"),
+          _c("br"),
+          _vm._v("Disponibles")
+        ]),
         _vm._v(" "),
-        _c("td", [_vm._v("Precio"), _c("br"), _vm._v("Unitario")])
+        _c("td", { staticClass: "td-head-merch" }, [
+          _vm._v("Precio"),
+          _c("br"),
+          _vm._v("Unitario")
+        ])
       ])
     ])
   }
@@ -31671,10 +31816,8 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _vm._m(0),
-    _vm._v(" "),
-    _vm._m(1),
+  return _c("div", { staticClass: "details-container" }, [
+    _c("h2", [_vm._v(_vm._s(_vm.itemName))]),
     _vm._v(" "),
     _vm.itemType == "game" && _vm.itemName != null
       ? _c("div", [
@@ -31683,9 +31826,11 @@ var render = function() {
           _c(
             "ul",
             _vm._l(_vm.devs, function(dev) {
-              return _c("li", { key: dev.dev_name }, [
-                _vm._v(_vm._s(dev.dev_name))
-              ])
+              return _c(
+                "li",
+                { key: dev.dev_name, staticClass: "first-level-li" },
+                [_vm._v(_vm._s(dev.dev_name))]
+              )
             }),
             0
           ),
@@ -31695,45 +31840,63 @@ var render = function() {
           _c(
             "ul",
             _vm._l(_vm.consoles, function(cons) {
-              return _c("li", { key: cons.console_name }, [
-                _vm._v("\n\t\t\t\t" + _vm._s(cons.console_name) + "\n\t\t\t\t"),
-                _c("ul", [
-                  _c("li", [
-                    _vm._v("Copias Nuevas: " + _vm._s(cons.new_copies))
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _vm._v("Copias Usadas: " + _vm._s(cons.used_copies))
+              return _c(
+                "li",
+                { key: cons.console_name, staticClass: "first-level-li" },
+                [
+                  _vm._v(
+                    "\n\t\t\t\t" + _vm._s(cons.console_name) + "\n\t\t\t\t"
+                  ),
+                  _c("ul", { staticClass: "sublist-ul" }, [
+                    _c("li", { staticClass: "second-level-li" }, [
+                      _vm._v("Copias Nuevas: " + _vm._s(cons.new_copies))
+                    ]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "second-level-li" }, [
+                      _vm._v("Copias Usadas: " + _vm._s(cons.used_copies))
+                    ])
                   ])
-                ])
-              ])
+                ]
+              )
             }),
             0
           ),
           _vm._v(" "),
           _c("div", { staticClass: "covers-div" }, [
-            _vm._m(2),
+            _c("div", { staticClass: "cover-item cover-item-left" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("img", {
+                attrs: {
+                  name: "cover",
+                  src: _vm.cover,
+                  alt: "Portada del Juego"
+                }
+              })
+            ]),
             _vm._v(" "),
-            _c("img", {
-              attrs: { name: "cover", src: _vm.cover, alt: "Portada del Juego" }
-            }),
-            _vm._v(" "),
-            _vm.countercover != null
-              ? _c("label", { attrs: { for: "countercover" } }, [
-                  _vm._v("Contraportada:"),
-                  _c("br")
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.countercover != null
-              ? _c("img", {
-                  attrs: {
-                    name: "countercover",
-                    src: _vm.countercover,
-                    alt: "Contraportada del Juego"
-                  }
-                })
-              : _vm._e()
+            _c("div", { staticClass: "cover-item cover-item-right" }, [
+              _vm.countercover != null
+                ? _c(
+                    "label",
+                    {
+                      staticClass: "image-label cover-label",
+                      attrs: { for: "countercover" }
+                    },
+                    [_vm._v("Contraportada:"), _c("br")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.countercover != null
+                ? _c("img", {
+                    attrs: {
+                      name: "countercover",
+                      src: _vm.countercover,
+                      alt: "Contraportada del Juego"
+                    }
+                  })
+                : _vm._e()
+            ])
           ])
         ])
       : _vm._e(),
@@ -31745,15 +31908,25 @@ var render = function() {
           _c(
             "ul",
             _vm._l(_vm.categories, function(category) {
-              return _c("li", { key: category.category_name }, [
-                _vm._v(_vm._s(category.category_name))
-              ])
+              return _c(
+                "li",
+                { key: category.category_name, staticClass: "first-level-li" },
+                [_vm._v(_vm._s(category.category_name))]
+              )
             }),
             0
           ),
           _vm._v(" "),
           _c("div", { staticClass: "photo-div" }, [
-            _c("img", { attrs: { src: _vm.photo, alt: "Foto del Artículo" } })
+            _vm._m(1),
+            _vm._v(" "),
+            _c("img", {
+              attrs: {
+                src: _vm.photo,
+                name: "photo-img",
+                alt: "Foto del Artículo"
+              }
+            })
           ])
         ])
       : _vm._e()
@@ -31764,22 +31937,21 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [_c("h1", [_vm._v("Item Selected Component")])])
+    return _c(
+      "label",
+      { staticClass: "image-label cover-label", attrs: { for: "cover" } },
+      [_vm._v("Portada:"), _c("br")]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [_c("h2", [_vm._v("I'm an example component.")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", { attrs: { for: "cover" } }, [
-      _vm._v("Portada:"),
-      _c("br")
-    ])
+    return _c(
+      "label",
+      { staticClass: "image-label photo-label", attrs: { for: "photo-img" } },
+      [_vm._v("Foto del Artículo:"), _c("br")]
+    )
   }
 ]
 render._withStripped = true
@@ -43954,19 +44126,98 @@ module.exports = function(module) {
 /*!********************************!*\
   !*** ./resources/js/SPA_JS.js ***!
   \********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+Vue.component('api-token-component', __webpack_require__(/*! ./components/APITokenComponent.vue */ "./resources/js/components/APITokenComponent.vue")["default"]);
 Vue.component('display-all-component', __webpack_require__(/*! ./components/DisplayAllComponent.vue */ "./resources/js/components/DisplayAllComponent.vue")["default"]);
 Vue.component('selected-item-component', __webpack_require__(/*! ./components/SelectedItemComponent.vue */ "./resources/js/components/SelectedItemComponent.vue")["default"]);
-var displayAll = new Vue({
-  el: '#display-all',
+var parentComponent = new Vue({
+  data: function data() {
+    return {
+      visible: false,
+      api_token: ""
+    };
+  },
+  el: '#parent-component',
   methods: {
+    verifyToken: function verifyToken(apiToken) {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var user;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return _this.getUser(apiToken);
+
+              case 2:
+                user = _context.sent;
+
+                if (Object.keys(user).length > 0) {
+                  _this.visible = true;
+                  _this.api_token = apiToken;
+                }
+
+              case 4:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    },
     updateSelected: function updateSelected(itemType, itemName) {
-      this.$refs.selected.searchSelectedData(itemType, itemName);
+      this.$refs.selectedItemComponent.searchSelectedData(itemType, itemName);
+    },
+    getUser: function getUser(apiToken) {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var toReturn;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                toReturn = {};
+                _context2.next = 3;
+                return axios.get('https://chiaravalle-iaw-proyecto2.herokuapp.com/api/user', {
+                  headers: {
+                    'Authorization': 'Bearer ' + apiToken
+                  }
+                }).then(function (response) {
+                  toReturn = response.data;
+                })["catch"](function (e) {
+                  _this2.visible = false;
+                  _this2.apiToken = "";
+                  alert("¡El Token para la API ingresado es inválido!");
+                });
+
+              case 3:
+                return _context2.abrupt("return", toReturn);
+
+              case 4:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
     }
   }
 });
@@ -44012,6 +44263,75 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/APITokenComponent.vue":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/APITokenComponent.vue ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _APITokenComponent_vue_vue_type_template_id_ed5a143a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./APITokenComponent.vue?vue&type=template&id=ed5a143a& */ "./resources/js/components/APITokenComponent.vue?vue&type=template&id=ed5a143a&");
+/* harmony import */ var _APITokenComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./APITokenComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/APITokenComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _APITokenComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _APITokenComponent_vue_vue_type_template_id_ed5a143a___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _APITokenComponent_vue_vue_type_template_id_ed5a143a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/APITokenComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/APITokenComponent.vue?vue&type=script&lang=js&":
+/*!********************************************************************************!*\
+  !*** ./resources/js/components/APITokenComponent.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_APITokenComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./APITokenComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/APITokenComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_APITokenComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/APITokenComponent.vue?vue&type=template&id=ed5a143a&":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/components/APITokenComponent.vue?vue&type=template&id=ed5a143a& ***!
+  \**************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_APITokenComponent_vue_vue_type_template_id_ed5a143a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./APITokenComponent.vue?vue&type=template&id=ed5a143a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/APITokenComponent.vue?vue&type=template&id=ed5a143a&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_APITokenComponent_vue_vue_type_template_id_ed5a143a___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_APITokenComponent_vue_vue_type_template_id_ed5a143a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 

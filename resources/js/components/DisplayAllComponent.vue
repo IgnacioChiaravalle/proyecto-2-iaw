@@ -1,47 +1,41 @@
 <template>
 	<div>
 
-		<div>
-			<h1>Display All Component</h1>
-		</div>
+		<button @click="showItems(notShown == 'Merchandising' ? 'merch' : 'games')" class="swap-table-button">Ver<br>{{notShown}}</button>
 
-		<div>
-			<h2>I'm an example component.</h2>
-		</div>
-
-		<table v-if="notShown == 'Merchandising'">
-			<thead>
-				<tr>
-					<td>Nombre del Juego</td>
-					<td>Año de Lanzamiento</td>
-					<td>Rating ESRB</td>
-					<td>Precio Nuevo</td>
-					<td>Precio Usado</td>
+		<table v-if="notShown == 'Merchandising'" class="table-game">
+			<thead class="thead-game">
+				<tr class="tr-head-game">
+					<td>Nombre del<br>Juego</td>
+					<td>Año de<br>Lanzamiento</td>
+					<td>Rating<br>ESRB</td>
+					<td>Precio<br>Nuevo</td>
+					<td>Precio<br>Usado</td>
 				</tr>
 			</thead>
-			<tbody>
-				<tr v-for="game in games" :key="game.name" @click="updateInfo('game', game.name)">
+			<tbody class="tbody-game">
+				<tr v-for="game in games" :key="game.name" :id="game.name" @click="updateInfo('game', game.name)" class="tr-body tr-body-game">
 					<td>{{ game.name }}</td>
 					<td>{{ game.release_year }}</td>
-					<td v-if="game.esrb_rating != null" >{{ game.esrb_rating }}</td> <td v-else >No Disponible</td>
+					<td v-if="game.esrb_rating != null">{{ game.esrb_rating }}</td> <td v-else>No Disponible</td>
 					<td>{{ game.price_new }}</td>
 					<td>{{ game.price_used }}</td>
 				</tr>
 			</tbody>
 		</table>
 
-		<table v-else>
-			<thead>
-				<tr>
-					<td>Nombre del<br>Artículo</td>
-					<td>Descripción</td>
-					<td>Multimedia de<br>origen</td>
-					<td>Unidades<br>Disponibles</td>
-					<td>Precio<br>Unitario</td>
+		<table v-else class="table-merch">
+			<thead class="thead-merch">
+				<tr class="tr-head-merch">
+					<td class="td-head-merch">Nombre del<br>Artículo</td>
+					<td class="td-head-merch">Descripción</td>
+					<td class="td-head-merch">Multimedia de<br>origen</td>
+					<td class="td-head-merch">Unidades<br>Disponibles</td>
+					<td class="td-head-merch">Precio<br>Unitario</td>
 				</tr>
 			</thead>
-			<tbody>
-				<tr v-for="merch in merchItems" :key="merch.name" @click="updateInfo('merch', merch.name)">
+			<tbody class="tbody-merch">
+				<tr v-for="merch in merchItems" :key="merch.name" :id="merch.name" @click="updateInfo('merch', merch.name)" class="tr-body tr-body-merch">
 					<td>{{ merch.name }}</td>
 					<td>{{ merch.description }}</td>
 					<td>{{ merch.origin_media }}</td>
@@ -50,20 +44,19 @@
 				</tr>
 			</tbody>
 		</table>
-
-		<button @click="showItems(notShown == 'Merchandising' ? 'merch' : 'games')">Ver {{notShown}}</button>
 		
 	</div>
 </template>
 
 <script>
 	export default {
-		
+		props: ["api_token"],
 		data() {
 			return {
 				games: null,
 				merchItems: null,
-				notShown: ""
+				notShown: "",
+				selectedRow: null
 			}
 		},
 		mounted() {
@@ -84,9 +77,7 @@
 				axios
 					.get(
 						'https://chiaravalle-iaw-proyecto2.herokuapp.com/api/' + itemType + 'forsale', {
-						headers: {
-							'Authorization': 'Bearer administrador'
-						}
+						headers: {'Authorization': 'Bearer ' + this.api_token}
 					})
 					.then(response => {
 						if (itemType == 'games') {
@@ -102,6 +93,9 @@
 			},
 
 			updateInfo(itemType, itemName) {
+				if (this.selectedRow != null) this.selectedRow.classList.remove("selected")
+				this.selectedRow = document.getElementById(itemName)
+				this.selectedRow.classList.add("selected")
 				this.$emit('update-selected', itemType, itemName)
 			}
 		}
