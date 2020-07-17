@@ -70,3 +70,23 @@ El proyecto está en funcionamiento en la plataforma Heroku, en la siguiente dir
 
 ## Link del Video de Presentación del Proyecto
 El video de presentacion del proyecto se encuentra disponible en la siguiente dirección: [Link del Video](https://youtu.be/MwfTyxMQqfU)
+
+
+# Revisor de Stock de *TheWaterLevel*
+Como continuación del proyecto, se desarrolló un revisor de stock para la empresa. El mismo consiste de una *Single Page Application* que permite ejecutar la mayoría de las funciones de la API desarrollada previamente a través de una interfaz amigable al usuario, obteniendo así información referida al stock sin la posibilidad de hacerle modificaciones (es, después de todo, un *revisor* de stock, y su objetivo no es suplantar al sistema desarrollado sino brindar un rápido acceso a los datos importantes por si sólo se necesitase consultarlos).
+
+## Modo de Uso
+Cuando el usuario se identifique a sí mismo mediante el ingreso de su api_token en el campo destinado para tal fin, se le presentará una tabla que contendrá información de cada juego en el stock conocido por la base de datos. Si clickea sobre alguna de las filas de la tabla, podrá ver más información del juego correspondiente (sus desarrolladores, su disponiblidad en consolas y su portada y contraportada).
+
+Además, podrá estudiar el stock de *merchandising* haciendo click en un botón con la leyenda *Ver Merchandising*. Al hacerlo, la tabla anterior será sustituida por una equivalente para los artículos de *merchandising* en stock, y si clickea sobre una de las filas de la nueva tabla verá información extendida sobre el artículo correspondiente (sus categorías y su fotografía).
+
+La sesión de un usuario que acceda al Revisor de Stock no se considerará abierta en el Administrador de Stock, y una sesión abierta en el Administrador no permitirá omitir la verificación de api_token en el Revisor. Esto quiere decir que el ingreso a cada sistema es **completamente independiente** (aunque, por supuesto, para acceder al Revisor es necesario tener una cuenta vigente en el Administrador).
+
+## Link del Revisor de Stock Funcionando en la Plataforma Heroku
+El proyecto está en funcionamiento en la plataforma Heroku, en la siguiente dirección: [Link para Heroku](https://chiaravalle-iaw-proyecto2.herokuapp.com/stockreviewer)
+
+## Archivo de Información de Usuarios
+Si bien se incluirá la información de los usuarios existentes al momento de entregar este proyecto en el *Pull Request* correspondiente, se optó por también brindar esta información dentro de un archivo de texto en la carpeta principal del repositorio. Este archivo tiene el nombre **User Data - Proyecto 3 - IAW - Chiaravalle**.
+
+## Link del Video de Presentación del Proyecto
+El video de presentacion del proyecto se encuentra disponible en la siguiente dirección: [Link del Video](**COMPLETAR**)
