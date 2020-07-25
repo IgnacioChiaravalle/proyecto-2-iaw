@@ -92,4 +92,4 @@ El proyecto está en funcionamiento en la plataforma Heroku, en la siguiente dir
 Si bien se incluirá la información de los usuarios existentes al momento de entregar este proyecto en el *Pull Request* correspondiente, se optó por también brindar esta información dentro de un archivo de texto en la carpeta principal del repositorio. Este archivo tiene el nombre **User Data - Proyecto 3 - IAW - Chiaravalle**.
 
 ## Link del Video de Presentación del Proyecto
-El video de presentacion del proyecto se encuentra disponible en la siguiente dirección: [Link del Video](**COMPLETAR**)
+El video de presentacion del proyecto se encuentra disponible en la siguiente dirección: [Link del Video](https://youtu.be/Wfvz5wD3o_0)
