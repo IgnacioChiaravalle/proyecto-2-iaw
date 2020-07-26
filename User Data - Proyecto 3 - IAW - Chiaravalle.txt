@@ -1,0 +1,29 @@
+**Usuario:** Ignacio Martín Chiaravalle
+**e-mail:** nachochiara@gmail.com
+**Password:** 123456789
+**API Token:** 123456789
+**Categoría:** Empleado
+
+**Usuario:** Nacho Chiara
+**e-mail:** nachochiara98@hotmail.com
+**Password:** nachochiara
+**API Token:** nachochiara
+**Categoría:** Administrador de Empresa
+
+**Usuario:** Administrador
+**e-mail:** admin@admin
+**Password:** administrador
+**API Token:** administrador
+**Categoría:** Administrador de Empresa
+
+**Usuario:** Empleado
+**e-mail:** empleado@empleado
+**Password:** empleado
+**API Token:** empleado
+**Categoría:** Empleado
+
+**Usuario:** usuario 1
+**e-mail:** user@user.com
+**Password:** password
+**API Token:** password
+**Categoría:** Administrador de Empresa

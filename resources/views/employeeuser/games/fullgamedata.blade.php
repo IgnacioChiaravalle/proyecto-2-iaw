@@ -67,9 +67,9 @@
 		<div class="cover-item cover-item-right">
 			<label for="countercover" class="full-data attribute-name stored-image-label">Contraportada:<br></label>
 			@if ($game->counter_cover != null)
-				<img name="cover" src="data:image/*;base64, {{ $game->counter_cover }}" alt="Contraportada del Juego" class="stored-image">
+				<img name="countercover" src="data:image/*;base64, {{ $game->counter_cover }}" alt="Contraportada del Juego" class="stored-image">
 			@else
-				<img name="cover" src="../../../../Image Not Available.png" alt="Contraportada del Juego" class="stored-image">
+				<img name="countercover" src="../../../../Image Not Available.png" alt="Contraportada del Juego" class="stored-image">
 			@endif
 		</div>
 	</div>

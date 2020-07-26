@@ -13,7 +13,7 @@ class MerchForSaleController extends Controller {
 	}
 
 	protected function getAllMerchItems() {
-		return MerchItem::select('name', 'description', 'origin_media', 'stock', 'price')->get();
+		return MerchItem::select('name', 'description', 'origin_media', 'stock', 'price')->orderBy('name', 'asc')->get();
 	}
 	protected function getMerchItem($merchName) {
 		return MerchItem::select('name', 'description', 'origin_media', 'stock', 'price')->where('name', $merchName)->first();
